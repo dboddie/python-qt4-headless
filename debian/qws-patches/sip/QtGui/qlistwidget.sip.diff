@@ -1,0 +1,63 @@
+--- sip/QtGui/qlistwidget.sip.old	2012-10-04 17:51:54.040239147 +0200
++++ sip/QtGui/qlistwidget.sip	2012-10-04 17:51:54.048239147 +0200
+@@ -64,7 +64,9 @@
+     Qt::ItemFlags flags() const;
+     QString text() const;
+     QIcon icon() const;
++%If (PyQt_StatusTip)
+     QString statusTip() const;
++%End
+ %If (PyQt_ToolTip)
+     QString toolTip() const;
+ %End
+@@ -85,13 +87,17 @@
+     virtual QVariant data(int role) const;
+     virtual void setData(int role, const QVariant &value);
+     virtual bool operator<(const QListWidgetItem &other /NoCopy/) const;
++%If (PyQt_DataStream)
+     virtual void read(QDataStream &in) /ReleaseGIL/;
+     virtual void write(QDataStream &out) const /ReleaseGIL/;
++%End
+     int type() const;
+     void setFlags(Qt::ItemFlags aflags);
+     void setText(const QString &atext);
+     void setIcon(const QIcon &aicon);
++%If (PyQt_StatusTip)
+     void setStatusTip(const QString &astatusTip);
++%End
+ %If (PyQt_ToolTip)
+     void setToolTip(const QString &atoolTip);
+ %End
+@@ -128,8 +134,10 @@
+     QListWidgetItem &operator=(const QListWidgetItem &);
+ };
+ 
++%If (PyQt_DataStream)
+ QDataStream &operator<<(QDataStream &out, const QListWidgetItem &item /Constrained/);
+ QDataStream &operator>>(QDataStream &in, QListWidgetItem &item /Constrained/);
++%End
+ 
+ class QListWidget : QListView
+ {
+@@ -212,8 +220,10 @@
+ protected:
+     virtual QStringList mimeTypes() const;
+     virtual QMimeData *mimeData(const QList<QListWidgetItem*> items) const /TransferBack/;
++%If (PyQt_DragAndDrop)
+     virtual bool dropMimeData(int index, const QMimeData *data, Qt::DropAction action);
+     virtual Qt::DropActions supportedDropActions() const;
++%End
+     QList<QListWidgetItem*> items(const QMimeData *data) const;
+     QModelIndex indexFromItem(QListWidgetItem *item) const;
+     QListWidgetItem *itemFromIndex(const QModelIndex &index) const;
+@@ -227,8 +237,10 @@
+     bool isSortingEnabled() const;
+ %End
+ %If (Qt_4_2_0 -)
++%If (PyQt_DragAndDrop)
+     virtual void dropEvent(QDropEvent *event);
+ %End
++%End
+ %If (Qt_4_3_0 -)
+     void removeItemWidget(QListWidgetItem *aItem);
+ %MethodCode

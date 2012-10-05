@@ -1,0 +1,93 @@
+--- sip/QtGui/qgraphicsitem.sip.old	2012-10-04 17:51:53.976239146 +0200
++++ sip/QtGui/qgraphicsitem.sip	2012-10-04 17:51:53.984239146 +0200
+@@ -262,12 +262,16 @@
+     QFlags<QGraphicsItem::GraphicsItemFlag> flags() const;
+     void setFlag(QGraphicsItem::GraphicsItemFlag flag, bool enabled = true);
+     void setFlags(QFlags<QGraphicsItem::GraphicsItemFlag> flags);
++%If (PyQt_ToolTip)
+     QString toolTip() const;
+     void setToolTip(const QString &toolTip);
++%End
++%If (PyQt_Cursor)
+     QCursor cursor() const;
+     void setCursor(const QCursor &cursor);
+     bool hasCursor() const;
+     void unsetCursor();
++%End
+     bool isVisible() const;
+     void setVisible(bool visible);
+     void hide();
+@@ -276,8 +280,10 @@
+     void setEnabled(bool enabled);
+     bool isSelected() const;
+     void setSelected(bool selected);
++%If (PyQt_DragAndDrop)
+     bool acceptDrops() const;
+     void setAcceptDrops(bool on);
++%End
+     Qt::MouseButtons acceptedMouseButtons() const;
+     void setAcceptedMouseButtons(Qt::MouseButtons buttons);
+     bool acceptsHoverEvents() const;
+@@ -356,11 +362,15 @@
+     void removeSceneEventFilter(QGraphicsItem *filterItem);
+ 
+ protected:
++%If (PyQt_ContextMenu)
+     virtual void contextMenuEvent(QGraphicsSceneContextMenuEvent *event);
++%End
++%If (PyQt_DragAndDrop)
+     virtual void dragEnterEvent(QGraphicsSceneDragDropEvent *event);
+     virtual void dragLeaveEvent(QGraphicsSceneDragDropEvent *event);
+     virtual void dragMoveEvent(QGraphicsSceneDragDropEvent *event);
+     virtual void dropEvent(QGraphicsSceneDragDropEvent *event);
++%End
+     virtual void focusInEvent(QFocusEvent *event);
+     virtual void focusOutEvent(QFocusEvent *event);
+     virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *event);
+@@ -378,7 +388,9 @@
+     void prepareGeometryChange();
+     virtual bool sceneEvent(QEvent *event);
+     virtual bool sceneEventFilter(QGraphicsItem *watched, QEvent *event);
++%If (PyQt_WheelEvent)
+     virtual void wheelEvent(QGraphicsSceneWheelEvent *event);
++%End
+ 
+ public:
+     void setPos(qreal ax, qreal ay);
+@@ -935,10 +947,12 @@
+     virtual void keyReleaseEvent(QKeyEvent *event);
+     virtual void focusInEvent(QFocusEvent *event);
+     virtual void focusOutEvent(QFocusEvent *event);
++%If (PyQt_DragAndDrop)
+     virtual void dragEnterEvent(QGraphicsSceneDragDropEvent *event);
+     virtual void dragLeaveEvent(QGraphicsSceneDragDropEvent *event);
+     virtual void dragMoveEvent(QGraphicsSceneDragDropEvent *event);
+     virtual void dropEvent(QGraphicsSceneDragDropEvent *event);
++%End
+     virtual void inputMethodEvent(QInputMethodEvent *event);
+     virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *event);
+     virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *event);
+@@ -1032,8 +1046,10 @@
+ 
+ public:
+     QGraphicsObject(QGraphicsItem *parent /TransferThis/ = 0);
++%If (PyQt_Gestures)
+     void grabGesture(Qt::GestureType type, Qt::GestureFlags flags = Qt::GestureFlags(0));
+     void ungrabGesture(Qt::GestureType type);
++%End
+ 
+ signals:
+     void parentChanged();
+@@ -1109,10 +1125,12 @@
+     virtual void keyReleaseEvent(QKeyEvent *event);
+     virtual void focusInEvent(QFocusEvent *event);
+     virtual void focusOutEvent(QFocusEvent *event);
++%If (PyQt_DragAndDrop)
+     virtual void dragEnterEvent(QGraphicsSceneDragDropEvent *event);
+     virtual void dragLeaveEvent(QGraphicsSceneDragDropEvent *event);
+     virtual void dragMoveEvent(QGraphicsSceneDragDropEvent *event);
+     virtual void dropEvent(QGraphicsSceneDragDropEvent *event);
++%End
+     virtual void inputMethodEvent(QInputMethodEvent *event);
+     virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *event);
+     virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *event);

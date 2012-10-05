@@ -1,0 +1,6 @@
+opt/qt4-qws/bin/*
+opt/qt4-qws/lib/python2.7/site-packages/PyQt4/*.py
+opt/qt4-qws/lib/python2.7/site-packages/PyQt4/*.so
+opt/qt4-qws/lib/python2.7/site-packages/PyQt4/uic/*.py
+opt/qt4-qws/lib/python2.7/site-packages/PyQt4/uic/*/*.py
+opt/qt4-qws/share/sip/PyQt4/*/*.sip

@@ -1,0 +1,6 @@
+python-qt4-qws (4.9.1-metno0) precise; urgency=low
+
+  * Created a package for embedded use.
+    - Configured the build to create a QWS version of PyQt.
+
+ -- David Boddie <david.boddie@met.no>  Fri, 05 Oct 2012 15:30:01 +0200

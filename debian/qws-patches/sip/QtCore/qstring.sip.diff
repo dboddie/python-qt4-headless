@@ -1,0 +1,41 @@
+--- sip/QtCore/qstring.sip.old	2012-10-04 17:51:55.132239142 +0200
++++ sip/QtCore/qstring.sip	2012-10-04 17:51:55.136239143 +0200
+@@ -83,7 +83,9 @@
+ 
+ 
+ // This is needed by the %BIGetCharBufferCode.
++#if defined(SIP_FEATURE_PyQt_TextCodec)
+ #include <qtextcodec.h>
++#endif
+ %End
+ 
+ %ConvertToTypeCode
+@@ -201,6 +203,7 @@
+     }
+     else
+     {
++#if defined(SIP_FEATURE_PyQt_TextCodec)
+         static QTextCodec *codec = 0;
+         static bool check_codec = TRUE;
+     
+@@ -218,6 +221,9 @@
+         if (codec)
+             enc = codec->fromUnicode(*sipCpp);
+         else
++#else
++        QByteArray enc;
++#endif
+             enc = sipCpp->toAscii();
+     
+         // A Python string is the most convenient method to save the encoded
+@@ -620,8 +626,10 @@
+ const QString operator+(QChar s1, const QString &s2) /Numeric/;
+ const QString operator+(const QByteArray &ba, const QString &s) /Numeric/;
+ const QString operator+(const QString &s, const QByteArray &ba) /Numeric/;
++%If (PyQt_DataStream)
+ QDataStream &operator<<(QDataStream &, const QString & /Constrained/) /API=QString: - 2/;
+ QDataStream &operator>>(QDataStream &, QString & /Constrained/) /API=QString: - 2/;
++%End
+ QFlags<QString::SectionFlag> operator|(QString::SectionFlag f1, QFlags<QString::SectionFlag> f2);
+ %If (Qt_4_3_0 -)
+ bool operator==(const QLatin1String &s1, const QLatin1String &s2);

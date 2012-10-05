@@ -1,0 +1,17 @@
+--- sip/QtGui/qicon.sip.old	2012-10-04 17:51:53.916239147 +0200
++++ sip/QtGui/qicon.sip	2012-10-04 17:51:53.920239146 +0200
+@@ -109,12 +109,14 @@
+ %End
+ };
+ 
++%If (PyQt_DataStream)
+ %If (Qt_4_2_0 -)
+ QDataStream &operator<<(QDataStream &, const QIcon & /Constrained/);
+ %End
+ %If (Qt_4_2_0 -)
+ QDataStream &operator>>(QDataStream &, QIcon & /Constrained/);
+ %End
++%End
+ %If (Qt_4_3_0 -)
+ void qSwap(QIcon &value1, QIcon &value2);
+ %End

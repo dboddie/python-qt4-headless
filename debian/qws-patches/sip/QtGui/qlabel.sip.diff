@@ -1,0 +1,52 @@
+--- sip/QtGui/qlabel.sip.old	2012-10-04 17:51:54.052239147 +0200
++++ sip/QtGui/qlabel.sip	2012-10-04 17:51:54.060239147 +0200
+@@ -47,8 +47,12 @@
+     virtual ~QLabel();
+     QString text() const;
+     const QPixmap *pixmap() const;
++%If (PyQt_Picture)
+     const QPicture *picture() const;
++%End
++%If (PyQt_Movie)
+     QMovie *movie() const;
++%End
+     Qt::TextFormat textFormat() const;
+     void setTextFormat(Qt::TextFormat);
+     Qt::Alignment alignment() const;
+@@ -63,8 +67,10 @@
+     void setScaledContents(bool);
+     virtual QSize sizeHint() const;
+     virtual QSize minimumSizeHint() const;
++%If (PyQt_Shortcut)
+     void setBuddy(QWidget * /KeepReference/);
+     QWidget *buddy() const;
++%End
+     virtual int heightForWidth(int) const;
+ %If (Qt_4_2_0 -)
+     bool openExternalLinks() const;
+@@ -81,10 +87,14 @@
+ 
+ public slots:
+     void clear();
++%If (PyQt_Movie)
+     void setMovie(QMovie *movie /KeepReference/);
++%End
+     void setNum(double /Constrained/);
+     void setNum(int);
++%If (PyQt_Picture)
+     void setPicture(const QPicture &);
++%End
+     void setPixmap(const QPixmap &);
+     void setText(const QString &);
+ 
+@@ -113,8 +123,10 @@
+     virtual void mouseReleaseEvent(QMouseEvent *ev);
+ %End
+ %If (Qt_4_2_0 -)
++%If (PyQt_ContextMenu)
+     virtual void contextMenuEvent(QContextMenuEvent *ev);
+ %End
++%End
+ %If (Qt_4_2_0 -)
+     virtual void focusInEvent(QFocusEvent *ev);
+ %End

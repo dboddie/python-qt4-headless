@@ -1,0 +1,15 @@
+--- sip/QtGui/qlistview.sip.old	2012-10-04 17:51:54.396239144 +0200
++++ sip/QtGui/qlistview.sip	2012-10-04 17:51:54.404239144 +0200
+@@ -109,10 +109,12 @@
+     virtual void mouseReleaseEvent(QMouseEvent *e);
+     virtual void timerEvent(QTimerEvent *e);
+     virtual void resizeEvent(QResizeEvent *e);
++%If (PyQt_DragAndDrop)
+     virtual void dragMoveEvent(QDragMoveEvent *e);
+     virtual void dragLeaveEvent(QDragLeaveEvent *e);
+     virtual void dropEvent(QDropEvent *e);
+     virtual void startDrag(Qt::DropActions supportedActions);
++%End
+     virtual QStyleOptionViewItem viewOptions() const;
+     virtual void paintEvent(QPaintEvent *e);
+     virtual int horizontalOffset() const;

@@ -1,0 +1,12 @@
+--- sip/QtGui/qdatetimeedit.sip.old	2012-10-04 17:51:54.172239145 +0200
++++ sip/QtGui/qdatetimeedit.sip	2012-10-04 17:51:54.180239145 +0200
+@@ -120,7 +120,9 @@
+     void initStyleOption(QStyleOptionSpinBox *option) const;
+ %End
+     virtual void keyPressEvent(QKeyEvent *e);
++%If (PyQt_WheelEvent)
+     virtual void wheelEvent(QWheelEvent *e);
++%End
+     virtual void focusInEvent(QFocusEvent *e);
+     virtual bool focusNextPrevChild(bool next);
+ %If (Qt_4_2_0 -)

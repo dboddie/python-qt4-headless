@@ -1,0 +1,23 @@
+--- sip/QtGui/qtoolbutton.sip.old	2012-10-04 17:51:54.612239143 +0200
++++ sip/QtGui/qtoolbutton.sip	2012-10-04 17:51:54.620239143 +0200
+@@ -46,16 +46,20 @@
+     Qt::ToolButtonStyle toolButtonStyle() const;
+     Qt::ArrowType arrowType() const;
+     void setArrowType(Qt::ArrowType type);
++%If (PyQt_Menu)
+     void setMenu(QMenu *menu /KeepReference/);
+     QMenu *menu() const;
+     void setPopupMode(QToolButton::ToolButtonPopupMode mode);
+     QToolButton::ToolButtonPopupMode popupMode() const;
++%End
+     QAction *defaultAction() const;
+     void setAutoRaise(bool enable);
+     bool autoRaise() const;
+ 
+ public slots:
++%If (PyQt_Menu)
+     void showMenu();
++%End
+     void setToolButtonStyle(Qt::ToolButtonStyle style);
+     void setDefaultAction(QAction * /KeepReference/);
+ 

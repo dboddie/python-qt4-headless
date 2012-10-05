@@ -1,0 +1,114 @@
+--- sip/QtGui/qapplication.sip.old	2012-10-04 17:51:53.956239146 +0200
++++ sip/QtGui/qapplication.sip	2012-10-04 17:51:53.964239146 +0200
+@@ -666,10 +666,12 @@
+ 
+     static int colorSpec();
+     static void setColorSpec(int);
++%If (PyQt_Cursor)
+     static QCursor *overrideCursor();
+     static void setOverrideCursor(const QCursor &);
+     static void changeOverrideCursor(const QCursor &);
+     static void restoreOverrideCursor();
++%End
+     static QPalette palette();
+     static QPalette palette(const QWidget *);
+     static QPalette palette(const char *className);
+@@ -686,7 +688,9 @@
+     static QDesktopWidget *desktop();
+     static QWidget *activePopupWidget();
+     static QWidget *activeModalWidget();
++%If (PyQt_Clipboard)
+     static QClipboard *clipboard();
++%End
+     static QWidget *focusWidget();
+     static QWidget *activeWindow();
+     static void setActiveWindow(QWidget *act);
+@@ -695,7 +699,9 @@
+     static QWidget *topLevelAt(const QPoint &p);
+     static QWidget *topLevelAt(int x, int y);
+     static void syncX();
++%If (!WS_QWS)
+     static void beep();
++%End
+     static Qt::KeyboardModifiers keyboardModifiers();
+     static Qt::MouseButtons mouseButtons();
+     static void setDesktopSettingsAware(bool);
+@@ -706,8 +712,10 @@
+     static int doubleClickInterval();
+     static void setKeyboardInputInterval(int);
+     static int keyboardInputInterval();
++%If (PyQt_WheelEvent)
+     static void setWheelScrollLines(int);
+     static int wheelScrollLines();
++%End
+     static void setGlobalStrut(const QSize &);
+     static QSize globalStrut();
+     static void setStartDragTime(int ms);
+@@ -726,6 +734,13 @@
+ %If (WS_X11)
+     int x11ProcessEvent(XEvent *);
+ %End
++%If (WS_QWS)
++%If (PyQt_QWS_Manager)
++    static QDecoration &qwsDecoration();
++    static void qwsSetDecoration(QDecoration *);
++    static QDecoration *qwsSetDecoration(const QString &decoration);
++%End
++%End
+ %If (PyQt_SessionManager)
+     bool isSessionRestored() const;
+ %End
+@@ -741,8 +756,10 @@
+ %If (PyQt_SessionManager)
+     virtual void saveState(QSessionManager &sm);
+ %End
++%If (PyQt_IM)
+     void setInputContext(QInputContext * /Transfer/);
+     QInputContext *inputContext() const;
++%End
+     static int exec() /PostHook=__pyQtPostEventLoopHook__,PreHook=__pyQtPreEventLoopHook__,PyName=exec_,ReleaseGIL/;
+ %If (Py_v3)
+     static int exec() /PostHook=__pyQtPostEventLoopHook__,PreHook=__pyQtPreEventLoopHook__,ReleaseGIL/;
+@@ -751,6 +768,12 @@
+     static void setQuitOnLastWindowClosed(bool quit);
+     static bool quitOnLastWindowClosed();
+ 
++%If (WS_QWS)
++//    virtual bool qwsEventFilter(QWSEvent *);
++//    int qwsProcessEvent(QWSEvent*);
++    void qwsSetCustomColors(QRgb *colortable, int start, int numColors);
++%End
++
+ signals:
+ %If (Qt_4_2_0 -)
+ %If (PyQt_SessionManager)
+@@ -772,12 +795,18 @@
+     static void aboutQt();
+     static void closeAllWindows();
+ %If (Qt_4_2_0 -)
++%If (PyQt_Style_StyleSheet)
+     void setStyleSheet(const QString &sheet);
+ %End
++%End
+ 
+ protected:
+     virtual bool event(QEvent *);
+ 
++%If (WS_QWS)
++    void setArgs(int, char **);
++%End
++
+ public:
+ %If (Qt_4_2_0 -)
+     static QFont font();
+@@ -795,8 +824,10 @@
+     static Qt::LayoutDirection keyboardInputDirection();
+ %End
+ %If (Qt_4_2_0 -)
++%If (PyQt_Style_StyleSheet)
+     QString styleSheet() const;
+ %End
++%End
+ %If (Qt_4_3_0 -)
+     static void alert(QWidget *widget, int msecs = 0) /ReleaseGIL/;
+ %End

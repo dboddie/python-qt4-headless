@@ -1,0 +1,51 @@
+--- sip/QtGui/qimage.sip.old	2012-10-04 17:51:54.496239145 +0200
++++ sip/QtGui/qimage.sip	2012-10-04 17:51:54.504239143 +0200
+@@ -98,6 +98,7 @@
+ %If (Qt_4_3_0 -)
+     QImage(void *data, int width, int height, int bytesPerLine, QImage::Format format) [(uchar *data, int width, int height, int bytesPerLine, QImage::Format format)];
+ %End
++%If (PyQt_ImageFormat_XPM)
+     explicit QImage(SIP_PYLIST xpm /DocType="list-of-str"/) [(const char **xpm)];
+ %MethodCode
+         // The Python interface is a list of strings that make up the image.
+@@ -112,6 +113,7 @@
+         else
+             sipIsErr = 1;
+ %End
++%End
+ 
+     QImage(const QString &fileName, const char *format = 0);
+     QImage(const QImage &);
+@@ -176,7 +178,9 @@
+     void setAlphaChannel(const QImage &alphaChannel);
+     QImage alphaChannel() const;
+     QImage createAlphaMask(Qt::ImageConversionFlags flags = Qt::AutoColor) const;
++%If (PyQt_Image_Heuristic_Mask)
+     QImage createHeuristicMask(bool clipTight = true) const;
++%End
+     QImage scaled(int width, int height, Qt::AspectRatioMode aspectRatioMode = Qt::IgnoreAspectRatio, Qt::TransformationMode transformMode = Qt::FastTransformation) const;
+     QImage scaled(const QSize &size, Qt::AspectRatioMode aspectRatioMode = Qt::IgnoreAspectRatio, Qt::TransformationMode transformMode = Qt::FastTransformation) const;
+     QImage scaledToWidth(int width, Qt::TransformationMode mode = Qt::FastTransformation) const;
+@@ -212,9 +216,11 @@
+     void setDotsPerMeterY(int);
+     QPoint offset() const;
+     void setOffset(const QPoint &);
++%If (PyQt_Image_Text)
+     QStringList textKeys() const;
+     QString text(const QString &key /DocValue="Py_v3:''"/ = QString()) const;
+     void setText(const QString &key, const QString &value);
++%End
+ 
+ protected:
+     virtual int metric(QPaintDevice::PaintDeviceMetric metric) const;
+@@ -249,8 +255,10 @@
+ %End
+ };
+ 
++%If (PyQt_DataStream)
+ QDataStream &operator<<(QDataStream &, const QImage & /Constrained/);
+ QDataStream &operator>>(QDataStream &, QImage & /Constrained/);
++%End
+ %If (Qt_4_3_0 -)
+ void qSwap(QImage &value1, QImage &value2);
+ %End

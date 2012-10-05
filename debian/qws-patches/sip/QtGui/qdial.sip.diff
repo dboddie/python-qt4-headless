@@ -1,0 +1,11 @@
+--- sip/QtGui/qdial.sip.old	2012-10-04 17:51:54.320239146 +0200
++++ sip/QtGui/qdial.sip	2012-10-04 17:51:54.328239144 +0200
+@@ -36,7 +36,7 @@
+     virtual ~QDial();
+     bool wrapping() const;
+     int notchSize() const;
+-    void setNotchTarget(double target);
++    void setNotchTarget(qreal target);
+     qreal notchTarget() const;
+     bool notchesVisible() const;
+     virtual QSize sizeHint() const;

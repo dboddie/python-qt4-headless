@@ -1,0 +1,12 @@
+--- sip/QtGui/qabstractslider.sip.old	2012-10-04 17:51:54.540239143 +0200
++++ sip/QtGui/qabstractslider.sip	2012-10-04 17:51:54.548239143 +0200
+@@ -98,7 +98,9 @@
+     virtual bool event(QEvent *e);
+     virtual void keyPressEvent(QKeyEvent *ev);
+     virtual void timerEvent(QTimerEvent *);
++%If (PyQt_WheelEvent)
+     virtual void wheelEvent(QWheelEvent *e);
++%End
+     virtual void changeEvent(QEvent *e);
+ 
+ private:

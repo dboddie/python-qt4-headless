@@ -1,0 +1,17 @@
+Description: Fix QtHelp FTBFS with ld --no-add-needed.
+Author: Felix Geyer <debfx-pkg@fobos.de>
+
+Index: python-qt4-4.9/configure.py
+===================================================================
+--- python-qt4-4.9.orig/configure.py	2011-12-28 14:01:23.211142955 -0500
++++ python-qt4-4.9/configure.py	2011-12-28 14:01:29.783142761 -0500
+@@ -356,7 +356,8 @@
+         pyqt_modules.append("QtCore")
+ 
+         check_module("QtGui", "qwidget.h", "new QWidget()")
+-        check_module("QtHelp", "qhelpengine.h", "new QHelpEngine(\"foo\")")
++        check_module("QtHelp", "qhelpengine.h", "new QHelpEngine(\"foo\")",
++                extra_libs=["QtCore"])
+         check_module("QtMultimedia", "QAudioDeviceInfo",
+                 "new QAudioDeviceInfo()")
+         check_module("QtNetwork", "qhostaddress.h", "new QHostAddress()")

@@ -1,0 +1,14 @@
+--- sip/QtScript/qscriptcontextinfo.sip.old	2012-10-04 17:51:54.656239144 +0200
++++ sip/QtScript/qscriptcontextinfo.sip	2012-10-04 17:51:54.660239144 +0200
+@@ -71,9 +71,11 @@
+ %If (Qt_4_4_0 -)
+ typedef QList<QScriptContextInfo> QScriptContextInfoList;
+ %End
++%If (PyQt_DataStream)
+ %If (Qt_4_4_0 -)
+ QDataStream &operator<<(QDataStream &, const QScriptContextInfo & /Constrained/);
+ %End
+ %If (Qt_4_4_0 -)
+ QDataStream &operator>>(QDataStream &, QScriptContextInfo & /Constrained/);
+ %End
++%End

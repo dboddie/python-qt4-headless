@@ -1,0 +1,13 @@
+--- sip/QtGui/qpainterpath.sip.old	2012-10-04 17:51:54.064239147 +0200
++++ sip/QtGui/qpainterpath.sip	2012-10-04 17:51:54.068239147 +0200
+@@ -222,8 +222,10 @@
+ %End
+ };
+ 
++%If (PyQt_DataStream)
+ QDataStream &operator<<(QDataStream &, const QPainterPath & /Constrained/);
+ QDataStream &operator>>(QDataStream &, QPainterPath & /Constrained/);
++%End
+ 
+ class QPainterPathStroker
+ {

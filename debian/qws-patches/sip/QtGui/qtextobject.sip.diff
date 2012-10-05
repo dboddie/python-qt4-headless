@@ -1,0 +1,14 @@
+--- sip/QtGui/qtextobject.sip.old	2012-10-05 12:38:07.342883692 +0200
++++ sip/QtGui/qtextobject.sip	2012-10-05 12:36:42.942884099 +0200
+@@ -247,9 +247,11 @@
+     QTextCharFormat charFormat() const;
+     int charFormatIndex() const;
+     QString text() const;
++%If (PyQt_RawFont)
+ %If (Qt_4_8_0 -)
+     QList<QGlyphRun> glyphRuns() const;
+ %End
++%End
+ };
+ 
+ class QTextBlockUserData /Supertype=sip.wrapper/

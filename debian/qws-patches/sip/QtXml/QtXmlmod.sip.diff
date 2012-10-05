@@ -1,0 +1,11 @@
+--- sip/QtXml/QtXmlmod.sip.old	2012-10-04 17:51:54.644239144 +0200
++++ sip/QtXml/QtXmlmod.sip	2012-10-04 17:51:54.648239144 +0200
+@@ -55,6 +55,8 @@
+ 
+ %DefaultSupertype sip.simplewrapper
+ 
++%If (PyQt_DOMClasses)
+ %Include qdom.sip
++%End
+ %Include qxml.sip
+ %Include qxmlstream.sip

@@ -1,0 +1,12 @@
+--- sip/QtNetwork/qnetworkreply.sip.old	2012-10-04 17:51:54.724239145 +0200
++++ sip/QtNetwork/qnetworkreply.sip	2012-10-04 17:51:54.728239145 +0200
+@@ -90,7 +90,9 @@
+ %End
+ 
+ public slots:
++%If (PyQt_OpenSSL)
+     virtual void ignoreSslErrors();
++%End
+ 
+ signals:
+     void metaDataChanged();

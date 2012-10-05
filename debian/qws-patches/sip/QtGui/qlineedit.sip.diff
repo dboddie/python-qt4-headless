@@ -1,0 +1,81 @@
+--- sip/QtGui/qlineedit.sip.old	2012-10-04 17:51:54.484239145 +0200
++++ sip/QtGui/qlineedit.sip	2012-10-04 17:51:54.492239145 +0200
+@@ -56,8 +56,10 @@
+     void setEchoMode(QLineEdit::EchoMode);
+     bool isReadOnly() const;
+     void setReadOnly(bool);
++%If (PyQt_Validator)
+     void setValidator(const QValidator * /KeepReference/);
+     const QValidator *validator() const;
++%End
+     virtual QSize sizeHint() const;
+     virtual QSize minimumSizeHint() const;
+     int cursorPosition() const;
+@@ -81,8 +83,10 @@
+     int selectionStart() const;
+     bool isUndoAvailable() const;
+     bool isRedoAvailable() const;
++%If (PyQt_DragAndDrop)
+     void setDragEnabled(bool b);
+     bool dragEnabled() const;
++%End
+     QString inputMask() const;
+     void setInputMask(const QString &inputMask);
+     bool hasAcceptableInput() const;
+@@ -91,12 +95,20 @@
+     void selectAll();
+     void undo();
+     void redo();
++%If (PyQt_Clipboard)
+     void cut();
+     void copy() const;
+     void paste();
++%End
+     void deselect();
+     void insert(const QString &);
++%If (PyQt_Menu)
++%If (PyQt_LineEditMenu)
++%If (PyQt_ContextMenu)
+     QMenu *createStandardContextMenu() /Factory/;
++%End
++%End
++%End
+ 
+ signals:
+     void textChanged(const QString &);
+@@ -118,12 +130,20 @@
+     virtual void focusInEvent(QFocusEvent *);
+     virtual void focusOutEvent(QFocusEvent *);
+     virtual void paintEvent(QPaintEvent *);
++%If (PyQt_DragAndDrop)
+     virtual void dragEnterEvent(QDragEnterEvent *);
+     virtual void dragMoveEvent(QDragMoveEvent *e);
+     virtual void dragLeaveEvent(QDragLeaveEvent *e);
+     virtual void dropEvent(QDropEvent *);
++%End
+     virtual void changeEvent(QEvent *);
++%If (PyQt_Menu)
++%If (PyQt_LineEditMenu)
++%If (PyQt_ContextMenu)
+     virtual void contextMenuEvent(QContextMenuEvent *);
++%End
++%End
++%End
+     virtual void inputMethodEvent(QInputMethodEvent *);
+ %If (Qt_4_4_0 -)
+     QRect cursorRect() const;
+@@ -132,12 +152,14 @@
+ public:
+     virtual QVariant inputMethodQuery(Qt::InputMethodQuery) const;
+     virtual bool event(QEvent *);
++%If (PyQt_Completer)
+ %If (Qt_4_2_0 -)
+     void setCompleter(QCompleter *completer /KeepReference/);
+ %End
+ %If (Qt_4_2_0 -)
+     QCompleter *completer() const;
+ %End
++%End
+ %If (Qt_4_5_0 -)
+     void setTextMargins(int left, int top, int right, int bottom);
+ %End

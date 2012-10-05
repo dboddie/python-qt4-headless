@@ -1,0 +1,28 @@
+--- sip/QtGui/qgraphicsscene.sip.old	2012-10-04 17:51:54.108239148 +0200
++++ sip/QtGui/qgraphicsscene.sip	2012-10-04 17:51:54.116239146 +0200
+@@ -128,11 +128,15 @@
+ 
+ protected:
+     virtual bool event(QEvent *event);
++%If (PyQt_ContextMenu)
+     virtual void contextMenuEvent(QGraphicsSceneContextMenuEvent *event);
++%End
++%If (PyQt_DragAndDrop)
+     virtual void dragEnterEvent(QGraphicsSceneDragDropEvent *event);
+     virtual void dragMoveEvent(QGraphicsSceneDragDropEvent *event);
+     virtual void dragLeaveEvent(QGraphicsSceneDragDropEvent *event);
+     virtual void dropEvent(QGraphicsSceneDragDropEvent *event);
++%End
+     virtual void focusInEvent(QFocusEvent *event);
+     virtual void focusOutEvent(QFocusEvent *event);
+     virtual void helpEvent(QGraphicsSceneHelpEvent *event);
+@@ -142,7 +146,9 @@
+     virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+     virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+     virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event);
++%If (PyQt_WheelEvent)
+     virtual void wheelEvent(QGraphicsSceneWheelEvent *event);
++%End
+     virtual void inputMethodEvent(QInputMethodEvent *event);
+     virtual void drawBackground(QPainter *painter, const QRectF &rect);
+     virtual void drawForeground(QPainter *painter, const QRectF &rect);

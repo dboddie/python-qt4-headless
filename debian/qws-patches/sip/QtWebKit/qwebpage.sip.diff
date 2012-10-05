@@ -1,0 +1,43 @@
+--- sip/QtWebKit/qwebpage.sip.old	2012-10-04 17:51:54.804239142 +0200
++++ sip/QtWebKit/qwebpage.sip	2012-10-04 17:51:54.812239142 +0200
+@@ -196,7 +196,9 @@
+     void setView(QWidget *view /KeepReference/);
+     QWidget *view() const;
+     bool isModified() const;
++%If (PyQt_UndoStack)
+     QUndoStack *undoStack() const;
++%End
+     void setNetworkAccessManager(QNetworkAccessManager *manager /KeepReference/);
+     QNetworkAccessManager *networkAccessManager() const;
+     void setPluginFactory(QWebPluginFactory *factory /KeepReference/);
+@@ -204,7 +206,9 @@
+     quint64 totalBytes() const;
+     quint64 bytesReceived() const;
+     QString selectedText() const;
++%If (PyQt_Action)
+     QAction *action(QWebPage::WebAction action) const;
++%End
+     virtual void triggerAction(QWebPage::WebAction action, bool checked = false);
+     QSize viewportSize() const;
+     void setViewportSize(const QSize &size) const;
+@@ -218,7 +222,9 @@
+     QWebPage::LinkDelegationPolicy linkDelegationPolicy() const;
+     void setPalette(const QPalette &palette);
+     QPalette palette() const;
++%If (PyQt_ContextMenu)
+     bool swallowContextMenuEvent(QContextMenuEvent *event);
++%End
+     void updatePositionDependentActions(const QPoint &pos);
+ 
+     enum Extension
+@@ -289,8 +295,10 @@
+     bool isContentEditable() const;
+ %End
+ %If (Qt_4_5_0 -)
++%If (PyQt_ContextMenu)
+     QMenu *createStandardContextMenu() /Factory/;
+ %End
++%End
+ %If (Qt_4_5_0 -)
+ 
+     class ChooseMultipleFilesExtensionOption : QWebPage::ExtensionOption

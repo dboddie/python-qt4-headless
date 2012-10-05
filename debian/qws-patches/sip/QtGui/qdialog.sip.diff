@@ -1,0 +1,12 @@
+--- sip/QtGui/qdialog.sip.old	2012-10-04 17:51:54.472239145 +0200
++++ sip/QtGui/qdialog.sip	2012-10-04 17:51:54.480239145 +0200
+@@ -108,7 +108,9 @@
+     virtual void closeEvent(QCloseEvent *);
+     virtual void showEvent(QShowEvent *);
+     virtual void resizeEvent(QResizeEvent *);
++%If (PyQt_ContextMenu)
+     virtual void contextMenuEvent(QContextMenuEvent *);
++%End
+     virtual bool eventFilter(QObject *, QEvent *);
+ 
+ private:

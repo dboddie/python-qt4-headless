@@ -1,0 +1,27 @@
+--- sip/QtCore/qvariant.sip.old	2012-10-04 17:51:55.100239142 +0200
++++ sip/QtCore/qvariant.sip	2012-10-04 17:51:55.104239142 +0200
+@@ -212,8 +212,10 @@
+         sipRes = qpycore_PyObject_FromQVariant(*sipCpp);
+ %End
+ 
++%If (PyQt_DataStream)
+     void load(QDataStream &ds);
+     void save(QDataStream &ds) const;
++%End
+     static const char *typeToName(QVariant::Type type);
+     static QVariant::Type nameToType(const char *name);
+     void *data();
+@@ -354,11 +356,13 @@
+ %If (Qt_4_5_0 -)
+ typedef QHash<QString, QVariant> QVariantHash /DocType="Py_v3:dict-of-str-object"/;
+ %End
++%If (PyQt_DataStream)
+ QDataStream &operator>>(QDataStream &s, QVariant &p /Constrained/) /API=QVariant: - 2/;
+ typedef QMap<QString, QVariant> QVariantMap /DocType="Py_v3:dict-of-str-object"/;
+ QDataStream &operator<<(QDataStream &s, const QVariant &p /Constrained/) /API=QVariant: - 2/;
+ QDataStream &operator>>(QDataStream &s, QVariant::Type &p /Constrained,In/);
+ QDataStream &operator<<(QDataStream &s, const QVariant::Type p /Constrained/);
++%End
+ %If (Qt_4_3_0 -)
+ void qSwap(QVariant &value1, QVariant &value2) /API=QVariant: - 2/;
+ %End

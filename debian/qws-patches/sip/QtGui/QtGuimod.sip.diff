@@ -1,0 +1,556 @@
+--- sip/QtGui/QtGuimod.sip.old	2012-10-05 12:14:34.334890542 +0200
++++ sip/QtGui/QtGuimod.sip	2012-10-05 12:34:29.778884744 +0200
+@@ -58,201 +58,431 @@
+ %DefaultSupertype sip.simplewrapper
+ 
+ %Include qabstractbutton.sip
+-%Include qabstractitemdelegate.sip
+-%Include qabstractitemview.sip
+-%Include qabstractprintdialog.sip
+-%Include qabstractproxymodel.sip
+-%Include qabstractscrollarea.sip
+-%Include qabstractspinbox.sip
+-%Include qabstractslider.sip
++%If (PyQt_ItemViews)
++  %Include qabstractitemdelegate.sip
++  %Include qabstractitemview.sip
++%End
++%If (PyQt_PrintDialog)
++  %Include qabstractprintdialog.sip
++%End
++%If (PyQt_ItemViews)
++  %If (PyQt_ProxyModel)
++    %Include qabstractproxymodel.sip
++  %End
++%End
++%If (PyQt_ScrollArea)
++  %Include qabstractscrollarea.sip
++%End
++%If (PyQt_SpinBox)
++  %Include qabstractspinbox.sip
++%End
++%If (PyQt_Slider)
++  %Include qabstractslider.sip
++%End
+ %Include qabstracttextdocumentlayout.sip
+-%Include qaction.sip
+-%Include qactiongroup.sip
++%If (PyQt_Action)
++  %Include qaction.sip
++  %Include qactiongroup.sip
++%End
+ %Include qapplication.sip
+ %Include qbitmap.sip
+ %Include qboxlayout.sip
+ %Include qcolor.sip
+ %Include qcommandlinkbutton.sip
+ %Include qbrush.sip
+-%Include qbuttongroup.sip
+-%Include qcalendarwidget.sip
++%If (PyQt_ButtonGroup)
++  %Include qbuttongroup.sip
++%End
++%If (PyQt_CalendarWidget)
++  %Include qcalendarwidget.sip
++%End
+ %Include qcheckbox.sip
+-%Include qclipboard.sip
+-%Include qcolumnview.sip
+-%Include qcolordialog.sip
+-%Include qcombobox.sip
++%If (PyQt_Clipboard)
++  %Include qclipboard.sip
++%End
++%If (PyQt_ItemViews)
++  %If (PyQt_ColumnView)
++    %Include qcolumnview.sip
++  %End
++%End
++%If (PyQt_ColorDialog)
++  %Include qcolordialog.sip
++%End
++%If (PyQt_ComboBox)
++  %Include qcombobox.sip
++%End
+ %Include qcommonstyle.sip
+-%Include qcompleter.sip
+-%Include qcursor.sip
+-%Include qdatawidgetmapper.sip
+-%Include qdatetimeedit.sip
+-%Include qdesktopservices.sip
++%If (PyQt_Completer)
++  %Include qcompleter.sip
++%End
++%If (PyQt_Cursor)
++  %Include qcursor.sip
++%End
++%If (PyQt_DataWidgetMapper)
++  %Include qdatawidgetmapper.sip
++%End
++%If (PyQt_DateTimeEdit)
++  %Include qdatetimeedit.sip
++%End
++%Include qdecoration.sip
++%If (PyQt_DesktopServices)
++  %Include qdesktopservices.sip
++%End
+ %Include qdesktopwidget.sip
+-%Include qdial.sip
++%If (PyQt_Dial)
++  %Include qdial.sip
++%End
+ %Include qdialog.sip
+ %Include qdialogbuttonbox.sip
+-%Include qdirmodel.sip
+-%Include qdockwidget.sip
+-%Include qdrag.sip
++%If (PyQt_DirModel)
++  %Include qdirmodel.sip
++%End
++%If (PyQt_DockWidget)
++  %Include qdockwidget.sip
++%End
++%If (PyQt_DragAndDrop)
++  %Include qdrag.sip
++%End
+ %Include qdrawutil.sip
+-%Include qerrormessage.sip
++%If (PyQt_ErrorMessage)
++  %Include qerrormessage.sip
++%End
+ %Include qevent.sip
+-%Include qfiledialog.sip
++%If (PyQt_FileDialog)
++  %Include qfiledialog.sip
++%End
+ %Include qfileiconprovider.sip
+-%Include qfilesystemmodel.sip
++%If (PyQt_FileSystemModel)
++  %Include qfilesystemmodel.sip
++%End
+ %Include qfocusframe.sip
+ %Include qfont.sip
+-%Include qfontcombobox.sip
++%If (PyQt_FontComboBox)
++  %Include qfontcombobox.sip
++%End
+ %Include qfontdatabase.sip
+-%Include qfontdialog.sip
++%If (PyQt_FontDialog)
++  %Include qfontdialog.sip
++%End
+ %Include qfontinfo.sip
+ %Include qfontmetrics.sip
+ %Include qformlayout.sip
+ %Include qframe.sip
+ %Include qgenericmatrix.sip
+-%Include qgesture.sip
+-%Include qgesturerecognizer.sip
+-%Include qglyphrun.sip
+-%Include qgraphicsanchorlayout.sip
+-%Include qgraphicseffect.sip
+-%Include qgraphicsgridlayout.sip
+-%Include qgraphicsitem.sip
+-%Include qgraphicsitemanimation.sip
+-%Include qgraphicslayout.sip
+-%Include qgraphicslayoutitem.sip
+-%Include qgraphicslinearlayout.sip
+-%Include qgraphicsproxywidget.sip
+-%Include qgraphicsscene.sip
+-%Include qgraphicswidget.sip
+-%Include qgraphicssceneevent.sip
+-%Include qgraphicstransform.sip
+-%Include qgraphicsview.sip
++%If (PyQt_Gestures)
++  %Include qgesture.sip
++  %Include qgesturerecognizer.sip
++%End
++%If (PyQt_RawFont)
++  %Include qglyphrun.sip
++%End
++%If (PyQt_GraphicsView)
++  %Include qgraphicsanchorlayout.sip
++  %Include qgraphicseffect.sip
++  %Include qgraphicsgridlayout.sip
++  %Include qgraphicsitem.sip
++  %Include qgraphicsitemanimation.sip
++  %Include qgraphicslayout.sip
++  %Include qgraphicslayoutitem.sip
++  %Include qgraphicslinearlayout.sip
++  %Include qgraphicsproxywidget.sip
++  %Include qgraphicsscene.sip
++  %Include qgraphicswidget.sip
++  %Include qgraphicssceneevent.sip
++  %Include qgraphicstransform.sip
++  %Include qgraphicsview.sip
++%End
+ %Include qgridlayout.sip
+-%Include qgroupbox.sip
+-%Include qheaderview.sip
++%If (PyQt_GroupBox)
++  %Include qgroupbox.sip
++%End
++%If (PyQt_ItemViews)
++  %Include qheaderview.sip
++%End
+ %Include qicon.sip
+ %Include qiconengine.sip
+-%Include qidentityproxymodel.sip
++%If (PyQt_IdentityProxyModel)
++  %Include qidentityproxymodel.sip
++%End
+ %Include qimage.sip
+ %Include qimageiohandler.sip
+ %Include qimagereader.sip
+ %Include qimagewriter.sip
+-%Include qinputcontext.sip
+-%Include qinputcontextfactory.sip
+-%Include qinputdialog.sip
+-%Include qitemdelegate.sip
+-%Include qitemeditorfactory.sip
+-%Include qitemselectionmodel.sip
+-%Include qkeyeventtransition.sip
+-%Include qkeysequence.sip
++%If (PyQt_IM)
++  %Include qinputcontext.sip
++  %Include qinputcontextfactory.sip
++%End
++%If (PyQt_InputDialog)
++  %Include qinputdialog.sip
++%End
++%If (PyQt_ItemViews)
++  %Include qitemdelegate.sip
++  %Include qitemeditorfactory.sip
++  %Include qitemselectionmodel.sip
++%End
++%If (PyQt_StateMachine)
++  %Include qkeyeventtransition.sip
++%End
++%If (PyQt_Shortcut)
++  %Include qkeysequence.sip
++%End
+ %Include qlabel.sip
+ %Include qlayout.sip
+ %Include qlayoutitem.sip
+-%Include qlcdnumber.sip
+-%Include qlineedit.sip
+-%Include qlistview.sip
+-%Include qlistwidget.sip
+-%Include qmainwindow.sip
++%If (PyQt_LCDNumber)
++  %Include qlcdnumber.sip
++%End
++%If (PyQt_LineEdit)
++  %Include qlineedit.sip
++%End
++%If (PyQt_ItemViews)
++  %If (PyQt_ListView)
++    %Include qlistview.sip
++    %If (PyQt_ListWidget)
++      %Include qlistwidget.sip
++    %End
++  %End
++%End
++%If (PyQt_MainWindow)
++  %Include qmainwindow.sip
++%End
+ %Include qmatrix.sip
+ %Include qmatrix4x4.sip
+-%Include qmdiarea.sip
+-%Include qmdisubwindow.sip
+-%Include qmenu.sip
+-%Include qmenubar.sip
+-%Include qmessagebox.sip
++%If (PyQt_MDIArea)
++  %Include qmdiarea.sip
++  %Include qmdisubwindow.sip
++%End
++%If (PyQt_Menu)
++  %Include qmenu.sip
++%End
++%If (PyQt_MenuBar)
++  %Include qmenubar.sip
++%End
++%If (PyQt_MessageBox)
++  %Include qmessagebox.sip
++%End
+ %Include qmime.sip
+-%Include qmouseeventtransition.sip
+-%Include qmovie.sip
+-%Include qpagesetupdialog.sip
++%If (PyQt_StateMachine)
++  %Include qmouseeventtransition.sip
++%End
++%If (PyQt_Movie)
++  %Include qmovie.sip
++%End
++%If (PyQt_Printer)
++  %If (PyQt_PrintDialog)
++    %Include qpagesetupdialog.sip
++  %End
++%End
+ %Include qpainter.sip
+ %Include qpaintdevice.sip
+ %Include qpaintengine.sip
+ %Include qpainterpath.sip
+ %Include qpalette.sip
+ %Include qpen.sip
+-%Include qpicture.sip
++%If (PyQt_Picture)
++  %Include qpicture.sip
++%End
+ %Include qpixmap.sip
+ %Include qpixmapcache.sip
+-%Include qplaintextedit.sip
++%If (PyQt_TextEdit)
++  %Include qplaintextedit.sip
++%End
+ %Include qpolygon.sip
+-%Include qprinter.sip
+-%Include qprintdialog.sip
+-%Include qprintengine.sip
+-%Include qprinterinfo.sip
+-%Include qprintpreviewdialog.sip
+-%Include qprintpreviewwidget.sip
+-%Include qprogressbar.sip
+-%Include qprogressdialog.sip
+-%Include qproxymodel.sip
++%If (PyQt_Printer)
++  %Include qprinter.sip
++%End
++%If (PyQt_PrintDialog)
++  %Include qprintdialog.sip
++%End
++%If (PyQt_Printer)
++  %Include qprintengine.sip
++  %Include qprinterinfo.sip
++%End
++%If (PyQt_PrintDialog)
++  %If (PyQt_PrintPreviewDialog)
++    %Include qprintpreviewdialog.sip
++  %End
++  %If (PyQt_PrintPreviewWidget)
++    %Include qprintpreviewwidget.sip
++  %End
++%End
++%If (PyQt_ProgressBar)
++  %Include qprogressbar.sip
++%End
++%If (PyQt_ProgressDialog)
++  %Include qprogressdialog.sip
++%End
++%If (PyQt_ItemViews)
++  %If (PyQt_ProxyModel)
++    %Include qproxymodel.sip
++  %End
++%End
+ %Include qpushbutton.sip
+ %Include qquaternion.sip
+ %Include qradiobutton.sip
+-%Include qrawfont.sip
++%If (PyQt_RawFont)
++  %Include qrawfont.sip
++%End
+ %Include qregion.sip
+ %Include qrgb.sip
+-%Include qrubberband.sip
+-%Include qscrollarea.sip
+-%Include qscrollbar.sip
+-%Include qsessionmanager.sip
+-%Include qshortcut.sip
+-%Include qsizegrip.sip
++%If (PyQt_RubberBand)
++  %Include qrubberband.sip
++%End
++%If (PyQt_ScrollArea)
++  %Include qscrollarea.sip
++%End
++%If (PyQt_ScrollBar)
++  %Include qscrollbar.sip
++%End
++%If (PyQt_SessionManager)
++  %Include qsessionmanager.sip
++%End
++%If (PyQt_Shortcut)
++  %Include qshortcut.sip
++%End
++%If (PyQt_SizeGrip)
++  %Include qsizegrip.sip
++%End
+ %Include qsizepolicy.sip
+-%Include qslider.sip
+-%Include qsortfilterproxymodel.sip
+-%Include qsound.sip
+-%Include qspinbox.sip
+-%Include qsplashscreen.sip
+-%Include qsplitter.sip
++%If (PyQt_Slider)
++  %Include qslider.sip
++%End
++%If (PyQt_ProxyModel)
++  %If (PyQt_SortFilterProxyModel)
++    %Include qsortfilterproxymodel.sip
++  %End
++%End
++%If (PyQt_Sound)
++  %Include qsound.sip
++%End
++%If (PyQt_SpinBox)
++  %Include qspinbox.sip
++%End
++%If (PyQt_SplashScreen)
++  %Include qsplashscreen.sip
++%End
++%If (PyQt_Splitter)
++  %Include qsplitter.sip
++%End
+ %Include qstackedlayout.sip
+-%Include qstackedwidget.sip
+-%Include qstandarditemmodel.sip
++%If (PyQt_StackedWidget)
++  %Include qstackedwidget.sip
++%End
++%If (PyQt_StandardItemModel)
++  %Include qstandarditemmodel.sip
++%End
+ %Include qstatictext.sip
+-%Include qstatusbar.sip
+-%Include qstringlistmodel.sip
++%If (PyQt_StatusBar)
++  %Include qstatusbar.sip
++%End
++%If (PyQt_StringListModel)
++  %Include qstringlistmodel.sip
++%End
+ %Include qstyle.sip
+-%Include qstyleditemdelegate.sip
++%If (PyQt_ItemViews)
++  %Include qstyleditemdelegate.sip
++%End
+ %Include qstylefactory.sip
+ %Include qstyleoption.sip
+ %Include qstylepainter.sip
+-%Include qsyntaxhighlighter.sip
+-%Include qsystemtrayicon.sip
+-%Include qtabbar.sip
+-%Include qtableview.sip
+-%Include qtablewidget.sip
+-%Include qtabwidget.sip
+-%Include qtextbrowser.sip
++%If (PyQt_TextEdit)
++  %If (PyQt_SyntaxHighlighter)
++    %Include qsyntaxhighlighter.sip
++  %End
++%End
++%If (PyQt_SystemTrayIcon)
++  %Include qsystemtrayicon.sip
++%End
++%If (PyQt_TabBar)
++  %Include qtabbar.sip
++%End
++%If (PyQt_ItemViews)
++  %If (PyQt_TableView)
++    %Include qtableview.sip
++    %If (PyQt_TableWidget)
++      %Include qtablewidget.sip
++    %End
++  %End
++%End
++%If (PyQt_TabBar)
++  %If (PyQt_TabWidget)
++    %Include qtabwidget.sip
++  %End
++%End
++%If (PyQt_TextEdit)
++  %If (PyQt_TextBrowser)
++    %Include qtextbrowser.sip
++  %End
++%End
+ %Include qtextcursor.sip
+ %Include qtextdocument.sip
+ %Include qtextdocumentfragment.sip
+ %Include qtextdocumentwriter.sip
+-%Include qtextedit.sip
++%If (PyQt_TextEdit)
++  %Include qtextedit.sip
++%End
+ %Include qtextformat.sip
+ %Include qtextlayout.sip
+ %Include qtextlist.sip
+ %Include qtextobject.sip
+ %Include qtextoption.sip
+ %Include qtexttable.sip
+-%Include qtoolbar.sip
+-%Include qtoolbox.sip
+-%Include qtoolbutton.sip
+-%Include qtooltip.sip
++%If (PyQt_ToolBar)
++  %Include qtoolbar.sip
++%End
++%If (PyQt_ToolBox)
++  %Include qtoolbox.sip
++%End
++%If (PyQt_ToolButton)
++  %Include qtoolbutton.sip
++%End
++%If (PyQt_ToolTip)
++  %Include qtooltip.sip
++%End
+ %Include qtransform.sip
+-%Include qtreeview.sip
+-%Include qtreewidget.sip
+-%Include qtreewidgetitemiterator.sip
+-%Include qundogroup.sip
+-%Include qundostack.sip
+-%Include qundoview.sip
+-%Include qvalidator.sip
++%If (PyQt_TreeView)
++  %Include qtreeview.sip
++%End
++%If (PyQt_TreeWidget)
++  %Include qtreewidget.sip
++  %Include qtreewidgetitemiterator.sip
++%End
++%If (PyQt_UndoGroup)
++  %Include qundogroup.sip
++%End
++%If (PyQt_UndoStack)
++  %Include qundostack.sip
++%End
++%If (PyQt_UndoView)
++  %Include qundoview.sip
++%End
++%If (PyQt_Validator)
++  %Include qvalidator.sip
++%End
+ %Include qvector2d.sip
+ %Include qvector3d.sip
+ %Include qvector4d.sip
+-%Include qwhatsthis.sip
++%If (PyQt_WhatsThis)
++  %Include qwhatsthis.sip
++%End
+ %Include qwidget.sip
+-%Include qwidgetaction.sip
++%If (PyQt_Action)
++  %Include qwidgetaction.sip
++%End
+ %Include qwindowdefs.sip
+-%Include qwizard.sip
+-%Include qworkspace.sip
++//%If (WS_QWS)
++//  %Include qwindowsystem_qws.sip
++//%End
++%If (PyQt_Wizard)
++  %Include qwizard.sip
++%End
++%If (PyQt_Workspace)
++  %Include qworkspace.sip
++%End
++//%If (WS_QWS)
++//  %Include qwsevent.sip
++//  %Include qwsprotocolitem.sip
++//%End
+ %Include qx11embed_x11.sip
+ %Include qx11info_x11.sip
+ %Include qpytextobject.sip

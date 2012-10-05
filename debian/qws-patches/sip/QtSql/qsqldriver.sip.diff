@@ -1,0 +1,18 @@
+--- sip/QtSql/qsqldriver.sip.old	2012-10-04 17:51:54.664239144 +0200
++++ sip/QtSql/qsqldriver.sip	2012-10-04 17:51:54.668239144 +0200
+@@ -37,11 +37,15 @@
+             sipTypeDef **type;
+             int yes, no;
+         } graph[] = {
++#if defined(SIP_FEATURE_PyQt_ItemViews)
+             {sipName_QSqlQueryModel,	&sipType_QSqlQueryModel,	3, 1},
+             {sipName_QSqlRelationalDelegate,	&sipType_QSqlRelationalDelegate,	-1, 2},
++#endif
+             {sipName_QSqlDriver,	&sipType_QSqlDriver,	-1, -1},
++#if defined(SIP_FEATURE_PyQt_ItemViews)
+             {sipName_QSqlTableModel,	&sipType_QSqlTableModel,	4, -1},
+             {sipName_QSqlRelationalTableModel,	&sipType_QSqlRelationalTableModel,	-1, -1},
++#endif
+         };
+     
+         int i = 0;

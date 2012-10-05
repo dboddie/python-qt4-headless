@@ -1,0 +1,33 @@
+--- sip/QtWebKit/qwebview.sip.old	2012-10-04 17:51:54.796239142 +0200
++++ sip/QtWebKit/qwebview.sip	2012-10-04 17:51:54.800239142 +0200
+@@ -88,7 +88,9 @@
+     QUrl url() const;
+     QIcon icon() const;
+     QString selectedText() const;
++%If (PyQt_Action)
+     QAction *pageAction(QWebPage::WebAction action) const;
++%End
+     void triggerPageAction(QWebPage::WebAction action, bool checked = false);
+     bool isModified() const;
+     virtual QVariant inputMethodQuery(Qt::InputMethodQuery property) const;
+@@ -130,14 +132,20 @@
+     virtual void mousePressEvent(QMouseEvent *);
+     virtual void mouseDoubleClickEvent(QMouseEvent *);
+     virtual void mouseReleaseEvent(QMouseEvent *);
++%If (PyQt_ContextMenu)
+     virtual void contextMenuEvent(QContextMenuEvent *);
++%End
++%If (PyQt_WheelEvent)
+     virtual void wheelEvent(QWheelEvent *);
++%End
+     virtual void keyPressEvent(QKeyEvent *);
+     virtual void keyReleaseEvent(QKeyEvent *);
++%If (PyQt_DragAndDrop)
+     virtual void dragEnterEvent(QDragEnterEvent *);
+     virtual void dragLeaveEvent(QDragLeaveEvent *);
+     virtual void dragMoveEvent(QDragMoveEvent *);
+     virtual void dropEvent(QDropEvent *);
++%End
+     virtual void focusInEvent(QFocusEvent *);
+     virtual void focusOutEvent(QFocusEvent *);
+     virtual void inputMethodEvent(QInputMethodEvent *);

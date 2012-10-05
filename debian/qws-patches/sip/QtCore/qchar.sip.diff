@@ -1,0 +1,10 @@
+--- sip/QtCore/qchar.sip.old	2012-10-04 17:51:55.152239140 +0200
++++ sip/QtCore/qchar.sip	2012-10-04 17:51:55.160239140 +0200
+@@ -414,5 +414,7 @@
+ bool operator>=(QChar c1, QChar c2);
+ bool operator<(QChar c1, QChar c2);
+ bool operator>(QChar c1, QChar c2);
++%If (PyQt_DataStream)
+ QDataStream &operator<<(QDataStream &, const QChar & /Constrained/);
+ QDataStream &operator>>(QDataStream &, QChar & /Constrained/);
++%End

@@ -1,0 +1,14 @@
+--- sip/QtGui/qtextlayout.sip.old	2012-10-05 12:38:18.310883637 +0200
++++ sip/QtGui/qtextlayout.sip	2012-10-05 12:37:01.270884009 +0200
+@@ -126,9 +126,11 @@
+ %If (Qt_4_8_0 -)
+     int rightCursorPosition(int oldPos) const;
+ %End
++%If (PyQt_RawFont)
+ %If (Qt_4_8_0 -)
+     QList<QGlyphRun> glyphRuns() const;
+ %End
++%End
+ 
+ private:
+     QTextLayout(const QTextLayout &);

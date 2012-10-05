@@ -1,0 +1,160 @@
+--- sip/QtGui/qwidget.sip.old	2012-10-04 17:51:54.076239147 +0200
++++ sip/QtGui/qwidget.sip	2012-10-04 17:51:54.080239147 +0200
+@@ -122,9 +122,11 @@
+     void setForegroundRole(QPalette::ColorRole);
+     QPalette::ColorRole foregroundRole() const;
+     void setFont(const QFont &);
++%If (PyQt_Cursor)
+     QCursor cursor() const;
+     void setCursor(const QCursor &);
+     void unsetCursor();
++%End
+     void setMask(const QBitmap &);
+     void setMask(const QRegion &);
+     QRegion mask() const;
+@@ -193,13 +195,17 @@
+     Qt::ContextMenuPolicy contextMenuPolicy() const;
+     void setContextMenuPolicy(Qt::ContextMenuPolicy policy);
+     void grabMouse();
++%If (PyQt_Cursor)
+     void grabMouse(const QCursor &);
++%End
+     void releaseMouse();
+     void grabKeyboard();
+     void releaseKeyboard();
++%If (PyQt_Shortcut)
+     int grabShortcut(const QKeySequence &key, Qt::ShortcutContext context = Qt::WindowShortcut);
+     void releaseShortcut(int id);
+     void setShortcutEnabled(int id, bool enabled = true);
++%End
+     static QWidget *mouseGrabber();
+     static QWidget *keyboardGrabber();
+     void setUpdatesEnabled(bool enable);
+@@ -279,14 +285,18 @@
+     void scroll(int dx, int dy, const QRect &);
+     QWidget *focusWidget() const;
+     QWidget *nextInFocusChain() const;
++%If (PyQt_DragAndDrop)
+     bool acceptDrops() const;
+     void setAcceptDrops(bool on);
++%End
++%If (PyQt_Action)
+     void addAction(QAction *action);
+     void addActions(QList<QAction*> actions);
+     void insertAction(QAction *before, QAction *action);
+     void insertActions(QAction *before, QList<QAction*> actions);
+     void removeAction(QAction *action);
+     QList<QAction*> actions() const;
++%End
+     void setWindowFlags(Qt::WindowFlags type);
+     void overrideWindowFlags(Qt::WindowFlags type);
+     static QWidget *find(WId);
+@@ -303,8 +313,10 @@
+     void setAttribute(Qt::WidgetAttribute attribute, bool on = true);
+     virtual QPaintEngine *paintEngine() const;
+     void ensurePolished() const;
++%If (PyQt_IM)
+     QInputContext *inputContext();
+     void setInputContext(QInputContext * /Transfer/);
++%End
+     bool isAncestorOf(const QWidget *child) const;
+ 
+ signals:
+@@ -316,7 +328,9 @@
+     virtual void mouseReleaseEvent(QMouseEvent *);
+     virtual void mouseDoubleClickEvent(QMouseEvent *);
+     virtual void mouseMoveEvent(QMouseEvent *);
++%If (PyQt_WheelEvent)
+     virtual void wheelEvent(QWheelEvent *);
++%End
+     virtual void keyPressEvent(QKeyEvent *);
+     virtual void keyReleaseEvent(QKeyEvent *);
+     virtual void focusInEvent(QFocusEvent *);
+@@ -327,19 +341,30 @@
+     virtual void moveEvent(QMoveEvent *);
+     virtual void resizeEvent(QResizeEvent *);
+     virtual void closeEvent(QCloseEvent *);
++%If (PyQt_ContextMenu)
+     virtual void contextMenuEvent(QContextMenuEvent *);
++%End
++%If (PyQt_TabletEvent)
+     virtual void tabletEvent(QTabletEvent *);
++%End
++%If (PyQt_Action)
+     virtual void actionEvent(QActionEvent *);
++%End
++%If (PyQt_DragAndDrop)
+     virtual void dragEnterEvent(QDragEnterEvent *);
+     virtual void dragMoveEvent(QDragMoveEvent *);
+     virtual void dragLeaveEvent(QDragLeaveEvent *);
+     virtual void dropEvent(QDropEvent *);
++%End
+     virtual void showEvent(QShowEvent *);
+     virtual void hideEvent(QHideEvent *);
+ %If (WS_WIN)
+     virtual bool winEvent(MSG *message, long *result);
+ %End
+     virtual void changeEvent(QEvent *);
++%If (WS_QWS)
++//    virtual bool qwsEvent(QWSEvent *);
++%End
+     virtual int metric(QPaintDevice::PaintDeviceMetric) const;
+     virtual void inputMethodEvent(QInputMethodEvent *);
+ 
+@@ -347,7 +372,9 @@
+     virtual QVariant inputMethodQuery(Qt::InputMethodQuery) const;
+ 
+ protected:
++%If (PyQt_IM)
+     void resetInputContext();
++%End
+     void updateMicroFocus();
+     void create(WId window = 0, bool initializeWindow = true, bool destroyOldWindow = true);
+     void destroy(bool destroyWindow = true, bool destroySubWindows = true);
+@@ -403,15 +430,19 @@
+     void setWindowModality(Qt::WindowModality windowModality);
+     bool autoFillBackground() const;
+     void setAutoFillBackground(bool enabled);
++%If (PyQt_Style_StyleSheet)
+ %If (Qt_4_2_0 -)
+     void setStyleSheet(const QString &styleSheet);
+ %End
+ %If (Qt_4_2_0 -)
+     QString styleSheet() const;
+ %End
++%End
+ %If (Qt_4_2_0 -)
++%If (PyQt_Shortcut)
+     void setShortcutAutoRepeat(int id, bool enabled = true);
+ %End
++%End
+ %If (Qt_4_2_0 -)
+     QByteArray saveGeometry() const;
+ %End
+@@ -459,20 +490,26 @@
+     QString windowFilePath() const;
+ %End
+ %If (Qt_4_5_0 -)
++%If (PyQt_GraphicsView)
+     QGraphicsProxyWidget *graphicsProxyWidget() const;
+ %End
++%End
++%If (PyQt_GraphicsView)
+ %If (Qt_4_6_0 -)
+     QGraphicsEffect *graphicsEffect() const;
+ %End
+ %If (Qt_4_6_0 -)
+     void setGraphicsEffect(QGraphicsEffect *effect /Transfer/);
+ %End
++%End
++%If (PyQt_Gestures)
+ %If (Qt_4_6_0 -)
+     void grabGesture(Qt::GestureType type, Qt::GestureFlags flags = Qt::GestureFlags(0));
+ %End
+ %If (Qt_4_6_0 -)
+     void ungrabGesture(Qt::GestureType type);
+ %End
++%End
+ %If (Qt_4_6_0 -)
+     void setContentsMargins(const QMargins &margins);
+ %End

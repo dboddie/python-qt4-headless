@@ -1,0 +1,12 @@
+--- sip/QtCore/qstate.sip.old	2012-10-04 17:51:54.932239141 +0200
++++ sip/QtCore/qstate.sip	2012-10-04 17:51:54.936239141 +0200
+@@ -73,7 +73,9 @@
+     void setInitialState(QAbstractState *state /KeepReference/);
+     QState::ChildMode childMode() const;
+     void setChildMode(QState::ChildMode mode);
++%If (PyQt_Properties)
+     void assignProperty(QObject *object, const char *name, const QVariant &value);
++%End
+ 
+ signals:
+     void finished();

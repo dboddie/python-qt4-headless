@@ -1,0 +1,15 @@
+--- sip/QtGui/qgraphicssceneevent.sip.old	2012-10-04 17:51:54.312239147 +0200
++++ sip/QtGui/qgraphicssceneevent.sip	2012-10-04 17:51:54.316239147 +0200
+@@ -186,6 +186,7 @@
+ 
+ %End
+ %If (Qt_4_2_0 -)
++%If (PyQt_DragAndDrop)
+ 
+ class QGraphicsSceneDragDropEvent : QGraphicsSceneEvent /NoDefaultCtors/
+ {
+@@ -257,3 +258,4 @@
+ };
+ 
+ %End
++%End

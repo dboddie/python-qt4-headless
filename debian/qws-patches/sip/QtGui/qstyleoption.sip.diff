@@ -1,0 +1,290 @@
+--- sip/QtGui/qstyleoption.sip.old	2012-10-04 17:51:54.416239144 +0200
++++ sip/QtGui/qstyleoption.sip	2012-10-04 17:51:54.428239144 +0200
+@@ -108,24 +108,31 @@
+         }
+         break;
+     
++    #if defined(SIP_FEATURE_PyQt_RubberBand)
+     case QStyleOption::SO_RubberBand:
+         sipType = sipType_QStyleOptionRubberBand;
+         break;
++    #endif
+     
+-    #if QT_VERSION >= 0x040200
++    #if QT_VERSION >= 0x040200 && defined(SIP_FEATURE_PyQt_SizeGrip)
+     case QStyleOption::SO_SizeGrip:
+         sipType = sipType_QStyleOptionSizeGrip;
+         break;
+     #endif
+     
++    #if defined(SIP_FEATURE_PyQt_Slider)
+     case QStyleOption::SO_Slider:
+         sipType = sipType_QStyleOptionSlider;
+         break;
++    #endif
+     
++    #if defined(SIP_FEATURE_PyQt_SpinBox)
+     case QStyleOption::SO_SpinBox:
+         sipType = sipType_QStyleOptionSpinBox;
+         break;
++    #endif
+     
++    #if defined(SIP_FEATURE_PyQt_TabBar)
+     case QStyleOption::SO_Tab:
+         switch (sipCpp->version)
+         {
+@@ -159,7 +166,9 @@
+             sipType = sipType_QStyleOptionTabBarBase;
+         }
+         break;
++    #endif
+     
++    #if defined(SIP_FEATURE_PyQt_TabWidget)
+     case QStyleOption::SO_TabWidgetFrame:
+         switch (sipCpp->version)
+         {
+@@ -173,12 +182,13 @@
+             sipType = sipType_QStyleOptionTabWidgetFrame;
+         }
+         break;
++    #endif
+     
+     case QStyleOption::SO_TitleBar:
+         sipType = sipType_QStyleOptionTitleBar;
+         break;
+     
+-    #if QT_VERSION >= 0x040100
++    #if QT_VERSION >= 0x040100 && defined(SIP_FEATURE_PyQt_ToolBar)
+     case QStyleOption::SO_ToolBar:
+         sipType = sipType_QStyleOptionToolBar;
+         break;
+@@ -202,22 +212,23 @@
+         sipType = sipType_QStyleOptionToolButton;
+         break;
+     
++    #if defined(SIP_FEATURE_PyQt_ItemViews)
+     case QStyleOption::SO_ViewItem:
+         switch (sipCpp->version)
+         {
+-    #if QT_VERSION >= 0x040400
++    #if QT_VERSION >= 0x040400 && defined(SIP_FEATURE_PyQt_ItemViews)
+         case 4:
+             sipType = sipType_QStyleOptionViewItemV4;
+             break;
+     #endif
+     
+-    #if QT_VERSION >= 0x040300
++    #if QT_VERSION >= 0x040300 && defined(SIP_FEATURE_PyQt_ItemViews)
+         case 3:
+             sipType = sipType_QStyleOptionViewItemV3;
+             break;
+     #endif
+     
+-    #if QT_VERSION >= 0x040200
++    #if QT_VERSION >= 0x040200 && defined(SIP_FEATURE_PyQt_ItemViews)
+         case 2:
+             sipType = sipType_QStyleOptionViewItemV2;
+             break;
+@@ -227,6 +238,7 @@
+             sipType = sipType_QStyleOptionViewItem;
+         }
+         break;
++    #endif
+     
+     default:
+         if ((sipCpp->type & QStyleOption::SO_ComplexCustomBase) == QStyleOption::SO_ComplexCustomBase)
+@@ -448,6 +460,9 @@
+ 
+ QFlags<QStyleOptionFrameV2::FrameFeature> operator|(QStyleOptionFrameV2::FrameFeature f1, QFlags<QStyleOptionFrameV2::FrameFeature> f2);
+ 
++%If (PyQt_TabBar)
++%If (PyQt_TabWidget)
++
+ class QStyleOptionTabWidgetFrame : QStyleOption
+ {
+ %TypeHeaderCode
+@@ -497,6 +512,8 @@
+     QStyleOptionTabWidgetFrame(const QStyleOptionTabWidgetFrame &other);
+ };
+ 
++%End
++
+ class QStyleOptionTabBarBase : QStyleOption
+ {
+ %TypeHeaderCode
+@@ -543,6 +560,8 @@
+     QStyleOptionTabBarBase(const QStyleOptionTabBarBase &other);
+ };
+ 
++%End
++
+ class QStyleOptionHeader : QStyleOption
+ {
+ %TypeHeaderCode
+@@ -682,6 +701,8 @@
+ 
+ QFlags<QStyleOptionButton::ButtonFeature> operator|(QStyleOptionButton::ButtonFeature f1, QFlags<QStyleOptionButton::ButtonFeature> f2);
+ 
++%If (PyQt_TabBar)
++
+ class QStyleOptionTab : QStyleOption
+ {
+ %TypeHeaderCode
+@@ -787,6 +808,8 @@
+     QStyleOptionTabV2(const QStyleOptionTab &other);
+ };
+ 
++%End
++
+ class QStyleOptionProgressBar : QStyleOption
+ {
+ %TypeHeaderCode
+@@ -1003,6 +1026,7 @@
+     QStyleOptionDockWidget(const QStyleOptionDockWidget &other);
+ };
+ 
++%If (PyQt_ItemViews)
+ class QStyleOptionViewItem : QStyleOption
+ {
+ %TypeHeaderCode
+@@ -1061,6 +1085,7 @@
+     QStyleOptionViewItem();
+     QStyleOptionViewItem(const QStyleOptionViewItem &other);
+ };
++%End
+ 
+ class QStyleOptionToolBox : QStyleOption
+ {
+@@ -1107,6 +1132,8 @@
+     QStyleOptionToolBox(const QStyleOptionToolBox &other);
+ };
+ 
++%If (PyQt_RubberBand)
++
+ class QStyleOptionRubberBand : QStyleOption
+ {
+ %TypeHeaderCode
+@@ -1152,6 +1179,8 @@
+     QStyleOptionRubberBand(const QStyleOptionRubberBand &other);
+ };
+ 
++%End
++
+ class QStyleOptionComplex : QStyleOption
+ {
+ %TypeHeaderCode
+@@ -1197,6 +1226,7 @@
+     QStyleOptionComplex(const QStyleOptionComplex &other);
+ };
+ 
++%If (PyQt_Slider)
+ class QStyleOptionSlider : QStyleOptionComplex
+ {
+ %TypeHeaderCode
+@@ -1251,7 +1281,9 @@
+     QStyleOptionSlider();
+     QStyleOptionSlider(const QStyleOptionSlider &other);
+ };
++%End
+ 
++%If (PyQt_SpinBox)
+ class QStyleOptionSpinBox : QStyleOptionComplex
+ {
+ %TypeHeaderCode
+@@ -1297,6 +1329,7 @@
+     QStyleOptionSpinBox();
+     QStyleOptionSpinBox(const QStyleOptionSpinBox &other);
+ };
++%End
+ 
+ class QStyleOptionToolButton : QStyleOptionComplex
+ {
+@@ -1565,6 +1598,8 @@
+     QRegion region;
+ };
+ 
++%If (PyQt_ToolBar)
++
+ class QStyleOptionToolBar : QStyleOption
+ {
+ %TypeHeaderCode
+@@ -1632,6 +1667,8 @@
+ 
+ QFlags<QStyleOptionToolBar::ToolBarFeature> operator|(QStyleOptionToolBar::ToolBarFeature f1, QFlags<QStyleOptionToolBar::ToolBarFeature> f2);
+ 
++%End
++
+ class QStyleOptionGroupBox : QStyleOptionComplex
+ {
+ %TypeHeaderCode
+@@ -1681,6 +1718,7 @@
+     QStyleOptionGroupBox(const QStyleOptionGroupBox &other);
+ };
+ 
++%If (PyQt_ItemViews)
+ %If (Qt_4_2_0 -)
+ 
+ class QStyleOptionViewItemV2 : QStyleOptionViewItem
+@@ -1722,7 +1760,9 @@
+ %If (Qt_4_2_0 -)
+ QFlags<QStyleOptionViewItemV2::ViewItemFeature> operator|(QStyleOptionViewItemV2::ViewItemFeature f1, QFlags<QStyleOptionViewItemV2::ViewItemFeature> f2);
+ %End
++%End
+ %If (Qt_4_2_0 -)
++%If (PyQt_SizeGrip)
+ 
+ class QStyleOptionSizeGrip : QStyleOptionComplex
+ {
+@@ -1747,6 +1787,7 @@
+ };
+ 
+ %End
++%End
+ %If (Qt_4_2_0 -)
+ 
+ class QStyleOptionGraphicsItem : QStyleOption
+@@ -1799,6 +1840,7 @@
+ 
+ %End
+ %If (Qt_4_3_0 -)
++%If (PyQt_ItemViews)
+ 
+ class QStyleOptionViewItemV3 : QStyleOptionViewItemV2
+ {
+@@ -1820,6 +1862,7 @@
+ };
+ 
+ %End
++%End
+ %If (Qt_4_3_0 -)
+ 
+ class QStyleOptionToolBoxV2 : QStyleOptionToolBox
+@@ -1882,6 +1925,7 @@
+ 
+ %End
+ %If (Qt_4_4_0 -)
++%If (PyQt_ItemViews)
+ 
+ class QStyleOptionViewItemV4 : QStyleOptionViewItemV3
+ {
+@@ -1916,6 +1960,7 @@
+ };
+ 
+ %End
++%End
+ %If (Qt_4_5_0 -)
+ 
+ class QStyleOptionFrameV3 : QStyleOptionFrameV2
+@@ -1938,6 +1983,7 @@
+ };
+ 
+ %End
++%If (PyQt_TabBar)
+ %If (Qt_4_5_0 -)
+ 
+ class QStyleOptionTabBarBaseV2 : QStyleOptionTabBarBase
+@@ -2005,3 +2051,4 @@
+ };
+ 
+ %End
++%End

@@ -1,0 +1,12 @@
+--- sip/QtCore/qthread.sip.old	2012-10-04 17:51:54.836239142 +0200
++++ sip/QtCore/qthread.sip	2012-10-04 17:51:54.840239142 +0200
+@@ -33,7 +33,9 @@
+ 
+ public:
+     static QThread *currentThread();
++%If (WS_X11)
+     static Qt::HANDLE currentThreadId();
++%End
+ %If (Qt_4_3_0 -)
+     static int idealThreadCount();
+ %End

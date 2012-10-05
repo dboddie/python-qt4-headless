@@ -1,0 +1,13 @@
+--- sip/QtNetwork/qtcpserver.sip.old	2012-10-04 17:51:54.744239142 +0200
++++ sip/QtNetwork/qtcpserver.sip	2012-10-04 17:51:54.748239142 +0200
+@@ -48,8 +48,10 @@
+     virtual QTcpSocket *nextPendingConnection();
+     QAbstractSocket::SocketError serverError() const;
+     QString errorString() const;
++%If (PyQt_NetworkProxy)
+     void setProxy(const QNetworkProxy &networkProxy);
+     QNetworkProxy proxy() const;
++%End
+ 
+ protected:
+     virtual void incomingConnection(int handle);

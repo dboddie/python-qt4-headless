@@ -1,0 +1,13 @@
+--- sip/QtGui/qsplitter.sip.old	2012-10-04 17:51:54.280239146 +0200
++++ sip/QtGui/qsplitter.sip	2012-10-04 17:51:54.284239146 +0200
+@@ -82,8 +82,10 @@
+     QSplitter(const QSplitter &);
+ };
+ 
++%If (PyQt_TextStream)
+ QTextStream &operator<<(QTextStream &, const QSplitter &);
+ QTextStream &operator>>(QTextStream &, QSplitter &);
++%End
+ 
+ class QSplitterHandle : QWidget
+ {

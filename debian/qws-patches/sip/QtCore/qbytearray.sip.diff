@@ -1,0 +1,13 @@
+--- sip/QtCore/qbytearray.sip.old	2012-10-04 17:51:54.844239142 +0200
++++ sip/QtCore/qbytearray.sip	2012-10-04 17:51:54.852239143 +0200
+@@ -411,8 +411,10 @@
+ bool operator>(const QByteArray &a1, const QByteArray &a2);
+ bool operator>=(const QByteArray &a1, const QByteArray &a2);
+ const QByteArray operator+(const QByteArray &a1, const QByteArray &a2);
++%If (PyQt_DataStream)
+ QDataStream &operator<<(QDataStream &, const QByteArray & /Constrained/);
+ QDataStream &operator>>(QDataStream &, QByteArray & /Constrained/);
++%End
+ QByteArray qCompress(const QByteArray &data, int compressionLevel = -1);
+ QByteArray qUncompress(const QByteArray &data);
+ %If (Qt_4_3_0 -)

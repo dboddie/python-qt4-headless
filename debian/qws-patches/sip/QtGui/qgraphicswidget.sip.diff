@@ -1,0 +1,48 @@
+--- sip/QtGui/qgraphicswidget.sip.old	2012-10-04 17:51:54.360239144 +0200
++++ sip/QtGui/qgraphicswidget.sip	2012-10-04 17:51:54.368239144 +0200
+@@ -143,6 +143,7 @@
+     virtual void ungrabKeyboardEvent(QEvent *event);
+ 
+ public:
++%If (PyQt_Shortcut)
+ %If (Qt_4_5_0 -)
+     int grabShortcut(const QKeySequence &sequence, Qt::ShortcutContext context = Qt::WindowShortcut);
+ %End
+@@ -155,6 +156,8 @@
+ %If (Qt_4_5_0 -)
+     void setShortcutAutoRepeat(int id, bool enabled = true);
+ %End
++%End
++%If (PyQt_Action)
+ %If (Qt_4_5_0 -)
+     void addAction(QAction *action);
+ %End
+@@ -173,6 +176,7 @@
+ %If (Qt_4_5_0 -)
+     QList<QAction*> actions() const;
+ %End
++%End
+ 
+ private:
+     QGraphicsWidget(const QGraphicsWidget &);
+@@ -224,16 +228,20 @@
+     void setFocusPolicy(Qt::FocusPolicy policy);
+     static void setTabOrder(QGraphicsWidget *first, QGraphicsWidget *second);
+     QGraphicsWidget *focusWidget() const;
++%If (PyQt_Shortcut)
+     int grabShortcut(const QKeySequence &sequence, Qt::ShortcutContext context = Qt::WindowShortcut);
+     void releaseShortcut(int id);
+     void setShortcutEnabled(int id, bool enabled = true);
+     void setShortcutAutoRepeat(int id, bool enabled = true);
++%End
++%If (PyQt_Action)
+     void addAction(QAction *action);
+     void addActions(QList<QAction*> actions);
+     void insertAction(QAction *before, QAction *action);
+     void insertActions(QAction *before, QList<QAction*> actions);
+     void removeAction(QAction *action);
+     QList<QAction*> actions() const;
++%End
+     void setAttribute(Qt::WidgetAttribute attribute, bool on = true);
+     bool testAttribute(Qt::WidgetAttribute attribute) const;
+     virtual int type() const;

@@ -1,0 +1,13 @@
+--- sip/QtGui/qundogroup.sip.old	2012-10-04 17:51:54.444239145 +0200
++++ sip/QtGui/qundogroup.sip	2012-10-04 17:51:54.448239145 +0200
+@@ -42,8 +42,10 @@
+     void removeStack(QUndoStack *stack);
+     QList<QUndoStack*> stacks() const;
+     QUndoStack *activeStack() const;
++%If (PyQt_Action)
+     QAction *createRedoAction(QObject *parent /TransferThis/, const QString &prefix /DocValue="Py_v3:''"/ = QString()) const /Factory/;
+     QAction *createUndoAction(QObject *parent /TransferThis/, const QString &prefix /DocValue="Py_v3:''"/ = QString()) const /Factory/;
++%End
+     bool canUndo() const;
+     bool canRedo() const;
+     QString undoText() const;

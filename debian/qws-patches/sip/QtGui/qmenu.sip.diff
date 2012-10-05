@@ -1,0 +1,12 @@
+--- sip/QtGui/qmenu.sip.old	2012-10-04 17:51:54.228239145 +0200
++++ sip/QtGui/qmenu.sip	2012-10-04 17:51:54.232239146 +0200
+@@ -104,7 +104,9 @@
+     virtual void mouseReleaseEvent(QMouseEvent *);
+     virtual void mousePressEvent(QMouseEvent *);
+     virtual void mouseMoveEvent(QMouseEvent *);
++%If (PyQt_WheelEvent)
+     virtual void wheelEvent(QWheelEvent *);
++%End
+     virtual void enterEvent(QEvent *);
+     virtual void leaveEvent(QEvent *);
+     virtual void hideEvent(QHideEvent *);

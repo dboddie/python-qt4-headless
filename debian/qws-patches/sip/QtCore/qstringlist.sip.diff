@@ -1,0 +1,10 @@
+--- sip/QtCore/qstringlist.sip.old	2012-10-04 17:51:55.012239141 +0200
++++ sip/QtCore/qstringlist.sip	2012-10-04 17:51:55.020239141 +0200
+@@ -263,5 +263,7 @@
+ QStringList &operator+=(const QString &value);
+ };
+ 
++%If (PyQt_DataStream)
+ QDataStream &operator>>(QDataStream &in, QStringList &list /Constrained/) /API=QString: - 2/;
+ QDataStream &operator<<(QDataStream &out, const QStringList &list /Constrained/) /API=QString: - 2/;
++%End

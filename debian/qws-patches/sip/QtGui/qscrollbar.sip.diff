@@ -1,0 +1,12 @@
+--- sip/QtGui/qscrollbar.sip.old	2012-10-04 17:51:54.120239145 +0200
++++ sip/QtGui/qscrollbar.sip	2012-10-04 17:51:54.124239145 +0200
+@@ -47,7 +47,9 @@
+     virtual void mouseReleaseEvent(QMouseEvent *);
+     virtual void mouseMoveEvent(QMouseEvent *);
+     virtual void hideEvent(QHideEvent *);
++%If (PyQt_ContextMenu)
+     virtual void contextMenuEvent(QContextMenuEvent *);
++%End
+     virtual void sliderChange(QAbstractSlider::SliderChange change);
+ 
+ private:

@@ -1,0 +1,20 @@
+--- qpy/QtCore/qpycore_api.h.old	2012-10-04 17:51:55.172239140 +0200
++++ qpy/QtCore/qpycore_api.h	2012-10-04 17:51:55.180239140 +0200
+@@ -28,6 +28,7 @@
+ #define _QPYCORE_API_H
+ 
+ 
++#include <qconfig.h>
+ #include <QCoreApplication>
+ #include <QString>
+ #include <QVariant>
+@@ -47,7 +48,9 @@
+ PyObject *qpycore_pyqtsignature(PyObject *args, PyObject *kwds);
+ 
+ // Support for pyqtConfigure().
++#ifndef QT_NO_PROPERTIES
+ int qpycore_pyqtconfigure(PyObject *self, QObject *qobj, PyObject *kwds);
++#endif
+ 
+ // Support for converting between PyObject and QString.
+ PyObject *qpycore_PyObject_FromQString(const QString &qstr);

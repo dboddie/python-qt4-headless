@@ -1,0 +1,24 @@
+--- sip/QtCore/qreadwritelock.sip.old	2012-10-04 17:51:54.940239141 +0200
++++ sip/QtCore/qreadwritelock.sip	2012-10-04 17:51:54.948239141 +0200
+@@ -33,6 +33,7 @@
+ 
+ public:
+ %If (Qt_4_4_0 -)
++%If (PyQt_Thread)
+ 
+     enum RecursionMode
+     {
+@@ -41,10 +42,13 @@
+     };
+ 
+ %End
++%End
+     QReadWriteLock();
+ %If (Qt_4_4_0 -)
++%If (PyQt_Thread)
+     QReadWriteLock(QReadWriteLock::RecursionMode recursionMode);
+ %End
++%End
+     ~QReadWriteLock();
+     void lockForRead() /ReleaseGIL/;
+     bool tryLockForRead();

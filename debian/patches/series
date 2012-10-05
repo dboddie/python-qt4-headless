@@ -1,0 +1,5 @@
+qreal_float_support.diff
+debian_configure_changes.diff
+fix_qthelp_ftbfs.diff
+fix_the_QAssitant_ftbfs.diff
+dbus.patch

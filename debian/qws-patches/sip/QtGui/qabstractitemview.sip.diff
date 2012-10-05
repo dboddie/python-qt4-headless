@@ -1,0 +1,93 @@
+--- sip/QtGui/qabstractitemview.sip.old	2012-10-04 17:51:53.996239146 +0200
++++ sip/QtGui/qabstractitemview.sip	2012-10-04 17:51:54.004239146 +0200
+@@ -37,6 +37,7 @@
+ 
+ public:
+ %If (Qt_4_2_0 -)
++%If (PyQt_DragAndDrop)
+ 
+     enum DragDropMode
+     {
+@@ -48,6 +49,7 @@
+     };
+ 
+ %End
++%End
+ 
+     enum EditTrigger
+     {
+@@ -118,10 +120,12 @@
+     bool hasAutoScroll() const;
+     void setTabKeyNavigation(bool enable);
+     bool tabKeyNavigation() const;
++%If (PyQt_DragAndDrop)
+     void setDropIndicatorShown(bool enable);
+     bool showDropIndicator() const;
+     void setDragEnabled(bool enable);
+     bool dragEnabled() const;
++%End
+     void setAlternatingRowColors(bool enable);
+     bool alternatingRowColors() const;
+     void setIconSize(const QSize &size);
+@@ -227,7 +231,9 @@
+     virtual QModelIndexList selectedIndexes() const;
+     virtual bool edit(const QModelIndex &index, QAbstractItemView::EditTrigger trigger, QEvent *event);
+     virtual QFlags<QItemSelectionModel::SelectionFlag> selectionCommand(const QModelIndex &index, const QEvent *event = 0) const;
++%If (PyQt_DragAndDrop)
+     virtual void startDrag(Qt::DropActions supportedActions);
++%End
+     virtual QStyleOptionViewItem viewOptions() const;
+ 
+     enum State
+@@ -256,10 +262,12 @@
+     virtual void mouseMoveEvent(QMouseEvent *e);
+     virtual void mouseReleaseEvent(QMouseEvent *e);
+     virtual void mouseDoubleClickEvent(QMouseEvent *e);
++%If (PyQt_DragAndDrop)
+     virtual void dragEnterEvent(QDragEnterEvent *e);
+     virtual void dragMoveEvent(QDragMoveEvent *e);
+     virtual void dragLeaveEvent(QDragLeaveEvent *e);
+     virtual void dropEvent(QDropEvent *e);
++%End
+     virtual void focusInEvent(QFocusEvent *e);
+     virtual void focusOutEvent(QFocusEvent *e);
+     virtual void keyPressEvent(QKeyEvent *e);
+@@ -275,6 +283,7 @@
+     };
+ 
+     QAbstractItemView::DropIndicatorPosition dropIndicatorPosition() const;
++%End
+ 
+ public:
+ %If (Qt_4_2_0 -)
+@@ -289,6 +298,7 @@
+ %If (Qt_4_2_0 -)
+     QAbstractItemView::ScrollMode horizontalScrollMode() const;
+ %End
++%If (PyQt_DragAndDrop)
+ %If (Qt_4_2_0 -)
+     void setDragDropOverwriteMode(bool overwrite);
+ %End
+@@ -301,6 +311,7 @@
+ %If (Qt_4_2_0 -)
+     QAbstractItemView::DragDropMode dragDropMode() const;
+ %End
++%End
+ %If (Qt_4_2_0 -)
+     void setItemDelegateForRow(int row, QAbstractItemDelegate *delegate /KeepReference/);
+ %End
+@@ -335,12 +346,14 @@
+ %End
+ 
+ public:
++%If (PyQt_DragAndDrop)
+ %If (Qt_4_6_0 -)
+     void setDefaultDropAction(Qt::DropAction dropAction);
+ %End
+ %If (Qt_4_6_0 -)
+     Qt::DropAction defaultDropAction() const;
+ %End
++%End
+ 
+ private:
+     QAbstractItemView(const QAbstractItemView &);

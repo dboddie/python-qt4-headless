@@ -1,0 +1,13 @@
+--- sip/QtGui/qtreeview.sip.old	2012-10-04 17:51:54.624239143 +0200
++++ sip/QtGui/qtreeview.sip	2012-10-04 17:51:54.628239143 +0200
+@@ -174,8 +174,10 @@
+ 
+ protected:
+ %If (Qt_4_3_0 -)
++%If (PyQt_DragAndDrop)
+     virtual void dragMoveEvent(QDragMoveEvent *event);
+ %End
++%End
+ %If (Qt_4_3_0 -)
+     virtual bool viewportEvent(QEvent *event);
+ %End

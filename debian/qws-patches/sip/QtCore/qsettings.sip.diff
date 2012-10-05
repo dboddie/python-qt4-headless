@@ -1,0 +1,18 @@
+--- sip/QtCore/qsettings.sip.old	2012-10-04 17:51:55.144239142 +0200
++++ sip/QtCore/qsettings.sip	2012-10-04 17:51:55.148239141 +0200
+@@ -114,6 +114,7 @@
+ %If (Qt_4_4_0 -)
+     static QSettings::Format defaultFormat();
+ %End
++%If (PyQt_TextCodec)
+ %If (Qt_4_5_0 -)
+     void setIniCodec(QTextCodec *codec /KeepReference/);
+ %End
+@@ -123,6 +124,7 @@
+ %If (Qt_4_5_0 -)
+     QTextCodec *iniCodec() const;
+ %End
++%End
+ 
+ protected:
+     virtual bool event(QEvent *event);

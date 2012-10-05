@@ -1,0 +1,10 @@
+--- sip/QtGui/qregion.sip.old	2012-10-04 17:51:54.216239145 +0200
++++ sip/QtGui/qregion.sip	2012-10-04 17:51:54.220239145 +0200
+@@ -141,5 +141,7 @@
+ %End
+ };
+ 
++%If (PyQt_DataStream)
+ QDataStream &operator<<(QDataStream &, const QRegion & /Constrained/);
+ QDataStream &operator>>(QDataStream &, QRegion & /Constrained/);
++%End

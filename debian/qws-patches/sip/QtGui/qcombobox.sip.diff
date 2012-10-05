@@ -1,0 +1,54 @@
+--- sip/QtGui/qcombobox.sip.old	2012-10-04 17:51:53.920239146 +0200
++++ sip/QtGui/qcombobox.sip	2012-10-04 17:51:53.920239146 +0200
+@@ -39,10 +39,12 @@
+     int count() const /__len__/;
+     void setMaxCount(int max);
+     int maxCount() const;
++%If (PyQt_Completer)
+     bool autoCompletion() const;
+     void setAutoCompletion(bool enable);
+     Qt::CaseSensitivity autoCompletionCaseSensitivity() const;
+     void setAutoCompletionCaseSensitivity(Qt::CaseSensitivity sensitivity);
++%End
+     bool duplicatesEnabled() const;
+     void setDuplicatesEnabled(bool enable);
+     void setFrame(bool);
+@@ -86,8 +88,10 @@
+     void setEditable(bool editable);
+     void setLineEdit(QLineEdit *edit /Transfer/);
+     QLineEdit *lineEdit() const;
++%If (PyQt_Validator)
+     void setValidator(const QValidator *v /KeepReference/);
+     const QValidator *validator() const;
++%End
+     QAbstractItemDelegate *itemDelegate() const;
+     void setItemDelegate(QAbstractItemDelegate *delegate /KeepReference/);
+     QAbstractItemModel *model() const;
+@@ -119,12 +123,14 @@
+     virtual void showPopup();
+     virtual void hidePopup();
+     virtual bool event(QEvent *event);
++%If (PyQt_Completer)
+ %If (Qt_4_2_0 -)
+     void setCompleter(QCompleter *c /KeepReference/);
+ %End
+ %If (Qt_4_2_0 -)
+     QCompleter *completer() const;
+ %End
++%End
+ %If (Qt_4_4_0 -)
+     void insertSeparator(int index);
+ %End
+@@ -158,8 +164,12 @@
+     virtual void mouseReleaseEvent(QMouseEvent *e);
+     virtual void keyPressEvent(QKeyEvent *e);
+     virtual void keyReleaseEvent(QKeyEvent *e);
++%If (PyQt_WheelEvent)
+     virtual void wheelEvent(QWheelEvent *e);
++%End
++%If (PyQt_ContextMenu)
+     virtual void contextMenuEvent(QContextMenuEvent *e);
++%End
+     virtual void inputMethodEvent(QInputMethodEvent *);
+     virtual QVariant inputMethodQuery(Qt::InputMethodQuery) const;
+ 

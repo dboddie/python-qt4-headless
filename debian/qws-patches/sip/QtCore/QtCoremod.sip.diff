@@ -1,0 +1,349 @@
+--- sip/QtCore/QtCoremod.sip.old	2012-10-05 12:14:35.090890538 +0200
++++ sip/QtCore/QtCoremod.sip	2012-10-05 13:15:40.858872761 +0200
+@@ -29,17 +29,155 @@
+ 
+ %Timeline {Qt_4_1_1 Qt_4_1_2 Qt_4_1_3 Qt_4_2_0 Qt_4_2_2 Qt_4_2_3 Qt_4_3_0 Qt_4_3_1 Qt_4_3_2 Qt_4_3_3 Qt_4_3_4 Qt_4_4_0 Qt_4_4_1 Qt_4_4_2 Qt_4_5_0 Qt_4_5_1 Qt_4_5_2 Qt_4_5_3 Qt_4_6_0 Qt_4_6_1 Qt_4_6_2 Qt_4_6_3 Qt_4_7_0 Qt_4_7_1 Qt_4_7_2 Qt_4_7_3 Qt_4_7_4 Qt_4_8_0}
+ 
+-%Platforms {WS_X11 WS_WIN WS_MACX}
++%Platforms {WS_X11 WS_WIN WS_MACX WS_QWS}
+ 
+ %Feature PyQt_Accessibility
++%Feature PyQt_Action
++%Feature PyQt_Animation
++%Feature PyQt_ButtonGroup
++%Feature PyQt_BearerManagement
++%Feature PyQt_CalendarWidget
++%Feature PyQt_Clipboard
++%Feature PyQt_ColorDialog
++%Feature PyQt_ColumnView
++%Feature PyQt_ComboBox
++%Feature PyQt_Completer
++%Feature PyQt_Concurrent
++%Feature PyQt_ContextMenu
++%Feature PyQt_COP
++%Feature PyQt_CSSParser
++%Feature PyQt_Cursor
++%Feature PyQt_DataStream
++%Feature PyQt_DataWidgetMapper
++%Feature PyQt_DateString
++%Feature PyQt_DateTimeEdit
++%Feature PyQt_DBus
++%Feature PyQt_DesktopServices
++%Feature PyQt_Dial
++%Feature PyQt_DirModel
++%Feature PyQt_DockWidget
++%Feature PyQt_DOMClasses
++%Feature PyQt_DragAndDrop
++%Feature PyQt_ErrorMessage
++%Feature PyQt_FileDialog
++%Feature PyQt_FileSystemModel
++%Feature PyQt_FileSystemWatcher
++%Feature PyQt_FontComboBox
++%Feature PyQt_FontDialog
++%Feature PyQt_FTP
++%Feature PyQt_Gestures
++%Feature PyQt_GraphicsSVGItem
++%Feature PyQt_GraphicsView
++%Feature PyQt_GroupBox
++%Feature PyQt_HostInfo
++%Feature PyQt_HTTP
++%Feature PyQt_Icon
++%Feature PyQt_IdentityProxyModel
++%Feature PyQt_IM
++%Feature PyQt_ImageFormatPlugin
++%Feature PyQt_ImageFormat_BMP
++%Feature PyQt_ImageFormat_JPEG
++%Feature PyQt_ImageFormat_PNG
++%Feature PyQt_ImageFormat_PPM
++%Feature PyQt_ImageFormat_XBM
++%Feature PyQt_ImageFormat_XPM
++%Feature PyQt_Image_Heuristic_Mask
++%Feature PyQt_Image_Text
++%Feature PyQt_InputDialog
++%Feature PyQt_InputMethod
++%Feature PyQt_ItemViews
++%Feature PyQt_LCDNumber
++%Feature PyQt_Library
++%Feature PyQt_LineEdit
++%Feature PyQt_LineEditMenu
++%Feature PyQt_ListView
++%Feature PyQt_ListWidget
++%Feature PyQt_MainWindow
++%Feature PyQt_MDIArea
++%Feature PyQt_Menu
++%Feature PyQt_MenuBar
++%Feature PyQt_MessageBox
++%Feature PyQt_Movie
++%Feature PyQt_NetworkProxy
++%Feature PyQt_NoQtPrintRangeBug
++%Feature PyQt_Phonon_EffectWidget
++%Feature PyQt_Phonon_SeekSlider
++%Feature PyQt_Phonon_VolumeSlider
++%Feature PyQt_Picture
++%Feature PyQt_Process
++%Feature PyQt_ProgressBar
++%Feature PyQt_ProgressDialog
++%Feature PyQt_Properties
++%Feature PyQt_ProxyModel
++%Feature PyQt_QWS_Cursor
++%Feature PyQt_QWS_Manager
++%Feature PyQt_RawFont
++%Feature PyQt_RubberBand
++%Feature PyQt_ScrollArea
++%Feature PyQt_ScrollBar
+ %Feature PyQt_SessionManager
++%Feature PyQt_Settings
++%Feature PyQt_SharedMemory
++%Feature PyQt_Shortcut
++%Feature PyQt_SignalMapper
++%Feature PyQt_SizeGrip
++%Feature PyQt_Slider
++%Feature PyQt_Socks5
++%Feature PyQt_SortFilterProxyModel
++%Feature PyQt_Sound
++%Feature PyQt_SpinBox
++%Feature PyQt_SplashScreen
++%Feature PyQt_Splitter
++%Feature PyQt_StackedWidget
++%Feature PyQt_StandardItemModel
++%Feature PyQt_StateMachine
++%Feature PyQt_StatusBar
+ %Feature PyQt_StatusTip
++%Feature PyQt_StringListModel
++%Feature PyQt_Style_StyleSheet
++%Feature PyQt_SVGGenerator
++%Feature PyQt_SVGRenderer
++%Feature PyQt_SVGWidget
++%Feature PyQt_SyntaxHighlighter
++%Feature PyQt_SystemSemaphore
++%Feature PyQt_TabBar
++%Feature PyQt_TabWidget
++%Feature PyQt_TabletEvent
++%Feature PyQt_TableView
++%Feature PyQt_TableWidget
++%Feature PyQt_TemporaryFile
++%Feature PyQt_TextBrowser
++%Feature PyQt_TextCodec
++%Feature PyQt_TextDate
++%Feature PyQt_TextEdit
++%Feature PyQt_TextEditMenu
++%Feature PyQt_TextHTMLParser
++%Feature PyQt_TextStream
++%Feature PyQt_Thread
++%Feature PyQt_ToolBar
++%Feature PyQt_ToolBox
++%Feature PyQt_ToolButton
+ %Feature PyQt_ToolTip
++%Feature PyQt_Translation
++%Feature PyQt_TreeView
++%Feature PyQt_TreeWidget
++%Feature PyQt_UDPSocket
++%Feature PyQt_UndoCommand
++%Feature PyQt_UndoGroup
++%Feature PyQt_UndoStack
++%Feature PyQt_UndoView
++%Feature PyQt_URLInfo
++%Feature PyQt_UUIDString
++%Feature PyQt_Validator
+ %Feature PyQt_WhatsThis
+-%Feature PyQt_NoQtPrintRangeBug
++%Feature PyQt_WheelEvent
++%Feature PyQt_Wizard
++%Feature PyQt_Workspace
++%Feature PyQt_XMLStream
++%Feature PyQt_XMLStreamReader
++%Feature PyQt_XMLStreamWriter
+ %Feature Py_DateTime
+ %Feature PyQt_OpenSSL
+-%Feature PyQt_SizeGrip
+ %Feature PyQt_qreal_double
+ %Feature Py_v3
+ %Feature PyQt_PrintDialog
+@@ -130,13 +268,19 @@
+ 
+ %Include qglobal.sip
+ %Include qnamespace.sip
+-%Include qabstractanimation.sip
++%If (PyQt_Animation)
++  %Include qabstractanimation.sip
++%End
+ %Include qabstracteventdispatcher.sip
+ %Include qabstractfileengine.sip
+ %Include qabstractitemmodel.sip
+-%Include qabstractstate.sip
+-%Include qabstracttransition.sip
+-%Include qanimationgroup.sip
++%If (PyQt_StateMachine)
++  %Include qabstractstate.sip
++  %Include qabstracttransition.sip
++%End
++%If (PyQt_Animation)
++  %Include qanimationgroup.sip
++%End
+ %Include qbasictimer.sip
+ %Include qbitarray.sip
+ %Include qbuffer.sip
+@@ -146,78 +290,132 @@
+ %Include qcoreapplication.sip
+ %Include qcoreevent.sip
+ %Include qcryptographichash.sip
+-%Include qdatastream.sip
++%If (PyQt_DataStream)
++  %Include qdatastream.sip
++%End
+ %Include qdatetime.sip
+ %Include qdir.sip
+ %Include qdiriterator.sip
+ %Include qeasingcurve.sip
+ %Include qelapsedtimer.sip
+ %Include qeventloop.sip
+-%Include qeventtransition.sip
++%If (PyQt_StateMachine)
++  %Include qeventtransition.sip
++%End
+ %Include qfile.sip
+ %Include qfileinfo.sip
+-%Include qfilesystemwatcher.sip
+-%Include qfinalstate.sip
++%If (PyQt_FileSystemWatcher)
++  %Include qfilesystemwatcher.sip
++%End
++%If (PyQt_StateMachine)
++  %Include qfinalstate.sip
++%End
+ %Include qfsfileengine.sip
+ %Include qhash.sip
+-%Include qhistorystate.sip
++%If (PyQt_StateMachine)
++  %Include qhistorystate.sip
++%End
+ %Include qiodevice.sip
+-%Include qlibraryinfo.sip
++%If (PyQt_Settings)
++  %Include qlibraryinfo.sip
++%End
+ %Include qline.sip
+ %Include qlist.sip
+-%Include qlibrary.sip
++%If (PyQt_Library)
++  %Include qlibrary.sip
++%End
+ %Include qlocale.sip
+ %Include qmap.sip
+ %Include qmargins.sip
+ %Include qmetaobject.sip
+ %Include qmetatype.sip
+ %Include qmimedata.sip
+-%Include qmutex.sip
++%If (PyQt_Thread)
++  %Include qmutex.sip
++%End
+ %Include qnumeric.sip
+ %Include qobject.sip
+ %Include qobjectcleanuphandler.sip
+ %Include qobjectdefs.sip
+ %Include qpair.sip
+-%Include qparallelanimationgroup.sip
+-%Include qpauseanimation.sip
+-%Include qpropertyanimation.sip
+-%Include qpluginloader.sip
++%If (PyQt_Animation)
++  %Include qparallelanimationgroup.sip
++  %Include qpauseanimation.sip
++  %Include qpropertyanimation.sip
++%End
++%If (PyQt_Library)
++  %Include qpluginloader.sip
++%End
+ %Include qpoint.sip
+-%Include qprocess.sip
++%If (PyQt_Process)
++  %Include qprocess.sip
++%End
+ %Include qreadwritelock.sip
+ %Include qrect.sip
+ %Include qregexp.sip
+ %Include qresource.sip
+ %Include qrunnable.sip
+-%Include qsemaphore.sip
+-%Include qsequentialanimationgroup.sip
++%If (PyQt_Thread)
++  %Include qsemaphore.sip
++%End
++%If (PyQt_Animation)
++  %Include qsequentialanimationgroup.sip
++%End
+ %Include qset.sip
+-%Include qsettings.sip
+-%Include qsharedmemory.sip
+-%Include qsignalmapper.sip
+-%Include qsignaltransition.sip
++%If (PyQt_Settings)
++  %Include qsettings.sip
++%End
++%If (PyQt_SharedMemory)
++  %Include qsharedmemory.sip
++%End
++%If (PyQt_SignalMapper)
++  %Include qsignalmapper.sip
++%End
++%If (PyQt_StateMachine)
++  %Include qsignaltransition.sip
++%End
+ %Include qsize.sip
+ %Include qsocketnotifier.sip
+-%Include qstate.sip
+-%Include qstatemachine.sip
++%If (PyQt_StateMachine)
++  %Include qstate.sip
++  %Include qstatemachine.sip
++%End
+ %Include qstring.sip
+ %Include qstringlist.sip
+ %Include qstringmatcher.sip
+-%Include qsystemsemaphore.sip
+-%Include qtemporaryfile.sip
++%If (PyQt_SystemSemaphore)
++  %Include qsystemsemaphore.sip
++%End
++%If (PyQt_TemporaryFile)
++  %Include qtemporaryfile.sip
++%End
+ %Include qtextboundaryfinder.sip
+-%Include qtextcodec.sip
+-%Include qtextstream.sip
+-%Include qthread.sip
+-%Include qthreadpool.sip
++%If (PyQt_TextCodec)
++  %Include qtextcodec.sip
++%End
++%If (PyQt_TextStream)
++  %Include qtextstream.sip
++%End
++%If (PyQt_Thread)
++  %Include qthread.sip
++  %Include qthreadpool.sip
++%End
+ %Include qtimeline.sip
+ %Include qtimer.sip
+-%Include qtranslator.sip
++%If (PyQt_Translation)
++  %Include qtranslator.sip
++%End
+ %Include qurl.sip
+ %Include quuid.sip
+ %Include qvariant.sip
+-%Include qvariantanimation.sip
++%If (PyQt_Animation)
++  %Include qvariantanimation.sip
++%End
+ %Include qvector.sip
+-%Include qwaitcondition.sip
+-%Include qxmlstream.sip
++%If (PyQt_Thread)
++  %Include qwaitcondition.sip
++%End
++%If (PyQt_XMLStream)
++  %Include qxmlstream.sip
++%End
+ %Include qpynullvariant.sip

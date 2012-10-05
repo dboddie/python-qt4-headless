@@ -1,0 +1,17 @@
+--- sip/QtGui/qmessagebox.sip.old	2012-10-04 17:51:53.944239146 +0200
++++ sip/QtGui/qmessagebox.sip	2012-10-04 17:51:53.952239146 +0200
+@@ -252,12 +252,14 @@
+ %If (Qt_4_2_0 -)
+     void setInformativeText(const QString &text);
+ %End
++%If (PyQt_TextEdit)
+ %If (Qt_4_2_0 -)
+     QString detailedText() const;
+ %End
+ %If (Qt_4_2_0 -)
+     void setDetailedText(const QString &text);
+ %End
++%End
+ %If (Qt_4_2_0 -)
+     void setWindowTitle(const QString &title);
+ %End

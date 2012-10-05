@@ -1,0 +1,78 @@
+Patch from upstream to fix dbus related crashes in PyQt applications like
+PyKDE or UbuntuOne.
+
+diff -r ec219159004e dbus/dbus.cpp
+--- a/dbus/dbus.cpp	Sat Apr 14 14:56:28 2012 +0100
++++ b/dbus/dbus.cpp	Sat Apr 14 18:14:47 2012 +0100
+@@ -1,7 +1,7 @@
+ // This is the SIP interface definition for the Qt support for the standard
+ // Python DBus bindings.
+ //
+-// Copyright (c) 2012 Phil Thompson
++// Copyright (c) 2012 Riverbank Computing Limited
+ //
+ // Licensed under the Academic Free License version 2.1
+ //
+@@ -271,7 +271,11 @@
+         {
+             watcher.read->setEnabled(false);
+             dbus_watch_handle(watcher.watch, DBUS_WATCH_READABLE);
+-            watcher.read->setEnabled(true);
++
++            // The notifier could have just been destroyed.
++            if (watcher.read)
++                watcher.read->setEnabled(true);
++
+             break;
+         }
+ 
+@@ -295,7 +299,11 @@
+         {
+             watcher.write->setEnabled(false);
+             dbus_watch_handle(watcher.watch, DBUS_WATCH_WRITABLE);
+-            watcher.write->setEnabled(true);
++
++            // The notifier could have just been destroyed.
++            if (watcher.write)
++                watcher.write->setEnabled(true);
++
+             break;
+         }
+ 
+diff -r ec219159004e dbus/helper.h
+--- a/dbus/helper.h	Sat Apr 14 14:56:28 2012 +0100
++++ b/dbus/helper.h	Sat Apr 14 18:14:47 2012 +0100
+@@ -1,7 +1,7 @@
+ // This is the declaration of the helper class for the Qt specific support for
+ // the standard Python DBus bindings.
+ //
+-// Copyright (c) 2007 Phil Thompson
++// Copyright (c) 2012 Riverbank Computing Limited
+ //
+ // Licensed under the Academic Free License version 2.1
+ //
+@@ -24,11 +24,12 @@
+ #include <QList>
+ #include <QMultiHash>
+ #include <QObject>
++#include <QPointer>
++#include <QSocketNotifier>
+ 
+ #include <dbus/dbus.h>
+ 
+ 
+-class QSocketNotifier;
+ class QTimerEvent;
+ 
+ 
+@@ -42,8 +43,8 @@
+         Watcher() : watch(0), read(0), write(0) {}
+ 
+         DBusWatch *watch;
+-        QSocketNotifier *read;
+-        QSocketNotifier *write;
++        QPointer<QSocketNotifier> read;
++        QPointer<QSocketNotifier> write;
+     };
+ 
+     typedef QMultiHash<int, Watcher> Watchers;

@@ -1,0 +1,13 @@
+--- sip/QtGui/qmatrix.sip.old	2012-10-04 17:51:54.552239143 +0200
++++ sip/QtGui/qmatrix.sip	2012-10-04 17:51:54.556239143 +0200
+@@ -89,8 +89,10 @@
+ QPolygonF operator*(const QPolygonF &a, const QMatrix &m);
+ QRegion operator*(const QRegion &r, const QMatrix &m);
+ QPainterPath operator*(const QPainterPath &p, const QMatrix &m);
++%If (PyQt_DataStream)
+ QDataStream &operator<<(QDataStream &, const QMatrix & /Constrained/);
+ QDataStream &operator>>(QDataStream &, QMatrix & /Constrained/);
++%End
+ %If (Qt_4_6_0 -)
+ bool qFuzzyCompare(const QMatrix &m1, const QMatrix &m2);
+ %End

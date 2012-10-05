@@ -1,0 +1,35 @@
+--- sip/QtGui/qpainter.sip.old	2012-10-05 12:14:34.354890542 +0200
++++ sip/QtGui/qpainter.sip	2012-10-05 12:35:37.966884413 +0200
+@@ -445,7 +445,9 @@
+     void drawChord(const QRectF &rect, int a, int alen);
+     void drawRoundRect(const QRectF &r, int xRound = 25, int yRound = 25);
+     void drawTiledPixmap(const QRectF &rectangle, const QPixmap &pixmap, const QPointF &pos = QPointF());
++%If (PyQt_Picture)
+     void drawPicture(const QPointF &p, const QPicture &picture);
++%End
+     void drawPixmap(const QRectF &targetRect, const QPixmap &pixmap, const QRectF &sourceRect);
+     void setLayoutDirection(Qt::LayoutDirection direction);
+     Qt::LayoutDirection layoutDirection() const;
+@@ -545,8 +547,10 @@
+ %If (Qt_4_2_0 -)
+     void setWorldMatrixEnabled(bool enabled);
+ %End
++%If (PyQt_Picture)
+     void drawPicture(int x, int y, const QPicture &p);
+     void drawPicture(const QPoint &pt, const QPicture &p);
++%End
+ %If (Qt_4_3_0 -)
+     void setTransform(const QTransform &transform, bool combine = false);
+ %End
+@@ -743,9 +747,11 @@
+ %If (Qt_4_8_0 -)
+     QRectF clipBoundingRect() const;
+ %End
++%If (PyQt_RawFont)
+ %If (Qt_4_8_0 -)
+     void drawGlyphRun(const QPointF &position, const QGlyphRun &glyphRun);
+ %End
++%End
+ 
+ private:
+ %If (Qt_4_2_0 -)

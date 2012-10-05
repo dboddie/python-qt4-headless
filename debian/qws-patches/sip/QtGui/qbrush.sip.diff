@@ -1,0 +1,13 @@
+--- sip/QtGui/qbrush.sip.old	2012-10-04 17:51:54.352239144 +0200
++++ sip/QtGui/qbrush.sip	2012-10-04 17:51:54.356239144 +0200
+@@ -140,8 +140,10 @@
+ %End
+ };
+ 
++%If (PyQt_DataStream)
+ QDataStream &operator>>(QDataStream &, QBrush & /Constrained/);
+ QDataStream &operator<<(QDataStream &, const QBrush & /Constrained/);
++%End
+ typedef QVector<QPair<qreal, QColor>> QGradientStops;
+ 
+ class QGradient

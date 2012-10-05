@@ -1,0 +1,16 @@
+--- qpy/QtCore/qpycore_pyqtconfigure.cpp.old	2012-10-04 17:51:55.184239140 +0200
++++ qpy/QtCore/qpycore_pyqtconfigure.cpp	2012-10-04 17:51:55.188239140 +0200
+@@ -23,6 +23,8 @@
+ // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+ 
+ 
++#include <qconfig.h>
++#ifndef QT_NO_PROPERTIES
+ #include <Python.h>
+ 
+ #include <QByteArray>
+@@ -167,3 +169,4 @@
+ 
+     return 0;
+ }
++#endif // QT_NO_PROPERTIES

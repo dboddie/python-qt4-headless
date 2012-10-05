@@ -1,0 +1,36 @@
+--- sip/QtGui/qundostack.sip.old	2012-10-04 17:51:54.088239146 +0200
++++ sip/QtGui/qundostack.sip	2012-10-04 17:51:54.092239145 +0200
+@@ -26,6 +26,7 @@
+ 
+ 
+ %If (Qt_4_2_0 -)
++%If (PyQt_UndoCommand)
+ 
+ class QUndoCommand /Supertype=sip.wrapper/
+ {
+@@ -58,7 +59,9 @@
+ };
+ 
+ %End
++%End
+ %If (Qt_4_2_0 -)
++%If (PyQt_UndoStack)
+ 
+ class QUndoStack : QObject
+ {
+@@ -78,8 +81,10 @@
+     int count() const /__len__/;
+     int index() const;
+     QString text(int idx) const;
++%If (PyQt_Action)
+     QAction *createUndoAction(QObject *parent /TransferThis/, const QString &prefix /DocValue="Py_v3:''"/ = QString()) const /Factory/;
+     QAction *createRedoAction(QObject *parent /TransferThis/, const QString &prefix /DocValue="Py_v3:''"/ = QString()) const /Factory/;
++%End
+     bool isActive() const;
+     bool isClean() const;
+     int cleanIndex() const;
+@@ -117,3 +122,4 @@
+ };
+ 
+ %End
++%End

@@ -1,0 +1,13 @@
+--- sip/QtCore/qwaitcondition.sip.old	2012-10-04 17:51:54.960239141 +0200
++++ sip/QtCore/qwaitcondition.sip	2012-10-04 17:51:54.968239141 +0200
+@@ -36,8 +36,10 @@
+     ~QWaitCondition();
+     bool wait(QMutex *mutex, unsigned long msecs = ULONG_MAX) /ReleaseGIL/;
+ %If (Qt_4_4_0 -)
++%If (PyQt_Thread)
+     bool wait(QReadWriteLock *readWriteLock, unsigned long msecs = ULONG_MAX) /ReleaseGIL/;
+ %End
++%End
+     void wakeOne();
+     void wakeAll();
+ 

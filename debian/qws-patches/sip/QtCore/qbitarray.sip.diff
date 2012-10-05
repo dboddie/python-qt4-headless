@@ -1,0 +1,13 @@
+--- sip/QtCore/qbitarray.sip.old	2012-10-04 17:51:54.816239142 +0200
++++ sip/QtCore/qbitarray.sip	2012-10-04 17:51:54.820239142 +0200
+@@ -93,8 +93,10 @@
+ QBitArray operator&(const QBitArray &, const QBitArray &);
+ QBitArray operator|(const QBitArray &, const QBitArray &);
+ QBitArray operator^(const QBitArray &, const QBitArray &);
++%If (PyQt_DataStream)
+ QDataStream &operator<<(QDataStream &, const QBitArray & /Constrained/);
+ QDataStream &operator>>(QDataStream &, QBitArray & /Constrained/);
++%End
+ %If (Qt_4_3_0 -)
+ void qSwap(QBitArray &value1, QBitArray &value2);
+ %End

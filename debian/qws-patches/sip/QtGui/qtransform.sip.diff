@@ -1,0 +1,17 @@
+--- sip/QtGui/qtransform.sip.old	2012-10-04 17:51:54.372239144 +0200
++++ sip/QtGui/qtransform.sip	2012-10-04 17:51:54.384239144 +0200
+@@ -122,12 +122,14 @@
+ };
+ 
+ %End
++%If (PyQt_DataStream)
+ %If (Qt_4_3_0 -)
+ QDataStream &operator<<(QDataStream &, const QTransform & /Constrained/);
+ %End
+ %If (Qt_4_3_0 -)
+ QDataStream &operator>>(QDataStream &, QTransform & /Constrained/);
+ %End
++%End
+ %If (Qt_4_3_0 -)
+ QPoint operator*(const QPoint &p, const QTransform &m);
+ %End

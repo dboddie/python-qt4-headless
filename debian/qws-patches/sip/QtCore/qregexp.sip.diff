@@ -1,0 +1,10 @@
+--- sip/QtCore/qregexp.sip.old	2012-10-04 17:51:55.024239141 +0200
++++ sip/QtCore/qregexp.sip	2012-10-04 17:51:55.028239141 +0200
+@@ -146,5 +146,7 @@
+ %End
+ };
+ 
++%If (PyQt_DataStream)
+ QDataStream &operator<<(QDataStream &out, const QRegExp &regExp /Constrained/);
+ QDataStream &operator>>(QDataStream &in, QRegExp &regExp /Constrained/);
++%End

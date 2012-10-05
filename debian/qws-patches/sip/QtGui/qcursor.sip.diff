@@ -1,0 +1,20 @@
+--- sip/QtGui/qcursor.sip.old	2012-10-04 17:51:53.912239148 +0200
++++ sip/QtGui/qcursor.sip	2012-10-04 17:51:53.912239148 +0200
+@@ -24,6 +24,7 @@
+ // This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
+ // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+ 
++%If (PyQt_Cursor)
+ 
+ %ModuleCode
+ #include <qcursor.h>
+@@ -78,5 +79,9 @@
+     static void setPos(const QPoint &p);
+ };
+ 
++%If (PyQt_DataStream)
+ QDataStream &operator<<(QDataStream &outS, const QCursor &cursor /Constrained/);
+ QDataStream &operator>>(QDataStream &inS, QCursor &cursor /Constrained/);
++%End
++
++%End

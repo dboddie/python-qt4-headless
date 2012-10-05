@@ -1,0 +1,55 @@
+--- sip/QtCore/qcoreapplication.sip.old	2012-10-04 17:51:54.908239143 +0200
++++ sip/QtCore/qcoreapplication.sip	2012-10-04 17:51:54.916239142 +0200
+@@ -165,12 +165,16 @@
+     static bool closingDown();
+     static QString applicationDirPath();
+     static QString applicationFilePath();
++%If (PyQt_Library)
+     static void setLibraryPaths(const QStringList &);
+     static QStringList libraryPaths();
+     static void addLibraryPath(const QString &);
+     static void removeLibraryPath(const QString &);
++%End
++%If (PyQt_Translation)
+     static void installTranslator(QTranslator *);
+     static void removeTranslator(QTranslator *);
++%End
+ 
+     enum Encoding
+     {
+@@ -340,18 +344,23 @@
+     }
+ }
+ %End
++%If (PyQt_Thread)
+ void pyqtRemoveInputHook();
+ %MethodCode
+     // Clear the Python input hook installed when the module was initialised.
+     PyOS_InputHook = 0;
+ %End
++%End
+ 
++%If (PyQt_Thread)
+ void pyqtRestoreInputHook();
+ %MethodCode
+     // Restore the input hook.
+     PyOS_InputHook = qtcore_input_hook;
+ %End
++%End
+ 
++%If (PyQt_Thread)
+ %ModuleCode
+ #include <QCoreApplication>
+ #include <QThread>
+@@ -397,8 +406,11 @@
+     return 0;
+ }
+ %End
++%End
+ 
++%If (PyQt_Thread)
+ %PostInitialisationCode
+ // Process events from the input hook.
+ PyOS_InputHook = qtcore_input_hook;
+ %End
++%End

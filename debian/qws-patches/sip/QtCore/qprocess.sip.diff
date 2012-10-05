@@ -1,0 +1,21 @@
+--- sip/QtCore/qprocess.sip.old	2012-10-04 17:51:54.824239142 +0200
++++ sip/QtCore/qprocess.sip	2012-10-04 17:51:54.828239142 +0200
+@@ -24,11 +24,12 @@
+ // This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
+ // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+ 
++%If (PyQt_Process)
+ 
+ %If (WS_WIN)
+ typedef void *Q_PID;
+ %End
+-%If (WS_X11 || WS_MACX)
++%If (WS_X11 || WS_MACX || WS_QWS)
+ typedef qint64 Q_PID;
+ %End
+ 
+@@ -232,3 +233,4 @@
+ };
+ 
+ %End
++%End

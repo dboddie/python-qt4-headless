@@ -1,0 +1,13 @@
+--- sip/QtCore/qpoint.sip.old	2012-10-04 17:51:54.952239141 +0200
++++ sip/QtCore/qpoint.sip	2012-10-04 17:51:54.956239141 +0200
+@@ -89,8 +89,10 @@
+     QPoint &operator/=(qreal c);
+ };
+ 
++%If (PyQt_DataStream)
+ QDataStream &operator<<(QDataStream &, const QPoint & /Constrained/);
+ QDataStream &operator>>(QDataStream &, QPoint & /Constrained/);
++%End
+ bool operator==(const QPoint &p1, const QPoint &p2);
+ bool operator!=(const QPoint &p1, const QPoint &p2);
+ const QPoint operator+(const QPoint &p1, const QPoint &p2);

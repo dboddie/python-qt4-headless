@@ -1,0 +1,13 @@
+--- sip/QtGui/qsystemtrayicon.sip.old	2012-10-04 17:51:54.592239143 +0200
++++ sip/QtGui/qsystemtrayicon.sip	2012-10-04 17:51:54.596239143 +0200
+@@ -77,8 +77,10 @@
+         qtgui_untrack(sipCpp);
+ %End
+ 
++%If (PyQt_Menu)
+     void setContextMenu(QMenu *menu /KeepReference/);
+     QMenu *contextMenu() const;
++%End
+ %If (Qt_4_3_0 -)
+     QRect geometry() const;
+ %End

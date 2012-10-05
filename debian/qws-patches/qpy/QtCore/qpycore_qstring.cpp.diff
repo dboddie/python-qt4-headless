@@ -1,0 +1,32 @@
+--- qpy/QtCore/qpycore_qstring.cpp.old	2012-10-04 17:51:55.204239140 +0200
++++ qpy/QtCore/qpycore_qstring.cpp	2012-10-04 17:51:55.244239140 +0200
+@@ -26,8 +26,11 @@
+ #include <Python.h>
+ #include <string.h>
+ 
++#include <qconfig.h>
+ #include <QString>
++#ifndef QT_NO_TEXTCODEC
+ #include <QTextCodec>
++#endif
+ #include <QVector>
+ 
+ #include "qpycore_sip.h"
+@@ -116,6 +119,7 @@
+         }
+         else
+         {
++#ifndef QT_NO_TEXTCODEC
+             QTextCodec *codec = QTextCodec::codecForTr();
+ 
+             if (codec)
+@@ -135,6 +139,9 @@
+             {
+                 obj = PyUnicode_AsLatin1String(obj);
+             }
++#else
++                obj = PyUnicode_AsLatin1String(obj);
++#endif
+         }
+ 
+         if (obj)

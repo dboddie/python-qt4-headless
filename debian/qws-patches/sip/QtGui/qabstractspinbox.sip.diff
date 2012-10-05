@@ -1,0 +1,17 @@
+--- sip/QtGui/qabstractspinbox.sip.old	2012-10-04 17:51:54.140239145 +0200
++++ sip/QtGui/qabstractspinbox.sip	2012-10-04 17:51:54.148239145 +0200
+@@ -93,10 +93,14 @@
+     virtual void resizeEvent(QResizeEvent *e);
+     virtual void keyPressEvent(QKeyEvent *e);
+     virtual void keyReleaseEvent(QKeyEvent *e);
++%If (PyQt_WheelEvent)
+     virtual void wheelEvent(QWheelEvent *e);
++%End
+     virtual void focusInEvent(QFocusEvent *e);
+     virtual void focusOutEvent(QFocusEvent *e);
++%If (PyQt_ContextMenu)
+     virtual void contextMenuEvent(QContextMenuEvent *e);
++%End
+     virtual void changeEvent(QEvent *e);
+     virtual void closeEvent(QCloseEvent *e);
+     virtual void hideEvent(QHideEvent *e);

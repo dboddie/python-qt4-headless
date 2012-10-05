@@ -1,0 +1,28 @@
+--- sip/QtCore/qtextstream.sip.old	2012-10-04 17:51:55.032239141 +0200
++++ sip/QtCore/qtextstream.sip	2012-10-04 17:51:55.040239141 +0200
+@@ -76,6 +76,7 @@
+     QTextStream(QString *string /Constrained/, QFlags<QIODevice::OpenModeFlag> mode = QIODevice::ReadWrite) /API=QString: - 2/;
+     QTextStream(QByteArray *array /Constrained/, QFlags<QIODevice::OpenModeFlag> mode = QIODevice::ReadWrite);
+     virtual ~QTextStream();
++%If (PyQt_TextCodec)
+     void setCodec(QTextCodec *codec /KeepReference/);
+     void setCodec(const char *codecName);
+     QTextCodec *codec() const;
+@@ -83,6 +84,7 @@
+     bool autoDetectUnicode() const;
+     void setGenerateByteOrderMark(bool generate);
+     bool generateByteOrderMark() const;
++%End
+     void setDevice(QIODevice *device);
+     QIODevice *device() const;
+     void setString(QString *string /Constrained/, QFlags<QIODevice::OpenModeFlag> mode = QIODevice::ReadWrite) /API=QString: - 2/;
+@@ -164,7 +166,9 @@
+ QTextStream &endl(QTextStream &s);
+ QTextStream &flush(QTextStream &s);
+ QTextStream &reset(QTextStream &s);
++%If (PyQt_TextCodec)
+ QTextStream &bom(QTextStream &s);
++%End
+ QTextStream &ws(QTextStream &s);
+ QTextStreamManipulator qSetFieldWidth(int width);
+ QTextStreamManipulator qSetPadChar(QChar ch);

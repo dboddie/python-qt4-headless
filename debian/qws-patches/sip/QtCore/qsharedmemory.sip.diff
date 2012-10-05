@@ -1,0 +1,13 @@
+--- sip/QtCore/qsharedmemory.sip.old	2012-10-04 17:51:54.980239141 +0200
++++ sip/QtCore/qsharedmemory.sip	2012-10-04 17:51:54.984239141 +0200
+@@ -73,8 +73,10 @@
+         sipRes = sipConvertFromConstVoidPtrAndSize(sipCpp->constData(), sipCpp->size());
+ %End
+ 
++%If (PyQt_SystemSemaphore)
+     bool lock();
+     bool unlock();
++%End
+     QSharedMemory::SharedMemoryError error() const;
+     QString errorString() const;
+ %If (Qt_4_8_0 -)

@@ -1,0 +1,17 @@
+--- sip/QtNetwork/qhostaddress.sip.old	2012-10-04 17:51:54.776239142 +0200
++++ sip/QtNetwork/qhostaddress.sip	2012-10-04 17:51:54.780239142 +0200
+@@ -111,12 +111,14 @@
+ };
+ 
+ bool operator==(QHostAddress::SpecialAddress address1, const QHostAddress &address2);
++%If (PyQt_DataStream)
+ %If (Qt_4_2_0 -)
+ QDataStream &operator<<(QDataStream &, const QHostAddress &);
+ %End
+ %If (Qt_4_2_0 -)
+ QDataStream &operator>>(QDataStream &, QHostAddress &);
+ %End
++%End
+ // Q_IPV6ADDR is implemented as a Python 16-tuple of ints.
+ %MappedType Q_IPV6ADDR /DocType="16-tuple-of-int"/
+ {

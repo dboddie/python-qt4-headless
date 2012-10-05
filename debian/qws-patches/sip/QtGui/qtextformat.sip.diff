@@ -1,0 +1,24 @@
+--- sip/QtGui/qtextformat.sip.old	2012-10-04 17:51:54.248239146 +0200
++++ sip/QtGui/qtextformat.sip	2012-10-04 17:51:54.252239146 +0200
+@@ -56,8 +56,10 @@
+ %End
+ };
+ 
++%If (PyQt_DataStream)
+ QDataStream &operator<<(QDataStream &, const QTextLength & /Constrained/);
+ QDataStream &operator>>(QDataStream &, QTextLength & /Constrained/);
++%End
+ 
+ class QTextFormat
+ {
+@@ -310,8 +312,10 @@
+ %End
+ };
+ 
++%If (PyQt_DataStream)
+ QDataStream &operator<<(QDataStream &, const QTextFormat & /Constrained/);
+ QDataStream &operator>>(QDataStream &, QTextFormat & /Constrained/);
++%End
+ 
+ class QTextCharFormat : QTextFormat
+ {

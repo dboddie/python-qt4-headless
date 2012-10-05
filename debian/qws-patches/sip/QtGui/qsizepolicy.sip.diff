@@ -1,0 +1,17 @@
+--- sip/QtGui/qsizepolicy.sip.old	2012-10-04 17:51:54.604239143 +0200
++++ sip/QtGui/qsizepolicy.sip	2012-10-04 17:51:54.608239143 +0200
+@@ -118,12 +118,14 @@
+ %End
+ };
+ 
++%If (PyQt_DataStream)
+ %If (Qt_4_2_0 -)
+ QDataStream &operator<<(QDataStream &, const QSizePolicy & /Constrained/);
+ %End
+ %If (Qt_4_2_0 -)
+ QDataStream &operator>>(QDataStream &, QSizePolicy & /Constrained/);
+ %End
++%End
+ %If (Qt_4_3_0 -)
+ QFlags<QSizePolicy::ControlType> operator|(QSizePolicy::ControlType f1, QFlags<QSizePolicy::ControlType> f2);
+ %End

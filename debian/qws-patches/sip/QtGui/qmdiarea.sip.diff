@@ -1,0 +1,33 @@
+--- sip/QtGui/qmdiarea.sip.old	2012-10-04 17:51:54.032239147 +0200
++++ sip/QtGui/qmdiarea.sip	2012-10-04 17:51:54.036239147 +0200
+@@ -138,24 +138,30 @@
+ %If (Qt_4_4_0 -)
+     QMdiArea::ViewMode viewMode() const;
+ %End
++%If (PyQt_TabWidget)
+ %If (Qt_4_4_0 -)
+     void setTabShape(QTabWidget::TabShape shape);
+ %End
+ %If (Qt_4_4_0 -)
+     QTabWidget::TabShape tabShape() const;
+ %End
++%End
++%If (PyQt_TabWidget)
+ %If (Qt_4_4_0 -)
+     void setTabPosition(QTabWidget::TabPosition position);
+ %End
+ %If (Qt_4_4_0 -)
+     QTabWidget::TabPosition tabPosition() const;
+ %End
++%End
++%If (PyQt_TabBar)
+ %If (Qt_4_5_0 -)
+     bool documentMode() const;
+ %End
+ %If (Qt_4_5_0 -)
+     void setDocumentMode(bool enabled);
+ %End
++%End
+ %If (Qt_4_8_0 -)
+     void setTabsClosable(bool closable);
+ %End

@@ -1,0 +1,14 @@
+--- sip/QtCore/qabstracttransition.sip.old	2012-10-04 17:51:54.856239143 +0200
++++ sip/QtCore/qabstracttransition.sip	2012-10-04 17:51:54.860239143 +0200
+@@ -42,9 +42,11 @@
+     QList<QAbstractState*> targetStates() const;
+     void setTargetStates(const QList<QAbstractState*> &targets /KeepReference/);
+     QStateMachine *machine() const;
++%If (PyQt_Animation)
+     void addAnimation(QAbstractAnimation *animation);
+     void removeAnimation(QAbstractAnimation *animation);
+     QList<QAbstractAnimation*> animations() const;
++%End
+ 
+ signals:
+     void triggered();

@@ -1,0 +1,23 @@
+--- sip/QtCore/qrect.sip.old	2012-10-04 17:51:54.876239143 +0200
++++ sip/QtCore/qrect.sip	2012-10-04 17:51:54.880239143 +0200
+@@ -153,8 +153,10 @@
+ %End
+ };
+ 
++%If (PyQt_DataStream)
+ QDataStream &operator<<(QDataStream &, const QRect & /Constrained/);
+ QDataStream &operator>>(QDataStream &, QRect & /Constrained/);
++%End
+ bool operator==(const QRect &r1, const QRect &r2);
+ bool operator!=(const QRect &r1, const QRect &r2);
+ 
+@@ -307,7 +309,9 @@
+ %End
+ };
+ 
++%If (PyQt_DataStream)
+ QDataStream &operator<<(QDataStream &, const QRectF & /Constrained/);
+ QDataStream &operator>>(QDataStream &, QRectF & /Constrained/);
++%End
+ bool operator==(const QRectF &r1, const QRectF &r2);
+ bool operator!=(const QRectF &r1, const QRectF &r2);

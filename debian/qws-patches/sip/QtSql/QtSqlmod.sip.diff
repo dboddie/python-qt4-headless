@@ -1,0 +1,23 @@
+--- sip/QtSql/QtSqlmod.sip.old	2012-10-04 17:51:54.676239144 +0200
++++ sip/QtSql/QtSqlmod.sip	2012-10-04 17:51:54.680239144 +0200
+@@ -65,9 +65,15 @@
+ %Include qsqlfield.sip
+ %Include qsqlindex.sip
+ %Include qsqlquery.sip
+-%Include qsqlquerymodel.sip
++%If (PyQt_ItemViews)
++  %Include qsqlquerymodel.sip
++%End
+ %Include qsqlrecord.sip
+-%Include qsqlrelationaldelegate.sip
+-%Include qsqlrelationaltablemodel.sip
+-%Include qsqlresult.sip
+-%Include qsqltablemodel.sip
++%If (PyQt_ItemViews)
++  %Include qsqlrelationaldelegate.sip
++  %Include qsqlrelationaltablemodel.sip
++%End
++  %Include qsqlresult.sip
++%If (PyQt_ItemViews)
++  %Include qsqltablemodel.sip
++%End

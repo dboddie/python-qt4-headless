@@ -1,0 +1,27 @@
+--- sip/QtGui/qundoview.sip.old	2012-10-04 17:51:54.300239144 +0200
++++ sip/QtGui/qundoview.sip	2012-10-04 17:51:54.304239144 +0200
+@@ -36,10 +36,14 @@
+ public:
+     explicit QUndoView(QWidget *parent /TransferThis/ = 0);
+     QUndoView(QUndoStack *stack, QWidget *parent /TransferThis/ = 0);
++%If (PyQt_UndoGroup)
+     QUndoView(QUndoGroup *group, QWidget *parent /TransferThis/ = 0);
++%End
+     virtual ~QUndoView();
+     QUndoStack *stack() const;
++%If (PyQt_UndoGroup)
+     QUndoGroup *group() const;
++%End
+     void setEmptyLabel(const QString &label);
+     QString emptyLabel() const;
+     void setCleanIcon(const QIcon &icon);
+@@ -47,7 +51,9 @@
+ 
+ public slots:
+     void setStack(QUndoStack *stack /KeepReference/);
++%If (PyQt_UndoGroup)
+     void setGroup(QUndoGroup *group /KeepReference/);
++%End
+ };
+ 
+ %End

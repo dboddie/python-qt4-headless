@@ -1,0 +1,21 @@
+--- sip/QtGui/qabstractscrollarea.sip.old	2012-10-04 17:51:53.928239146 +0200
++++ sip/QtGui/qabstractscrollarea.sip	2012-10-04 17:51:53.932239146 +0200
+@@ -55,12 +55,18 @@
+     virtual void mouseReleaseEvent(QMouseEvent *);
+     virtual void mouseDoubleClickEvent(QMouseEvent *);
+     virtual void mouseMoveEvent(QMouseEvent *);
++%If (PyQt_WheelEvent)
+     virtual void wheelEvent(QWheelEvent *);
++%End
++%If (PyQt_ContextMenu)
+     virtual void contextMenuEvent(QContextMenuEvent *);
++%End
++%If (PyQt_DragAndDrop)
+     virtual void dragEnterEvent(QDragEnterEvent *);
+     virtual void dragMoveEvent(QDragMoveEvent *);
+     virtual void dragLeaveEvent(QDragLeaveEvent *);
+     virtual void dropEvent(QDropEvent *);
++%End
+     virtual void keyPressEvent(QKeyEvent *);
+     virtual void scrollContentsBy(int dx, int dy);
+ 

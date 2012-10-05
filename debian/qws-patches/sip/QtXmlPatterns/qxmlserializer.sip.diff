@@ -1,0 +1,13 @@
+--- sip/QtXmlPatterns/qxmlserializer.sip.old	2012-10-04 17:51:54.684239144 +0200
++++ sip/QtXmlPatterns/qxmlserializer.sip	2012-10-04 17:51:54.688239144 +0200
+@@ -48,8 +48,10 @@
+     virtual void startOfSequence();
+     virtual void endOfSequence();
+     QIODevice *outputDevice() const;
++%If (PyQt_TextCodec)
+     void setCodec(const QTextCodec *codec /KeepReference/);
+     const QTextCodec *codec() const;
++%End
+ };
+ 
+ %End

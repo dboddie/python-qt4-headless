@@ -1,0 +1,13 @@
+--- sip/QtGui/qtextcursor.sip.old	2012-10-04 17:51:54.408239144 +0200
++++ sip/QtGui/qtextcursor.sip	2012-10-04 17:51:54.412239144 +0200
+@@ -142,8 +142,10 @@
+     QTextFrame *currentFrame() const;
+     void insertFragment(const QTextDocumentFragment &fragment);
+ %If (Qt_4_2_0 -)
++%If (PyQt_TextHTMLParser)
+     void insertHtml(const QString &html);
+ %End
++%End
+     void insertImage(const QTextImageFormat &format);
+ %If (Qt_4_2_0 -)
+     void insertImage(const QTextImageFormat &format, QTextFrameFormat::Position alignment);

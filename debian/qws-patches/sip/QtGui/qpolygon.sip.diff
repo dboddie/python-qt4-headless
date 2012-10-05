@@ -1,0 +1,15 @@
+--- sip/QtGui/qpolygon.sip.old	2012-10-04 17:51:54.196239145 +0200
++++ sip/QtGui/qpolygon.sip	2012-10-04 17:51:54.200239145 +0200
+@@ -551,6 +551,7 @@
+ %End
+ };
+ 
++%If (PyQt_DataStream)
+ QDataStream &operator<<(QDataStream &stream, const QPolygonF &array /Constrained/);
+ QDataStream &operator>>(QDataStream &stream, QPolygonF &array /Constrained/);
+ %If (Qt_4_4_0 -)
+@@ -559,3 +560,4 @@
+ %If (Qt_4_4_0 -)
+ QDataStream &operator>>(QDataStream &stream, QPolygon &polygon /Constrained/);
+ %End
++%End

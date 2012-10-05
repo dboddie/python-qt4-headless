@@ -1,0 +1,12 @@
+--- sip/QtCore/qabstracteventdispatcher.sip.old	2012-10-04 17:51:54.972239141 +0200
++++ sip/QtCore/qabstracteventdispatcher.sip	2012-10-04 17:51:54.976239141 +0200
+@@ -36,7 +36,9 @@
+ public:
+     explicit QAbstractEventDispatcher(QObject *parent /TransferThis/ = 0);
+     virtual ~QAbstractEventDispatcher();
++%If (PyQt_Thread)
+     static QAbstractEventDispatcher *instance(QThread *thread = 0);
++%End
+     virtual bool processEvents(QFlags<QEventLoop::ProcessEventsFlag> flags) = 0 /ReleaseGIL/;
+     virtual bool hasPendingEvents() = 0;
+     virtual void registerSocketNotifier(QSocketNotifier *notifier) = 0;

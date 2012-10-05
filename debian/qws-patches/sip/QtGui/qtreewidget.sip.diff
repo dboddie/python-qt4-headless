@@ -1,0 +1,55 @@
+--- sip/QtGui/qtreewidget.sip.old	2012-10-04 17:51:53.984239146 +0200
++++ sip/QtGui/qtreewidget.sip	2012-10-04 17:51:53.992239146 +0200
+@@ -74,7 +74,9 @@
+     Qt::ItemFlags flags() const;
+     QString text(int column) const;
+     QIcon icon(int column) const;
++%If (PyQt_StatusTip)
+     QString statusTip(int column) const;
++%End
+ %If (PyQt_ToolTip)
+     QString toolTip(int column) const;
+ %End
+@@ -93,8 +95,10 @@
+     virtual QVariant data(int column, int role) const;
+     virtual void setData(int column, int role, const QVariant &value);
+     virtual bool operator<(const QTreeWidgetItem &other /NoCopy/) const;
++%If (PyQt_DataStream)
+     virtual void read(QDataStream &in) /ReleaseGIL/;
+     virtual void write(QDataStream &out) const /ReleaseGIL/;
++%End
+     QTreeWidgetItem *parent() const;
+     QTreeWidgetItem *child(int index) const;
+     int childCount() const;
+@@ -106,7 +110,9 @@
+     void setFlags(Qt::ItemFlags aflags);
+     void setText(int column, const QString &atext);
+     void setIcon(int column, const QIcon &aicon);
++%If (PyQt_StatusTip)
+     void setStatusTip(int column, const QString &astatusTip);
++%End
+ %If (PyQt_ToolTip)
+     void setToolTip(int column, const QString &atoolTip);
+ %End
+@@ -194,8 +200,10 @@
+     QTreeWidgetItem &operator=(const QTreeWidgetItem &);
+ };
+ 
++%If (PyQt_DataStream)
+ QDataStream &operator<<(QDataStream &out, const QTreeWidgetItem &item /Constrained/);
+ QDataStream &operator>>(QDataStream &in, QTreeWidgetItem &item /Constrained/);
++%End
+ 
+ class QTreeWidget : QTreeView
+ {
+@@ -296,8 +304,10 @@
+     QTreeWidgetItem *itemFromIndex(const QModelIndex &index) const;
+     virtual bool event(QEvent *e);
+ %If (Qt_4_2_0 -)
++%If (PyQt_DragAndDrop)
+     virtual void dropEvent(QDropEvent *event);
+ %End
++%End
+ 
+ public:
+ %If (Qt_4_2_0 -)

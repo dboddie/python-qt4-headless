@@ -1,0 +1,12 @@
+--- sip/QtGui/qabstractprintdialog.sip.old	2012-10-04 17:51:53.896239145 +0200
++++ sip/QtGui/qabstractprintdialog.sip	2012-10-04 17:51:53.896239145 +0200
+@@ -68,7 +68,9 @@
+ 
+     typedef QFlags<QAbstractPrintDialog::PrintDialogOption> PrintDialogOptions;
+ %If (PyQt_PrintDialog)
++%If (PyQt_Printer)
+     QAbstractPrintDialog(QPrinter *printer, QWidget *parent /TransferThis/ = 0);
++%End
+ %If (Qt_4_5_0 -)
+     virtual ~QAbstractPrintDialog();
+ %End

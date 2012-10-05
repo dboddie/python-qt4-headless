@@ -1,0 +1,47 @@
+--- sip/QtCore/qxmlstream.sip.old	2012-10-04 17:51:55.004239141 +0200
++++ sip/QtCore/qxmlstream.sip	2012-10-04 17:51:55.008239141 +0200
+@@ -335,6 +335,7 @@
+ 
+ %End
+ %If (Qt_4_4_0 -)
++%If (PyQt_XMLStreamReader)
+ 
+ class QXmlStreamReader
+ {
+@@ -449,7 +450,9 @@
+ };
+ 
+ %End
++%End
+ %If (Qt_4_4_0 -)
++%If (PyQt_XMLStreamWriter)
+ 
+ class QXmlStreamWriter
+ {
+@@ -465,9 +468,11 @@
+     ~QXmlStreamWriter();
+     void setDevice(QIODevice *device);
+     QIODevice *device() const;
++%If (PyQt_TextCodec)
+     void setCodec(QTextCodec *codec /KeepReference/);
+     void setCodec(const char *codecName);
+     QTextCodec *codec() const;
++%End
+     void setAutoFormatting(bool);
+     bool autoFormatting() const;
+     void setAutoFormattingIndent(int spaces);
+@@ -497,7 +502,9 @@
+ %End
+     void writeStartElement(const QString &qualifiedName);
+     void writeStartElement(const QString &namespaceUri, const QString &name);
++%If (PyQt_XMLStreamReader)
+     void writeCurrentToken(const QXmlStreamReader &reader);
++%End
+ %If (Qt_4_8_0 -)
+     bool hasError() const;
+ %End
+@@ -507,3 +514,4 @@
+ };
+ 
+ %End
++%End

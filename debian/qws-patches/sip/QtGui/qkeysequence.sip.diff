@@ -1,0 +1,13 @@
+--- sip/QtGui/qkeysequence.sip.old	2012-10-04 17:51:54.288239146 +0200
++++ sip/QtGui/qkeysequence.sip	2012-10-04 17:51:54.296239145 +0200
+@@ -246,8 +246,10 @@
+ %End
+ };
+ 
++%If (PyQt_DataStream)
+ QDataStream &operator<<(QDataStream &in, const QKeySequence &ks /Constrained/);
+ QDataStream &operator>>(QDataStream &out, QKeySequence &ks /Constrained/);
++%End
+ %If (Qt_4_3_0 -)
+ void qSwap(QKeySequence &value1, QKeySequence &value2);
+ %End

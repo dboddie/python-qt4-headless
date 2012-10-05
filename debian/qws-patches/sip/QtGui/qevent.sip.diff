@@ -1,0 +1,305 @@
+--- sip/QtGui/qevent.sip.old	2012-10-04 17:51:54.008239146 +0200
++++ sip/QtGui/qevent.sip	2012-10-04 17:51:54.016239146 +0200
+@@ -38,20 +38,25 @@
+ %ConvertToSubClassCode
+     switch (sipCpp->type())
+     {
++#if defined(SIP_FEATURE_PyQt_Action)
+     case QEvent::ActionAdded:
+     case QEvent::ActionChanged:
+     case QEvent::ActionRemoved:
+         sipType = sipType_QActionEvent;
+         break;
++#endif
+     
+     case QEvent::Close:
+         sipType = sipType_QCloseEvent;
+         break;
+     
++#if defined(SIP_FEATURE_PyQt_ContextMenu)
+     case QEvent::ContextMenu:
+         sipType = sipType_QContextMenuEvent;
+         break;
++#endif
+     
++#if defined(SIP_FEATURE_PyQt_DragAndDrop)
+     case QEvent::DragEnter:
+         sipType = sipType_QDragEnterEvent;
+         break;
+@@ -67,6 +72,7 @@
+     case QEvent::Drop:
+         sipType = sipType_QDropEvent;
+         break;
++#endif
+     
+     case QEvent::FileOpen:
+         sipType = sipType_QFileOpenEvent;
+@@ -120,18 +126,23 @@
+         sipType = sipType_QResizeEvent;
+         break;
+     
++#if defined(SIP_FEATURE_PyQt_Shortcut)
+     case QEvent::Shortcut:
+         sipType = sipType_QShortcutEvent;
+         break;
++#endif
+     
+     case QEvent::Show:
+         sipType = sipType_QShowEvent;
+         break;
+     
++#if defined(SIP_FEATURE_PyQt_StatusTip)
+     case QEvent::StatusTip:
+         sipType = sipType_QStatusTipEvent;
+         break;
+-    
++#endif
++
++#if defined(SIP_FEATURE_PyQt_TabletEvent)    
+     case QEvent::TabletMove:
+     case QEvent::TabletPress:
+     case QEvent::TabletRelease:
+@@ -141,8 +152,10 @@
+     #endif
+         sipType = sipType_QTabletEvent;
+         break;
++#endif
+     
+     case QEvent::ToolTip:
++#if defined(SIP_FEATURE_PyQt_WhatsThis)
+     case QEvent::WhatsThis:
+         sipType = sipType_QHelpEvent;
+         break;
+@@ -150,26 +163,34 @@
+     case QEvent::WhatsThisClicked:
+         sipType = sipType_QWhatsThisClickedEvent;
+         break;
++#endif
+     
++#if defined(SIP_FEATURE_PyQt_WheelEvent)
+     case QEvent::Wheel:
+         sipType = sipType_QWheelEvent;
+         break;
++#endif
+     
+     case QEvent::WindowStateChange:
+         sipType = sipType_QWindowStateChangeEvent;
+         break;
+     
+     #if QT_VERSION >= 0x040200
++    #if defined(SIP_FEATURE_PyQt_ContextMenu)
+     case QEvent::GraphicsSceneContextMenu:
+         sipType = sipType_QGraphicsSceneContextMenuEvent;
+         break;
+-    
++    #endif
++
++#if defined(SIP_FEATURE_PyQt_GraphicsView)
++#if defined(SIP_FEATURE_PyQt_DragAndDrop)
+     case QEvent::GraphicsSceneDragEnter:
+     case QEvent::GraphicsSceneDragLeave:
+     case QEvent::GraphicsSceneDragMove:
+     case QEvent::GraphicsSceneDrop:
+         sipType = sipType_QGraphicsSceneDragDropEvent;
+         break;
++#endif
+     
+     case QEvent::GraphicsSceneHelp:
+         sipType = sipType_QGraphicsSceneHelpEvent;
+@@ -191,9 +212,10 @@
+     case QEvent::GraphicsSceneWheel:
+         sipType = sipType_QGraphicsSceneWheelEvent;
+         break;
++#endif
+     #endif
+     
+-    #if QT_VERSION >= 0x040400
++    #if QT_VERSION >= 0x040400 && defined(SIP_FEATURE_PyQt_GraphicsView)
+     case QEvent::GraphicsSceneMove:
+         sipType = sipType_QGraphicsSceneMoveEvent;
+         break;
+@@ -210,10 +232,12 @@
+         sipType = sipType_QTouchEvent;
+         break;
+     
++    #if defined(SIP_FEATURE_PyQt_Gestures)
+     case QEvent::Gesture:
+         sipType = sipType_QGestureEvent;
+         break;
+     #endif
++    #endif
+     
+     default:
+         sipType = 0;
+@@ -264,6 +288,8 @@
+     const QPoint &oldPos() const;
+ };
+ 
++%If (PyQt_WheelEvent)
++
+ class QWheelEvent : QInputEvent
+ {
+ %TypeHeaderCode
+@@ -285,6 +311,10 @@
+     Qt::Orientation orientation() const;
+ };
+ 
++%End
++
++%If (PyQt_TabletEvent)
++
+ class QTabletEvent : QInputEvent
+ {
+ %TypeHeaderCode
+@@ -333,6 +363,8 @@
+     int yTilt() const;
+ };
+ 
++%End
++
+ class QKeyEvent : QInputEvent
+ {
+ %TypeHeaderCode
+@@ -348,8 +380,10 @@
+     bool isAutoRepeat() const;
+     int count() const /__len__/;
+ %If (Qt_4_2_0 -)
++%If (PyQt_Shortcut)
+     bool matches(QKeySequence::StandardKey key) const;
+ %End
++%End
+ %If (Qt_4_2_0 -)
+     quint32 nativeModifiers() const;
+ %End
+@@ -464,6 +498,8 @@
+     virtual ~QHideEvent();
+ };
+ 
++%If (PyQt_ContextMenu)
++
+ class QContextMenuEvent : QInputEvent
+ {
+ %TypeHeaderCode
+@@ -493,6 +529,10 @@
+     QContextMenuEvent::Reason reason() const;
+ };
+ 
++%End
++
++%If (PyQt_InputMethod)
++
+ class QInputMethodEvent : QEvent
+ {
+ %TypeHeaderCode
+@@ -536,6 +576,10 @@
+     int replacementLength() const;
+ };
+ 
++%End
++
++%If (PyQt_DragAndDrop)
++
+ class QDropEvent : QEvent, QMimeSource
+ {
+ %TypeHeaderCode
+@@ -598,6 +642,8 @@
+     virtual ~QDragLeaveEvent();
+ };
+ 
++%End
++
+ class QHelpEvent : QEvent
+ {
+ %TypeHeaderCode
+@@ -615,6 +661,8 @@
+     const QPoint &globalPos() const;
+ };
+ 
++%If (PyQt_StatusTip)
++
+ class QStatusTipEvent : QEvent
+ {
+ %TypeHeaderCode
+@@ -627,6 +675,10 @@
+     QString tip() const;
+ };
+ 
++%End
++
++%If (PyQt_WhatsThis)
++
+ class QWhatsThisClickedEvent : QEvent
+ {
+ %TypeHeaderCode
+@@ -639,6 +691,10 @@
+     QString href() const;
+ };
+ 
++%End
++
++%If (PyQt_Action)
++
+ class QActionEvent : QEvent
+ {
+ %TypeHeaderCode
+@@ -652,6 +708,8 @@
+     QAction *before() const;
+ };
+ 
++%End
++
+ class QFileOpenEvent : QEvent /NoDefaultCtors/
+ {
+ %TypeHeaderCode
+@@ -669,6 +727,8 @@
+ %End
+ };
+ 
++%If (PyQt_Shortcut)
++
+ class QShortcutEvent : QEvent
+ {
+ %TypeHeaderCode
+@@ -698,6 +758,8 @@
+ %End
+ };
+ 
++%End
++
+ class QWindowStateChangeEvent : QEvent /NoDefaultCtors/
+ {
+ %TypeHeaderCode
+@@ -709,12 +771,14 @@
+     Qt::WindowStates oldState() const;
+ };
+ 
++%If (PyQt_Shortcut)
+ %If (Qt_4_2_0 -)
+ bool operator==(QKeyEvent *e, QKeySequence::StandardKey key);
+ %End
+ %If (Qt_4_2_0 -)
+ bool operator==(QKeySequence::StandardKey key, QKeyEvent *e);
+ %End
++%End
+ %If (Qt_4_6_0 -)
+ 
+ class QTouchEvent : QInputEvent
+@@ -768,6 +832,7 @@
+ 
+ %End
+ %If (Qt_4_6_0 -)
++%If (PyQt_Gestures)
+ 
+ class QGestureEvent : QEvent
+ {
+@@ -795,7 +860,10 @@
+     void ignore(Qt::GestureType);
+     bool isAccepted(Qt::GestureType) const;
+     QWidget *widget() const;
++%If (PyQt_GraphicsView)
+     QPointF mapToGraphicsScene(const QPointF &gesturePoint) const;
++%End
+ };
+ 
+ %End
++%End

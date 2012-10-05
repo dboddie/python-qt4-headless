@@ -1,0 +1,13 @@
+--- sip/QtCore/qsize.sip.old	2012-10-04 17:51:54.888239143 +0200
++++ sip/QtCore/qsize.sip	2012-10-04 17:51:54.892239143 +0200
+@@ -87,8 +87,10 @@
+     QSize boundedTo(const QSize &otherSize) const;
+ };
+ 
++%If (PyQt_DataStream)
+ QDataStream &operator<<(QDataStream &, const QSize & /Constrained/);
+ QDataStream &operator>>(QDataStream &, QSize & /Constrained/);
++%End
+ bool operator==(const QSize &s1, const QSize &s2);
+ bool operator!=(const QSize &s1, const QSize &s2);
+ const QSize operator+(const QSize &s1, const QSize &s2);

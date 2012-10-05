@@ -1,0 +1,22 @@
+--- sip/QtSvg/QtSvgmod.sip.old	2012-10-04 17:51:54.696239144 +0200
++++ sip/QtSvg/QtSvgmod.sip	2012-10-04 17:51:54.700239144 +0200
+@@ -56,7 +56,15 @@
+ 
+ %DefaultSupertype sip.simplewrapper
+ 
+-%Include qgraphicssvgitem.sip
+-%Include qsvggenerator.sip
+-%Include qsvgrenderer.sip
+-%Include qsvgwidget.sip
++%If (PyQt_GraphicsSVGItem)
++  %Include qgraphicssvgitem.sip
++%End
++%If (PyQt_SVGGenerator)
++  %Include qsvggenerator.sip
++%End
++%If (PyQt_SVGRenderer)
++  %Include qsvgrenderer.sip
++%End
++%If (PyQt_SVGWidget)
++  %Include qsvgwidget.sip
++%End

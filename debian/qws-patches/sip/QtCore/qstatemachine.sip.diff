@@ -1,0 +1,16 @@
+--- sip/QtCore/qstatemachine.sip.old	2012-10-04 17:51:55.088239142 +0200
++++ sip/QtCore/qstatemachine.sip	2012-10-04 17:51:55.096239142 +0200
+@@ -87,11 +87,13 @@
+     QString errorString() const;
+     void clearError();
+     bool isRunning() const;
++%If (PyQt_Animation)
+     bool isAnimated() const;
+     void setAnimated(bool enabled);
+     void addDefaultAnimation(QAbstractAnimation *animation);
+     QList<QAbstractAnimation*> defaultAnimations() const;
+     void removeDefaultAnimation(QAbstractAnimation *animation);
++%End
+     QStateMachine::RestorePolicy globalRestorePolicy() const;
+     void setGlobalRestorePolicy(QStateMachine::RestorePolicy restorePolicy);
+     void postEvent(QEvent *event /Transfer/, QStateMachine::EventPriority priority = QStateMachine::NormalPriority);

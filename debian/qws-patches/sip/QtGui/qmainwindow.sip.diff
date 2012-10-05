@@ -1,0 +1,164 @@
+--- sip/QtGui/qmainwindow.sip.old	2012-10-04 17:51:54.184239145 +0200
++++ sip/QtGui/qmainwindow.sip	2012-10-04 17:51:54.188239145 +0200
+@@ -47,14 +47,21 @@
+     void setIconSize(const QSize &iconSize);
+     Qt::ToolButtonStyle toolButtonStyle() const;
+     void setToolButtonStyle(Qt::ToolButtonStyle toolButtonStyle);
++%If (PyQt_MenuBar)
+     QMenuBar *menuBar() const /Transfer/;
+     void setMenuBar(QMenuBar *menubar /Transfer/);
++%End
++%If (PyQt_StatusBar)
+     QStatusBar *statusBar() const /Transfer/;
+     void setStatusBar(QStatusBar *statusbar /Transfer/);
++%End
+     QWidget *centralWidget() const;
+     void setCentralWidget(QWidget *widget /Transfer/);
++%If (PyQt_DockWidget)
+     void setCorner(Qt::Corner corner, Qt::DockWidgetArea area);
+     Qt::DockWidgetArea corner(Qt::Corner corner) const;
++%End
++%If (PyQt_ToolBar)
+     void addToolBarBreak(Qt::ToolBarArea area = Qt::TopToolBarArea);
+     void insertToolBarBreak(QToolBar *before);
+     void addToolBar(Qt::ToolBarArea area, QToolBar *toolbar /Transfer/);
+@@ -63,51 +70,66 @@
+     void insertToolBar(QToolBar *before, QToolBar *toolbar /Transfer/);
+     void removeToolBar(QToolBar *toolbar);
+     Qt::ToolBarArea toolBarArea(QToolBar *toolbar) const;
++%End
++%If (PyQt_DockWidget)
+     void addDockWidget(Qt::DockWidgetArea area, QDockWidget *dockwidget /Transfer/);
+     void addDockWidget(Qt::DockWidgetArea area, QDockWidget *dockwidget /Transfer/, Qt::Orientation orientation);
+     void splitDockWidget(QDockWidget *after, QDockWidget *dockwidget /Transfer/, Qt::Orientation orientation);
+     void removeDockWidget(QDockWidget *dockwidget /TransferBack/);
+     Qt::DockWidgetArea dockWidgetArea(QDockWidget *dockwidget) const;
++%End
+     QByteArray saveState(int version = 0) const;
+     bool restoreState(const QByteArray &state, int version = 0);
++%If (PyQt_Menu)
+     virtual QMenu *createPopupMenu();
++%End
+ 
+ public slots:
++%If (PyQt_DockWidget)
+ %If (Qt_4_2_0 -)
+     void setAnimated(bool enabled);
+ %End
+ %If (Qt_4_2_0 -)
+     void setDockNestingEnabled(bool enabled);
+ %End
++%End
+ 
+ signals:
+     void iconSizeChanged(const QSize &iconSize);
+     void toolButtonStyleChanged(Qt::ToolButtonStyle toolButtonStyle);
+ 
+ protected:
++%If (PyQt_ContextMenu)
+     virtual void contextMenuEvent(QContextMenuEvent *event);
++%End
+     virtual bool event(QEvent *event);
+ 
+ public:
++%If (PyQt_DockWidget)
+ %If (Qt_4_2_0 -)
+     bool isAnimated() const;
+ %End
+ %If (Qt_4_2_0 -)
+     bool isDockNestingEnabled() const;
+ %End
++%End
+ %If (Qt_4_2_0 -)
+     bool isSeparator(const QPoint &pos) const;
+ %End
++%If (PyQt_MenuBar)
+ %If (Qt_4_2_0 -)
+     QWidget *menuWidget() const;
+ %End
+ %If (Qt_4_2_0 -)
+     void setMenuWidget(QWidget *menubar /Transfer/);
+ %End
++%End
++%If (PyQt_DockWidget)
+ %If (Qt_4_2_0 -)
+     void tabifyDockWidget(QDockWidget *first, QDockWidget *second);
+ %End
+ %If (Qt_4_3_0 -)
++%If (PyQt_DockWidget)
+ 
+     enum DockOption
+     {
+@@ -119,15 +141,24 @@
+     };
+ 
+ %End
++%End
+ %If (Qt_4_3_0 -)
++%If (PyQt_DockWidget)
+     typedef QFlags<QMainWindow::DockOption> DockOptions;
+ %End
++%End
+ %If (Qt_4_3_0 -)
++%If (PyQt_DockWidget)
+     void setDockOptions(QFlags<QMainWindow::DockOption> options);
+ %End
++%End
+ %If (Qt_4_3_0 -)
++%If (PyQt_DockWidget)
+     QFlags<QMainWindow::DockOption> dockOptions() const;
+ %End
++%End
++%End
++%If (PyQt_ToolBar)
+ %If (Qt_4_3_0 -)
+     void removeToolBarBreak(QToolBar *before);
+ %End
+@@ -141,34 +172,47 @@
+     bool unifiedTitleAndToolBarOnMac() const;
+ %End
+ %If (Qt_4_4_0 -)
++%If (PyQt_DockWidget)
+     bool restoreDockWidget(QDockWidget *dockwidget);
+ %End
++%End
++%If (PyQt_TabBar)
+ %If (Qt_4_5_0 -)
+     bool documentMode() const;
+ %End
+ %If (Qt_4_5_0 -)
+     void setDocumentMode(bool enabled);
+ %End
++%If (PyQt_TabWidget)
+ %If (Qt_4_5_0 -)
+     QTabWidget::TabShape tabShape() const;
+ %End
+ %If (Qt_4_5_0 -)
+     void setTabShape(QTabWidget::TabShape tabShape);
+ %End
++%If (PyQt_DockWidget)
+ %If (Qt_4_5_0 -)
+     QTabWidget::TabPosition tabPosition(Qt::DockWidgetArea area) const;
+ %End
+ %If (Qt_4_5_0 -)
+     void setTabPosition(Qt::DockWidgetAreas areas, QTabWidget::TabPosition tabPosition);
+ %End
++%End
++%End
++%If (PyQt_DockWidget)
+ %If (Qt_4_5_0 -)
+     QList<QDockWidget*> tabifiedDockWidgets(QDockWidget *dockwidget) const;
+ %End
++%End
++%End
++%End
+ 
+ private:
+     QMainWindow(const QMainWindow &);
+ };
+ 
+ %If (Qt_4_3_0 -)
++%If (PyQt_DockWidget)
+ QFlags<QMainWindow::DockOption> operator|(QMainWindow::DockOption f1, QFlags<QMainWindow::DockOption> f2);
+ %End
++%End

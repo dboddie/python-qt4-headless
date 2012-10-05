@@ -1,0 +1,77 @@
+--- sip/QtGui/qstandarditemmodel.sip.old	2012-10-04 17:51:53.936239146 +0200
++++ sip/QtGui/qstandarditemmodel.sip	2012-10-04 17:51:53.940239146 +0200
+@@ -56,8 +56,10 @@
+     virtual Qt::ItemFlags flags(const QModelIndex &index) const;
+     void clear();
+ %If (Qt_4_2_0 -)
++%If (PyQt_DragAndDrop)
+     virtual Qt::DropActions supportedDropActions() const;
+ %End
++%End
+ %If (Qt_4_2_0 -)
+     virtual QMap<int, QVariant> itemData(const QModelIndex &index) const;
+ %End
+@@ -200,9 +202,15 @@
+     virtual void setData(const QVariant &value, int role = Qt::UserRole+1);
+     QString text() const;
+     QIcon icon() const;
++%If (PyQt_ToolTip)
+     QString toolTip() const;
++%End
++%If (PyQt_StatusTip)
+     QString statusTip() const;
++%End
++%If (PyQt_WhatsThis)
+     QString whatsThis() const;
++%End
+     QSize sizeHint() const;
+     QFont font() const;
+     Qt::Alignment textAlignment() const;
+@@ -223,10 +231,12 @@
+     void setCheckable(bool checkable);
+     bool isTristate() const;
+     void setTristate(bool tristate);
++%If (PyQt_DragAndDrop)
+     bool isDragEnabled() const;
+     void setDragEnabled(bool dragEnabled);
+     bool isDropEnabled() const;
+     void setDropEnabled(bool dropEnabled);
++%End
+     QStandardItem *parent() const;
+     int row() const;
+     int column() const;
+@@ -262,14 +272,22 @@
+     };
+ 
+     virtual int type() const;
++%If (PyQt_DataStream)
+     virtual void read(QDataStream &in);
+     virtual void write(QDataStream &out) const;
++%End
+     virtual bool operator<(const QStandardItem &other /NoCopy/) const;
+     void setText(const QString &atext);
+     void setIcon(const QIcon &aicon);
++%If (PyQt_ToolTip)
+     void setToolTip(const QString &atoolTip);
++%End
++%If (PyQt_StatusTip)
+     void setStatusTip(const QString &astatusTip);
++%End
++%If (PyQt_WhatsThis)
+     void setWhatsThis(const QString &awhatsThis);
++%End
+     void setSizeHint(const QSize &asizeHint);
+     void setFont(const QFont &afont);
+     void setTextAlignment(Qt::Alignment atextAlignment);
+@@ -296,9 +314,11 @@
+ };
+ 
+ %End
++%If (PyQt_DataStream)
+ %If (Qt_4_2_0 -)
+ QDataStream &operator>>(QDataStream &in, QStandardItem &item /Constrained/);
+ %End
+ %If (Qt_4_2_0 -)
+ QDataStream &operator<<(QDataStream &out, const QStandardItem &item /Constrained/);
+ %End
++%End

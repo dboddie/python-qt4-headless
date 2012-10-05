@@ -1,0 +1,13 @@
+--- sip/QtGui/qtextdocumentwriter.sip.old	2012-10-04 17:51:53.900239147 +0200
++++ sip/QtGui/qtextdocumentwriter.sip	2012-10-04 17:51:53.900239147 +0200
+@@ -46,8 +46,10 @@
+     QString fileName() const;
+     bool write(const QTextDocument *document);
+     bool write(const QTextDocumentFragment &fragment);
++%If (PyQt_TextCodec)
+     void setCodec(QTextCodec *codec /KeepReference/);
+     QTextCodec *codec() const;
++%End
+     static QList<QByteArray> supportedDocumentFormats();
+ 
+ private:

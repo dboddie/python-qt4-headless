@@ -1,0 +1,58 @@
+--- sip/QtNetwork/QtNetworkmod.sip.old	2012-10-05 12:14:34.838890540 +0200
++++ sip/QtNetwork/QtNetworkmod.sip	2012-10-05 13:16:24.346872550 +0200
+@@ -58,24 +58,36 @@
+ %Include qabstractnetworkcache.sip
+ %Include qabstractsocket.sip
+ %Include qauthenticator.sip
+-%Include qftp.sip
++%If (PyQt_FTP)
++  %Include qftp.sip
++%End
+ %Include qhostaddress.sip
+-%Include qhostinfo.sip
+-%Include qhttp.sip
+-%Include qhttpmultipart.sip
++%If (PyQt_HostInfo)
++  %Include qhostinfo.sip
++%End
++%If (PyQt_HTTP)
++  %Include qhttp.sip
++  %Include qhttpmultipart.sip
++%End
+ %Include qlocalserver.sip
+ %Include qlocalsocket.sip
+ %Include qnetworkaccessmanager.sip
+-%Include qnetworkconfigmanager.sip
++%If (PyQt_BearerManagement)
++  %Include qnetworkconfigmanager.sip
++%End
+ %Include qnetworkconfiguration.sip
+ %Include qnetworkcookie.sip
+ %Include qnetworkcookiejar.sip
+ %Include qnetworkdiskcache.sip
+ %Include qnetworkinterface.sip
+-%Include qnetworkproxy.sip
++%If (PyQt_NetworkProxy)
++  %Include qnetworkproxy.sip
++%End
+ %Include qnetworkreply.sip
+ %Include qnetworkrequest.sip
+-%Include qnetworksession.sip
++%If (PyQt_BearerManagement)
++  %Include qnetworksession.sip
++%End
+ %Include qssl.sip
+ %Include qsslcertificate.sip
+ %Include qsslconfiguration.sip
+@@ -85,5 +97,9 @@
+ %Include qsslsocket.sip
+ %Include qtcpserver.sip
+ %Include qtcpsocket.sip
+-%Include qudpsocket.sip
+-%Include qurlinfo.sip
++%If (PyQt_UDPSocket)
++  %Include qudpsocket.sip
++%End
++%If (PyQt_URLInfo)
++  %Include qurlinfo.sip
++%End

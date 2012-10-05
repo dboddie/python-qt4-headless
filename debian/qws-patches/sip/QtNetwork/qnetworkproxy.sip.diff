@@ -1,0 +1,46 @@
+--- sip/QtNetwork/qnetworkproxy.sip.old	2012-10-05 12:14:34.830890539 +0200
++++ sip/QtNetwork/qnetworkproxy.sip	2012-10-05 13:22:50.202870679 +0200
+@@ -25,6 +25,7 @@
+ // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+ 
+ 
++%If (PyQt_NetworkProxy)
+ class QNetworkProxy
+ {
+ %TypeHeaderCode
+@@ -120,6 +121,7 @@
+     QNetworkProxyQuery(const QUrl &requestUrl, QNetworkProxyQuery::QueryType type = QNetworkProxyQuery::UrlRequest);
+     QNetworkProxyQuery(const QString &hostname, int port, const QString &protocolTag /DocValue="Py_v3:''"/ = QString(), QNetworkProxyQuery::QueryType type = QNetworkProxyQuery::TcpSocket);
+     QNetworkProxyQuery(quint16 bindPort, const QString &protocolTag /DocValue="Py_v3:''"/ = QString(), QNetworkProxyQuery::QueryType type = QNetworkProxyQuery::TcpServer);
++%If (PyQt_BearerManagement)
+ %If (Qt_4_8_0 -)
+     QNetworkProxyQuery(const QNetworkConfiguration &networkConfiguration, const QUrl &requestUrl, QNetworkProxyQuery::QueryType queryType = QNetworkProxyQuery::UrlRequest);
+ %End
+@@ -129,6 +131,7 @@
+ %If (Qt_4_8_0 -)
+     QNetworkProxyQuery(const QNetworkConfiguration &networkConfiguration, quint16 bindPort, const QString &protocolTag /DocValue="Py_v3:''"/ = QString(), QNetworkProxyQuery::QueryType type = QNetworkProxyQuery::TcpServer);
+ %End
++%End
+     QNetworkProxyQuery(const QNetworkProxyQuery &other);
+     ~QNetworkProxyQuery();
+     bool operator==(const QNetworkProxyQuery &other) const;
+@@ -145,12 +148,14 @@
+     void setProtocolTag(const QString &protocolTag);
+     QUrl url() const;
+     void setUrl(const QUrl &url);
++%If (PyQt_BearerManagement)
+ %If (Qt_4_8_0 -)
+     QNetworkConfiguration networkConfiguration() const;
+ %End
+ %If (Qt_4_8_0 -)
+     void setNetworkConfiguration(const QNetworkConfiguration &networkConfiguration);
+ %End
++%End
+ };
+ 
+ %End
+@@ -175,3 +180,4 @@
+ };
+ 
+ %End
++%End

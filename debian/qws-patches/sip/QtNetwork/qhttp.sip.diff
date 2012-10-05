@@ -1,0 +1,26 @@
+--- sip/QtNetwork/qhttp.sip.old	2012-10-04 17:51:54.764239142 +0200
++++ sip/QtNetwork/qhttp.sip	2012-10-04 17:51:54.772239142 +0200
+@@ -165,10 +165,12 @@
+ %End
+     int setSocket(QTcpSocket *socket /KeepReference/);
+     int setUser(const QString &userName, const QString &password /DocValue="Py_v3:''"/ = QString());
++%If (PyQt_NetworkProxy)
+     int setProxy(const QString &host, int port, const QString &user /DocValue="Py_v3:''"/ = QString(), const QString &password /DocValue="Py_v3:''"/ = QString());
+ %If (Qt_4_3_0 -)
+     int setProxy(const QNetworkProxy &proxy);
+ %End
++%End
+     int get(const QString &path, QIODevice *to = 0);
+     int post(const QString &path, QIODevice *data, QIODevice *to = 0);
+     int post(const QString &path, const QByteArray &data, QIODevice *to = 0);
+@@ -241,8 +243,10 @@
+     void requestFinished(int, bool);
+     void done(bool);
+ %If (Qt_4_3_0 -)
++%If (PyQt_NetworkProxy)
+     void proxyAuthenticationRequired(const QNetworkProxy &proxy, QAuthenticator *);
+ %End
++%End
+ %If (Qt_4_3_0 -)
+     void authenticationRequired(const QString &hostname, quint16 port, QAuthenticator *);
+ %End

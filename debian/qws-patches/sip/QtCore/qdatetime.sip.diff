@@ -1,0 +1,150 @@
+--- sip/QtCore/qdatetime.sip.old	2012-10-04 17:51:54.896239143 +0200
++++ sip/QtCore/qdatetime.sip	2012-10-04 17:51:54.904239143 +0200
+@@ -104,6 +104,7 @@
+         }
+ %End
+ 
++%If (PyQt_DateString)
+     long __hash__() const;
+ %MethodCode
+         if (sipIsAPIEnabled("QDate", 2, 0))
+@@ -116,6 +117,7 @@
+             sipRes = _Py_HashPointer(sipSelf);
+         }
+ %End
++%End
+ 
+ %If (Py_DateTime)
+     SIP_PYOBJECT toPyDate() const /DocType="datetime.date"/;
+@@ -143,12 +145,16 @@
+     int daysInMonth() const;
+     int daysInYear() const;
+     int weekNumber(int *yearNumber = 0) const;
++%If (PyQt_TextDate)
+     static QString shortMonthName(int month);
+     static QString shortDayName(int weekday);
+     static QString longMonthName(int month);
+     static QString longDayName(int weekday);
++%End
++%If (PyQt_DateString)
+     QString toString(Qt::DateFormat format = Qt::TextDate) const;
+     QString toString(const QString &format) const;
++%End
+     bool setYMD(int y, int m, int d);
+     QDate addDays(int days) const;
+     QDate addMonths(int months) const;
+@@ -161,8 +167,10 @@
+     bool operator>(const QDate &other) const;
+     bool operator>=(const QDate &other) const;
+     static QDate currentDate();
++%If (PyQt_DateString)
+     static QDate fromString(const QString &string, Qt::DateFormat format = Qt::TextDate);
+     static QDate fromString(const QString &s, const QString &format);
++%End
+     static bool isValid(int y, int m, int d);
+     static bool isLeapYear(int year);
+     static uint gregorianToJulian(int y, int m, int d);
+@@ -184,6 +192,7 @@
+     };
+ 
+ %End
++%If (PyQt_TextDate)
+ %If (Qt_4_5_0 -)
+     static QString shortMonthName(int month, QDate::MonthNameType type);
+ %End
+@@ -196,6 +205,7 @@
+ %If (Qt_4_5_0 -)
+     static QString longDayName(int weekday, QDate::MonthNameType type);
+ %End
++%End
+ };
+ 
+ class QTime
+@@ -297,6 +307,7 @@
+         }
+ %End
+ 
++%If (PyQt_DateString)
+     long __hash__() const;
+ %MethodCode
+         if (sipIsAPIEnabled("QTime", 2, 0))
+@@ -309,6 +320,7 @@
+             sipRes = _Py_HashPointer(sipSelf);
+         }
+ %End
++%End
+ 
+ %If (Py_DateTime)
+     SIP_PYOBJECT toPyTime() const /DocType="datetime.time"/;
+@@ -332,8 +344,10 @@
+     int minute() const;
+     int second() const;
+     int msec() const;
++%If (PyQt_DateString)
+     QString toString(Qt::DateFormat format = Qt::TextDate) const;
+     QString toString(const QString &format) const;
++%End
+     bool setHMS(int h, int m, int s, int msec = 0);
+     QTime addSecs(int secs) const;
+     int secsTo(const QTime &) const;
+@@ -346,8 +360,10 @@
+     bool operator>(const QTime &other) const;
+     bool operator>=(const QTime &other) const;
+     static QTime currentTime();
++%If (PyQt_DateString)
+     static QTime fromString(const QString &string, Qt::DateFormat format = Qt::TextDate);
+     static QTime fromString(const QString &s, const QString &format);
++%End
+     static bool isValid(int h, int m, int s, int msec = 0);
+     void start();
+     int restart();
+@@ -495,6 +511,7 @@
+         }
+ %End
+ 
++%If (PyQt_DateString)
+     long __hash__() const;
+ %MethodCode
+         if (sipIsAPIEnabled("QDateTime", 2, 0))
+@@ -507,6 +524,7 @@
+             sipRes = _Py_HashPointer(sipSelf);
+         }
+ %End
++%End
+ 
+ %If (Py_DateTime)
+     SIP_PYOBJECT toPyDateTime() const /DocType="datetime.datetime"/;
+@@ -538,8 +556,10 @@
+     void setTime(const QTime &time);
+     void setTimeSpec(Qt::TimeSpec spec);
+     void setTime_t(uint secsSince1Jan1970UTC);
++%If (PyQt_DateString)
+     QString toString(Qt::DateFormat format = Qt::TextDate) const;
+     QString toString(const QString &format) const;
++%End
+     QDateTime addDays(int days) const;
+     QDateTime addMonths(int months) const;
+     QDateTime addYears(int years) const;
+@@ -557,8 +577,10 @@
+     bool operator>(const QDateTime &other) const;
+     bool operator>=(const QDateTime &other) const;
+     static QDateTime currentDateTime();
++%If (PyQt_DateString)
+     static QDateTime fromString(const QString &string, Qt::DateFormat format = Qt::TextDate);
+     static QDateTime fromString(const QString &s, const QString &format);
++%End
+ %If (Qt_4_2_0 -)
+     static QDateTime fromTime_t(uint secsSince1Jan1970UTC);
+ %End
+@@ -582,9 +604,11 @@
+ %End
+ };
+ 
++%If (PyQt_DataStream)
+ QDataStream &operator<<(QDataStream &, const QDate & /Constrained/);
+ QDataStream &operator>>(QDataStream &, QDate & /Constrained/);
+ QDataStream &operator<<(QDataStream &, const QTime & /Constrained/);
+ QDataStream &operator>>(QDataStream &, QTime & /Constrained/);
+ QDataStream &operator<<(QDataStream &, const QDateTime & /Constrained/);
+ QDataStream &operator>>(QDataStream &, QDateTime & /Constrained/);
++%End

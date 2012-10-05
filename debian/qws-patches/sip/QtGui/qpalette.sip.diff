@@ -1,0 +1,10 @@
+--- sip/QtGui/qpalette.sip.old	2012-10-04 17:51:54.268239146 +0200
++++ sip/QtGui/qpalette.sip	2012-10-04 17:51:54.276239146 +0200
+@@ -144,5 +144,7 @@
+ %End
+ };
+ 
++%If (PyQt_DataStream)
+ QDataStream &operator<<(QDataStream &s, const QPalette &p /Constrained/);
+ QDataStream &operator>>(QDataStream &ds, QPalette &p /Constrained/);
++%End

@@ -1,0 +1,13 @@
+--- sip/QtCore/qabstractitemmodel.sip.old	2012-10-04 17:51:55.080239142 +0200
++++ sip/QtCore/qabstractitemmodel.sip	2012-10-04 17:51:55.084239142 +0200
+@@ -183,8 +183,10 @@
+ %End
+ 
+ protected:
++%If (PyQt_DataStream)
+     void encodeData(const QModelIndexList &indexes, QDataStream &stream) const;
+     bool decodeData(int row, int column, const QModelIndex &parent, QDataStream &stream);
++%End
+     void beginInsertRows(const QModelIndex &parent, int first, int last);
+     void endInsertRows();
+     void beginRemoveRows(const QModelIndex &parent, int first, int last);

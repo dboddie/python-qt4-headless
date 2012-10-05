@@ -1,0 +1,52 @@
+--- sip/QtGui/qtablewidget.sip.old	2012-10-04 17:51:54.572239143 +0200
++++ sip/QtGui/qtablewidget.sip	2012-10-04 17:51:54.576239143 +0200
+@@ -85,7 +85,9 @@
+     Qt::ItemFlags flags() const;
+     QString text() const;
+     QIcon icon() const;
++%If (PyQt_StatusTip)
+     QString statusTip() const;
++%End
+ %If (PyQt_ToolTip)
+     QString toolTip() const;
+ %End
+@@ -104,13 +106,17 @@
+     virtual QVariant data(int role) const;
+     virtual void setData(int role, const QVariant &value);
+     virtual bool operator<(const QTableWidgetItem &other /NoCopy/) const;
++%If (PyQt_DataStream)
+     virtual void read(QDataStream &in) /ReleaseGIL/;
+     virtual void write(QDataStream &out) const /ReleaseGIL/;
++%End
+     int type() const;
+     void setFlags(Qt::ItemFlags aflags);
+     void setText(const QString &atext);
+     void setIcon(const QIcon &aicon);
++%If (PyQt_StatusTip)
+     void setStatusTip(const QString &astatusTip);
++%End
+ %If (PyQt_ToolTip)
+     void setToolTip(const QString &atoolTip);
+ %End
+@@ -149,8 +155,10 @@
+     QTableWidgetItem &operator=(const QTableWidgetItem &);
+ };
+ 
++%If (PyQt_DataStream)
+ QDataStream &operator>>(QDataStream &in, QTableWidgetItem &item /Constrained/);
+ QDataStream &operator<<(QDataStream &out, const QTableWidgetItem &item /Constrained/);
++%End
+ 
+ class QTableWidget : QTableView
+ {
+@@ -287,8 +295,10 @@
+     QTableWidgetItem *itemFromIndex(const QModelIndex &index) const;
+     virtual bool event(QEvent *e);
+ %If (Qt_4_2_0 -)
++%If (PyQt_DragAndDrop)
+     virtual void dropEvent(QDropEvent *event);
+ %End
++%End
+ 
+ private:
+     virtual void setModel(QAbstractItemModel *model /KeepReference/);

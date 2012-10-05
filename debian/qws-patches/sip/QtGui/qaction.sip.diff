@@ -1,0 +1,66 @@
+--- sip/QtGui/qaction.sip.old	2012-10-04 17:51:54.584239143 +0200
++++ sip/QtGui/qaction.sip	2012-10-04 17:51:54.588239143 +0200
+@@ -44,20 +44,30 @@
+     QString text() const;
+     void setIconText(const QString &text);
+     QString iconText() const;
+-    void setToolTip(const QString &tip);
+-    QString toolTip() const;
+-    void setStatusTip(const QString &statusTip);
+-    QString statusTip() const;
+-    void setWhatsThis(const QString &what);
+-    QString whatsThis() const;
++%If (PyQt_ToolTip)
++      void setToolTip(const QString &tip);
++      QString toolTip() const;
++%End
++%If (PyQt_StatusTip)
++      void setStatusTip(const QString &statusTip);
++      QString statusTip() const;
++%End
++%If (PyQt_WhatsThis)
++      void setWhatsThis(const QString &what);
++      QString whatsThis() const;
++%End
++%If (PyQt_Menu)
+     QMenu *menu() const;
+     void setMenu(QMenu *menu /KeepReference/);
++%End
+     void setSeparator(bool b);
+     bool isSeparator() const;
++%If (PyQt_Shortcut)
+     void setShortcut(const QKeySequence &shortcut);
+     QKeySequence shortcut() const;
+     void setShortcutContext(Qt::ShortcutContext context);
+     Qt::ShortcutContext shortcutContext() const;
++%End
+     void setFont(const QFont &font);
+     QFont font() const;
+     void setCheckable(bool);
+@@ -111,6 +121,7 @@
+     };
+ 
+ %End
++%If (PyQt_Shortcut)
+ %If (Qt_4_2_0 -)
+     void setShortcuts(const QList<QKeySequence> &shortcuts);
+ %End
+@@ -126,6 +137,7 @@
+ %If (Qt_4_2_0 -)
+     bool autoRepeat() const;
+ %End
++%End
+ %If (Qt_4_2_0 -)
+     void setMenuRole(QAction::MenuRole menuRole);
+ %End
+@@ -136,8 +148,10 @@
+     QList<QWidget*> associatedWidgets() const;
+ %End
+ %If (Qt_4_5_0 -)
++%If (PyQt_GraphicsView)
+     QList<QGraphicsWidget*> associatedGraphicsWidgets() const;
+ %End
++%End
+ %If (Qt_4_4_0 -)
+     void setIconVisibleInMenu(bool visible);
+ %End

@@ -1,0 +1,20 @@
+--- sip/QtGui/qfont.sip.old	2012-10-04 17:51:53.992239146 +0200
++++ sip/QtGui/qfont.sip	2012-10-04 17:51:53.996239146 +0200
+@@ -172,7 +172,9 @@
+     static void removeSubstitution(const QString &);
+     static void initialize();
+     static void cleanup();
++%If (!WS_QWS)
+     static void cacheStatistics();
++%End
+     QString defaultFamily() const;
+     QString lastResortFamily() const;
+     QString lastResortFont() const;
+@@ -248,5 +250,7 @@
+ %End
+ };
+ 
++%If (PyQt_DataStream)
+ QDataStream &operator<<(QDataStream &, const QFont & /Constrained/);
+ QDataStream &operator>>(QDataStream &, QFont & /Constrained/);
++%End

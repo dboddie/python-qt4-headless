@@ -1,0 +1,29 @@
+--- sip/QtCore/qlocale.sip.old	2012-10-04 17:51:54.920239141 +0200
++++ sip/QtCore/qlocale.sip	2012-10-04 17:51:54.928239141 +0200
+@@ -715,6 +715,7 @@
+ %If (Qt_4_4_0 -)
+     QString toString(const QDateTime &dateTime, const QString &format) const;
+ %End
++%If (PyQt_DateString)
+ %If (Qt_4_4_0 -)
+     QString toString(const QDateTime &dateTime, QLocale::FormatType format = QLocale::LongFormat) const;
+ %End
+@@ -745,6 +746,7 @@
+ %If (Qt_4_4_0 -)
+     QDateTime toDateTime(const QString &string, const QString &format) const;
+ %End
++%End
+     QChar decimalPoint() const;
+     QChar groupSeparator() const;
+     QChar percent() const;
+@@ -893,8 +895,10 @@
+ %End
+ };
+ 
++%If (PyQt_DataStream)
+ QDataStream &operator<<(QDataStream &, const QLocale & /Constrained/);
+ QDataStream &operator>>(QDataStream &, QLocale & /Constrained/);
++%End
+ %If (Qt_4_2_0 -)
+ QFlags<QLocale::NumberOption> operator|(QLocale::NumberOption f1, QFlags<QLocale::NumberOption> f2);
+ %End

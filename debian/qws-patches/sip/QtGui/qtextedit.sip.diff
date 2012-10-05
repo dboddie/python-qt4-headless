@@ -1,0 +1,69 @@
+--- sip/QtGui/qtextedit.sip.old	2012-10-04 17:51:54.256239146 +0200
++++ sip/QtGui/qtextedit.sip	2012-10-04 17:51:54.264239146 +0200
+@@ -121,14 +121,22 @@
+     void setWordWrapMode(QTextOption::WrapMode policy);
+     bool find(const QString &exp, QFlags<QTextDocument::FindFlag> options = 0);
+     QString toPlainText() const;
++%If (PyQt_TextHTMLParser)
+     QString toHtml() const;
++%End
+     void append(const QString &text);
+     void ensureCursorVisible();
+     virtual QVariant loadResource(int type, const QUrl &name);
++%If (PyQt_Menu)
++%If (PyQt_TextEditMenu)
++%If (PyQt_ContextMenu)
+     QMenu *createStandardContextMenu() /Factory/;
+ %If (Qt_4_4_0 -)
+     QMenu *createStandardContextMenu(const QPoint &position) /Factory/;
+ %End
++%End
++%End
++%End
+     QTextCursor cursorForPosition(const QPoint &pos) const;
+     QRect cursorRect(const QTextCursor &cursor) const;
+     QRect cursorRect() const;
+@@ -187,14 +195,20 @@
+     void setCurrentFont(const QFont &f);
+     void setAlignment(Qt::Alignment a);
+     void setPlainText(const QString &text);
++%If (PyQt_TextHTMLParser)
+     void setHtml(const QString &text);
++%End
++%If (PyQt_Clipboard)
+     void cut();
+     void copy();
+     void paste();
++%End
+     void clear();
+     void selectAll();
+     void insertPlainText(const QString &text);
++%If (PyQt_TextHTMLParser)
+     void insertHtml(const QString &text);
++%End
+     void scrollToAnchor(const QString &name);
+ %If (Qt_4_2_0 -)
+     void redo();
+@@ -228,16 +242,22 @@
+     virtual void mouseReleaseEvent(QMouseEvent *e);
+     virtual void mouseDoubleClickEvent(QMouseEvent *e);
+     virtual bool focusNextPrevChild(bool next);
++%If (PyQt_ContextMenu)
+     virtual void contextMenuEvent(QContextMenuEvent *e);
++%End
++%If (PyQt_DragAndDrop)
+     virtual void dragEnterEvent(QDragEnterEvent *e);
+     virtual void dragLeaveEvent(QDragLeaveEvent *e);
+     virtual void dragMoveEvent(QDragMoveEvent *e);
+     virtual void dropEvent(QDropEvent *e);
++%End
+     virtual void focusInEvent(QFocusEvent *e);
+     virtual void focusOutEvent(QFocusEvent *e);
+     virtual void showEvent(QShowEvent *);
+     virtual void changeEvent(QEvent *e);
++%If (PyQt_WheelEvent)
+     virtual void wheelEvent(QWheelEvent *e);
++%End
+     virtual QMimeData *createMimeDataFromSelection() const /Factory/;
+     virtual bool canInsertFromMimeData(const QMimeData *source) const;
+     virtual void insertFromMimeData(const QMimeData *source);

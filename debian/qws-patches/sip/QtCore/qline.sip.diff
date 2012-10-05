@@ -1,0 +1,21 @@
+--- sip/QtCore/qline.sip.old	2012-10-04 17:51:55.044239141 +0200
++++ sip/QtCore/qline.sip	2012-10-04 17:51:55.048239141 +0200
+@@ -104,8 +104,10 @@
+ %End
+ };
+ 
++%If (PyQt_DataStream)
+ QDataStream &operator<<(QDataStream &, const QLine & /Constrained/);
+ QDataStream &operator>>(QDataStream &, QLine & /Constrained/);
++%End
+ 
+ class QLineF
+ {
+@@ -229,5 +231,7 @@
+ %End
+ };
+ 
++%If (PyQt_DataStream)
+ QDataStream &operator<<(QDataStream &, const QLineF & /Constrained/);
+ QDataStream &operator>>(QDataStream &, QLineF & /Constrained/);
++%End

@@ -1,0 +1,17 @@
+--- sip/QtNetwork/qabstractnetworkcache.sip.old	2012-10-04 17:51:54.756239142 +0200
++++ sip/QtNetwork/qabstractnetworkcache.sip	2012-10-04 17:51:54.760239142 +0200
+@@ -173,12 +173,14 @@
+ };
+ 
+ %End
++%If (PyQt_DataStream)
+ %If (Qt_4_5_0 -)
+ QDataStream &operator<<(QDataStream &, const QNetworkCacheMetaData & /Constrained/);
+ %End
+ %If (Qt_4_5_0 -)
+ QDataStream &operator>>(QDataStream &, QNetworkCacheMetaData & /Constrained/);
+ %End
++%End
+ %If (Qt_4_5_0 -)
+ 
+ class QAbstractNetworkCache : QObject

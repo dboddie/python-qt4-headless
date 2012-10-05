@@ -1,0 +1,73 @@
+--- sip/QtNetwork/qnetworkaccessmanager.sip.old	2012-10-05 12:14:34.858890539 +0200
++++ sip/QtNetwork/qnetworkaccessmanager.sip	2012-10-05 13:31:14.826868232 +0200
+@@ -50,8 +50,10 @@
+ 
+     explicit QNetworkAccessManager(QObject *parent /TransferThis/ = 0);
+     virtual ~QNetworkAccessManager();
++%If (PyQt_NetworkProxy)
+     QNetworkProxy proxy() const;
+     void setProxy(const QNetworkProxy &proxy);
++%End
+     QNetworkCookieJar *cookieJar() const;
+     void setCookieJar(QNetworkCookieJar *cookieJar /Transfer/);
+     QNetworkReply *head(const QNetworkRequest &request);
+@@ -68,7 +70,9 @@
+ %End
+ 
+ signals:
++%If (PyQt_NetworkProxy)
+     void proxyAuthenticationRequired(const QNetworkProxy &proxy, QAuthenticator *authenticator);
++%End
+     void authenticationRequired(QNetworkReply *reply, QAuthenticator *authenticator);
+     void finished(QNetworkReply *reply);
+ %If (PyQt_OpenSSL)
+@@ -79,12 +83,14 @@
+     virtual QNetworkReply *createRequest(QNetworkAccessManager::Operation op, const QNetworkRequest &request, QIODevice *device = 0);
+ 
+ public:
++%If (PyQt_NetworkProxy)
+ %If (Qt_4_5_0 -)
+     QNetworkProxyFactory *proxyFactory() const;
+ %End
+ %If (Qt_4_5_0 -)
+     void setProxyFactory(QNetworkProxyFactory *factory /Transfer/);
+ %End
++%End
+ %If (Qt_4_5_0 -)
+     QAbstractNetworkCache *cache() const;
+ %End
+@@ -94,6 +100,7 @@
+ %If (Qt_4_6_0 -)
+     QNetworkReply *deleteResource(const QNetworkRequest &request);
+ %End
++%If (PyQt_BearerManagement)
+ %If (Qt_4_7_0 -)
+ 
+     enum NetworkAccessibility
+@@ -104,9 +111,11 @@
+     };
+ 
+ %End
++%End
+ %If (Qt_4_7_0 -)
+     QNetworkReply *sendCustomRequest(const QNetworkRequest &request, const QByteArray &verb, QIODevice *data = 0);
+ %End
++%If (PyQt_BearerManagement)
+ %If (Qt_4_7_0 -)
+     void setConfiguration(const QNetworkConfiguration &config);
+ %End
+@@ -122,11 +131,14 @@
+ %If (Qt_4_7_0 -)
+     QNetworkAccessManager::NetworkAccessibility networkAccessible() const;
+ %End
++%End
+ 
+ protected:
++%If (PyQt_BearerManagement)
+ %If (Qt_4_7_0 -)
+     void networkAccessibleChanged(QNetworkAccessManager::NetworkAccessibility accessible);
+ %End
++%End
+ };
+ 
+ %End
