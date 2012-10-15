@@ -4,7 +4,7 @@ build:
 	dh_quilt_patch
 	cp $(CURDIR)/debian/qws-patches/configure-qws.py configure.py
 	cp $(CURDIR)/debian/qws-patches/qtdirs.out qtdirs.out
-	$(CURDIR)/debian/qws-patches/patch_files.py $(CURDIR)/debian/qws-patches/ $(CURDIR)
+	python $(CURDIR)/debian/qws-patches/patch_files.py $(CURDIR)/debian/qws-patches/ $(CURDIR)
 	CROSS_SIPCONFIG=/usr/lib/python2.7/dist-packages python configure.py \
 	    -b /opt/qt4-qws/bin \
 	    -d /opt/qt4-qws/lib/python2.7/site-packages \
@@ -20,7 +20,7 @@ clean:
 	dh_testroot
 	[ ! -f Makefile ] || $(MAKE) clean
 	dh_quilt_unpatch
-	$(CURDIR)/debian/qws-patches/undo_patches.py $(CURDIR)
+	python $(CURDIR)/debian/qws-patches/undo_patches.py $(CURDIR)
 	dh_clean
 
 install:
