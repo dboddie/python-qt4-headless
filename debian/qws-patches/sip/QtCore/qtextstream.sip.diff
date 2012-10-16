@@ -1,5 +1,5 @@
---- sip/QtCore/qtextstream.sip.old	2012-10-04 17:51:55.032239141 +0200
-+++ sip/QtCore/qtextstream.sip	2012-10-04 17:51:55.040239141 +0200
+--- sip/QtCore/qtextstream.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtCore/qtextstream.sip	2012-10-13 21:16:20.000000000 +0200
 @@ -76,6 +76,7 @@
      QTextStream(QString *string /Constrained/, QFlags<QIODevice::OpenModeFlag> mode = QIODevice::ReadWrite) /API=QString: - 2/;
      QTextStream(QByteArray *array /Constrained/, QFlags<QIODevice::OpenModeFlag> mode = QIODevice::ReadWrite);
@@ -16,7 +16,7 @@
      void setDevice(QIODevice *device);
      QIODevice *device() const;
      void setString(QString *string /Constrained/, QFlags<QIODevice::OpenModeFlag> mode = QIODevice::ReadWrite) /API=QString: - 2/;
-@@ -164,7 +166,9 @@
+@@ -169,7 +171,9 @@
  QTextStream &endl(QTextStream &s);
  QTextStream &flush(QTextStream &s);
  QTextStream &reset(QTextStream &s);

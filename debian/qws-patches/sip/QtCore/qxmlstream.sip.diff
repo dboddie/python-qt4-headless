@@ -1,5 +1,5 @@
---- sip/QtCore/qxmlstream.sip.old	2012-10-04 17:51:55.004239141 +0200
-+++ sip/QtCore/qxmlstream.sip	2012-10-04 17:51:55.008239141 +0200
+--- sip/QtCore/qxmlstream.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtCore/qxmlstream.sip	2012-10-13 21:16:20.000000000 +0200
 @@ -335,6 +335,7 @@
  
  %End
@@ -8,7 +8,7 @@
  
  class QXmlStreamReader
  {
-@@ -449,7 +450,9 @@
+@@ -464,7 +465,9 @@
  };
  
  %End
@@ -18,7 +18,7 @@
  
  class QXmlStreamWriter
  {
-@@ -465,9 +468,11 @@
+@@ -495,9 +498,11 @@
      ~QXmlStreamWriter();
      void setDevice(QIODevice *device);
      QIODevice *device() const;
@@ -30,7 +30,7 @@
      void setAutoFormatting(bool);
      bool autoFormatting() const;
      void setAutoFormattingIndent(int spaces);
-@@ -497,7 +502,9 @@
+@@ -527,7 +532,9 @@
  %End
      void writeStartElement(const QString &qualifiedName);
      void writeStartElement(const QString &namespaceUri, const QString &name);
@@ -40,7 +40,7 @@
  %If (Qt_4_8_0 -)
      bool hasError() const;
  %End
-@@ -507,3 +514,4 @@
+@@ -537,3 +544,4 @@
  };
  
  %End

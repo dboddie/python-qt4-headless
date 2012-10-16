@@ -1,5 +1,5 @@
---- sip/QtCore/qpoint.sip.old	2012-10-04 17:51:54.952239141 +0200
-+++ sip/QtCore/qpoint.sip	2012-10-04 17:51:54.956239141 +0200
+--- sip/QtCore/qpoint.sip.old	2012-10-13 21:16:19.000000000 +0200
++++ sip/QtCore/qpoint.sip	2012-10-13 21:16:19.000000000 +0200
 @@ -89,8 +89,10 @@
      QPoint &operator/=(qreal c);
  };

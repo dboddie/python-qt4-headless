@@ -1,5 +1,5 @@
---- sip/QtGui/qtoolbutton.sip.old	2012-10-04 17:51:54.612239143 +0200
-+++ sip/QtGui/qtoolbutton.sip	2012-10-04 17:51:54.620239143 +0200
+--- sip/QtGui/qtoolbutton.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtGui/qtoolbutton.sip	2012-10-13 21:16:20.000000000 +0200
 @@ -46,16 +46,20 @@
      Qt::ToolButtonStyle toolButtonStyle() const;
      Qt::ArrowType arrowType() const;

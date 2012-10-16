@@ -1,6 +1,6 @@
---- sip/QtGui/qmenu.sip.old	2012-10-04 17:51:54.228239145 +0200
-+++ sip/QtGui/qmenu.sip	2012-10-04 17:51:54.232239146 +0200
-@@ -104,7 +104,9 @@
+--- sip/QtGui/qmenu.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qmenu.sip	2012-10-13 21:16:21.000000000 +0200
+@@ -116,7 +116,9 @@
      virtual void mouseReleaseEvent(QMouseEvent *);
      virtual void mousePressEvent(QMouseEvent *);
      virtual void mouseMoveEvent(QMouseEvent *);

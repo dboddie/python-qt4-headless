@@ -1,5 +1,5 @@
---- sip/QtGui/qgraphicssceneevent.sip.old	2012-10-04 17:51:54.312239147 +0200
-+++ sip/QtGui/qgraphicssceneevent.sip	2012-10-04 17:51:54.316239147 +0200
+--- sip/QtGui/qgraphicssceneevent.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qgraphicssceneevent.sip	2012-10-13 21:16:21.000000000 +0200
 @@ -186,6 +186,7 @@
  
  %End

@@ -1,5 +1,5 @@
---- sip/QtGui/qplaintextedit.sip.old	2012-10-04 17:51:53.968239146 +0200
-+++ sip/QtGui/qplaintextedit.sip	2012-10-04 17:51:53.972239146 +0200
+--- sip/QtGui/qplaintextedit.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qplaintextedit.sip	2012-10-13 21:16:21.000000000 +0200
 @@ -74,7 +74,9 @@
      QString toPlainText() const;
      void ensureCursorVisible();
@@ -10,7 +10,7 @@
      QTextCursor cursorForPosition(const QPoint &pos) const;
      QRect cursorRect(const QTextCursor &cursor) const;
      QRect cursorRect() const;
-@@ -98,9 +100,11 @@
+@@ -110,9 +112,11 @@
  
  public slots:
      void setPlainText(const QString &text);
@@ -22,7 +22,7 @@
      void undo();
      void redo();
      void clear();
-@@ -133,16 +137,22 @@
+@@ -145,16 +149,22 @@
      virtual void mouseReleaseEvent(QMouseEvent *e);
      virtual void mouseDoubleClickEvent(QMouseEvent *e);
      virtual bool focusNextPrevChild(bool next);

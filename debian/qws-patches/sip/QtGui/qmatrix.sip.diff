@@ -1,6 +1,6 @@
---- sip/QtGui/qmatrix.sip.old	2012-10-04 17:51:54.552239143 +0200
-+++ sip/QtGui/qmatrix.sip	2012-10-04 17:51:54.556239143 +0200
-@@ -89,8 +89,10 @@
+--- sip/QtGui/qmatrix.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qmatrix.sip	2012-10-13 21:16:21.000000000 +0200
+@@ -91,8 +91,10 @@
  QPolygonF operator*(const QPolygonF &a, const QMatrix &m);
  QRegion operator*(const QRegion &r, const QMatrix &m);
  QPainterPath operator*(const QPainterPath &p, const QMatrix &m);

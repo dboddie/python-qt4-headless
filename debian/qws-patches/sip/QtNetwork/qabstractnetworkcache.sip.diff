@@ -1,5 +1,5 @@
---- sip/QtNetwork/qabstractnetworkcache.sip.old	2012-10-04 17:51:54.756239142 +0200
-+++ sip/QtNetwork/qabstractnetworkcache.sip	2012-10-04 17:51:54.760239142 +0200
+--- sip/QtNetwork/qabstractnetworkcache.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtNetwork/qabstractnetworkcache.sip	2012-10-13 21:16:20.000000000 +0200
 @@ -173,12 +173,14 @@
  };
  

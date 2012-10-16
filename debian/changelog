@@ -1,3 +1,9 @@
+python-qt4-qws (4.9.4-metno0) precise; urgency=low
+
+  * Upgraded to the upstream PyQt 4.9.4 release.
+
+ -- David Boddie <david.boddie@met.no>  Tue, 16 Oct 2012 11:35:47 +0200
+
 python-qt4-qws (4.9.1-metno1) precise; urgency=low
 
   * Fixed invocation of Python in the rules file.

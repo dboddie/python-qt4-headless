@@ -1,6 +1,6 @@
---- sip/QtGui/qiconengine.sip.old	2012-10-04 17:51:54.452239145 +0200
-+++ sip/QtGui/qiconengine.sip	2012-10-04 17:51:54.456239145 +0200
-@@ -51,8 +51,10 @@
+--- sip/QtGui/qiconengine.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qiconengine.sip	2012-10-13 21:16:21.000000000 +0200
+@@ -92,8 +92,10 @@
  public:
      virtual QString key() const;
      virtual QIconEngineV2 *clone() const /Factory/;

@@ -1,5 +1,5 @@
---- sip/QtGui/qdatetimeedit.sip.old	2012-10-04 17:51:54.172239145 +0200
-+++ sip/QtGui/qdatetimeedit.sip	2012-10-04 17:51:54.180239145 +0200
+--- sip/QtGui/qdatetimeedit.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtGui/qdatetimeedit.sip	2012-10-13 21:16:20.000000000 +0200
 @@ -120,7 +120,9 @@
      void initStyleOption(QStyleOptionSpinBox *option) const;
  %End

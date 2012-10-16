@@ -1,6 +1,6 @@
---- sip/QtCore/qurl.sip.old	2012-10-04 17:51:54.864239143 +0200
-+++ sip/QtCore/qurl.sip	2012-10-04 17:51:54.872239143 +0200
-@@ -249,8 +249,10 @@
+--- sip/QtCore/qurl.sip.old	2012-10-13 21:16:19.000000000 +0200
++++ sip/QtCore/qurl.sip	2012-10-13 21:16:19.000000000 +0200
+@@ -289,8 +289,10 @@
  };
  
  QFlags<QUrl::FormattingOption> operator|(QUrl::FormattingOption f1, QFlags<QUrl::FormattingOption> f2);

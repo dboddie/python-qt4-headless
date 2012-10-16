@@ -1,6 +1,6 @@
---- sip/QtCore/qvariant.sip.old	2012-10-04 17:51:55.100239142 +0200
-+++ sip/QtCore/qvariant.sip	2012-10-04 17:51:55.104239142 +0200
-@@ -212,8 +212,10 @@
+--- sip/QtCore/qvariant.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtCore/qvariant.sip	2012-10-13 21:16:20.000000000 +0200
+@@ -231,8 +231,10 @@
          sipRes = qpycore_PyObject_FromQVariant(*sipCpp);
  %End
  
@@ -8,10 +8,10 @@
      void load(QDataStream &ds);
      void save(QDataStream &ds) const;
 +%End
-     static const char *typeToName(QVariant::Type type);
-     static QVariant::Type nameToType(const char *name);
-     void *data();
-@@ -354,11 +356,13 @@
+ %If (Qt_5_0_0 -)
+     static const char *typeToName(int typeId);
+ %End
+@@ -392,11 +394,13 @@
  %If (Qt_4_5_0 -)
  typedef QHash<QString, QVariant> QVariantHash /DocType="Py_v3:dict-of-str-object"/;
  %End

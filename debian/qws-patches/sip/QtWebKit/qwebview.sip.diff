@@ -1,5 +1,5 @@
---- sip/QtWebKit/qwebview.sip.old	2012-10-04 17:51:54.796239142 +0200
-+++ sip/QtWebKit/qwebview.sip	2012-10-04 17:51:54.800239142 +0200
+--- sip/QtWebKit/qwebview.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtWebKit/qwebview.sip	2012-10-13 21:16:20.000000000 +0200
 @@ -88,7 +88,9 @@
      QUrl url() const;
      QIcon icon() const;

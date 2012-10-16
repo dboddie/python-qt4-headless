@@ -1,5 +1,5 @@
---- sip/QtNetwork/qnetworkproxy.sip.old	2012-10-05 12:14:34.830890539 +0200
-+++ sip/QtNetwork/qnetworkproxy.sip	2012-10-05 13:22:50.202870679 +0200
+--- sip/QtNetwork/qnetworkproxy.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtNetwork/qnetworkproxy.sip	2012-10-13 21:16:20.000000000 +0200
 @@ -25,6 +25,7 @@
  // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
  

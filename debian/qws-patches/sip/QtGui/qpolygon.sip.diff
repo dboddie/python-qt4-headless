@@ -1,5 +1,5 @@
---- sip/QtGui/qpolygon.sip.old	2012-10-04 17:51:54.196239145 +0200
-+++ sip/QtGui/qpolygon.sip	2012-10-04 17:51:54.200239145 +0200
+--- sip/QtGui/qpolygon.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qpolygon.sip	2012-10-13 21:16:21.000000000 +0200
 @@ -551,6 +551,7 @@
  %End
  };

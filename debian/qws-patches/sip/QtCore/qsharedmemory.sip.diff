@@ -1,5 +1,5 @@
---- sip/QtCore/qsharedmemory.sip.old	2012-10-04 17:51:54.980239141 +0200
-+++ sip/QtCore/qsharedmemory.sip	2012-10-04 17:51:54.984239141 +0200
+--- sip/QtCore/qsharedmemory.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtCore/qsharedmemory.sip	2012-10-13 21:16:20.000000000 +0200
 @@ -73,8 +73,10 @@
          sipRes = sipConvertFromConstVoidPtrAndSize(sipCpp->constData(), sipCpp->size());
  %End

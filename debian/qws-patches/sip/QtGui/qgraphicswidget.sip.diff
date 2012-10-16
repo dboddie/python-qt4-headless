@@ -1,5 +1,5 @@
---- sip/QtGui/qgraphicswidget.sip.old	2012-10-04 17:51:54.360239144 +0200
-+++ sip/QtGui/qgraphicswidget.sip	2012-10-04 17:51:54.368239144 +0200
+--- sip/QtGui/qgraphicswidget.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtGui/qgraphicswidget.sip	2012-10-13 21:16:20.000000000 +0200
 @@ -143,6 +143,7 @@
      virtual void ungrabKeyboardEvent(QEvent *event);
  

@@ -1,6 +1,6 @@
---- sip/QtGui/qgraphicsview.sip.old	2012-10-04 17:51:54.528239144 +0200
-+++ sip/QtGui/qgraphicsview.sip	2012-10-04 17:51:54.536239143 +0200
-@@ -137,11 +137,15 @@
+--- sip/QtGui/qgraphicsview.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qgraphicsview.sip	2012-10-13 21:16:21.000000000 +0200
+@@ -142,11 +142,15 @@
  protected:
      virtual bool event(QEvent *event);
      virtual bool viewportEvent(QEvent *event);
@@ -16,7 +16,7 @@
      virtual void focusInEvent(QFocusEvent *event);
      virtual void focusOutEvent(QFocusEvent *event);
  %If (Qt_4_4_0 -)
-@@ -153,7 +157,9 @@
+@@ -158,7 +162,9 @@
      virtual void mousePressEvent(QMouseEvent *event);
      virtual void mouseMoveEvent(QMouseEvent *event);
      virtual void mouseReleaseEvent(QMouseEvent *event);
@@ -26,7 +26,7 @@
      virtual void paintEvent(QPaintEvent *event);
      virtual void resizeEvent(QResizeEvent *event);
      virtual void scrollContentsBy(int dx, int dy);
-@@ -305,12 +311,14 @@
+@@ -310,12 +316,14 @@
  %If (Qt_4_3_0 -)
      void setOptimizationFlags(QFlags<QGraphicsView::OptimizationFlag> flags);
  %End

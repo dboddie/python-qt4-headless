@@ -1,6 +1,6 @@
---- sip/QtGui/qtextdocument.sip.old	2012-10-04 17:51:53.900239147 +0200
-+++ sip/QtGui/qtextdocument.sip	2012-10-04 17:51:53.904239149 +0200
-@@ -84,8 +84,10 @@
+--- sip/QtGui/qtextdocument.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qtextdocument.sip	2012-10-13 21:16:21.000000000 +0200
+@@ -86,8 +86,10 @@
  
      void setMetaInformation(QTextDocument::MetaInformation info, const QString &);
      QString metaInformation(QTextDocument::MetaInformation info) const;
@@ -11,7 +11,7 @@
      QString toPlainText() const;
      void setPlainText(const QString &text);
  
-@@ -183,12 +185,14 @@
+@@ -199,12 +201,14 @@
  %If (Qt_4_2_0 -)
      int blockCount() const;
  %End

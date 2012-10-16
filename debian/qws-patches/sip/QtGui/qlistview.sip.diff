@@ -1,6 +1,6 @@
---- sip/QtGui/qlistview.sip.old	2012-10-04 17:51:54.396239144 +0200
-+++ sip/QtGui/qlistview.sip	2012-10-04 17:51:54.404239144 +0200
-@@ -109,10 +109,12 @@
+--- sip/QtGui/qlistview.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtGui/qlistview.sip	2012-10-13 21:16:21.000000000 +0200
+@@ -114,10 +114,12 @@
      virtual void mouseReleaseEvent(QMouseEvent *e);
      virtual void timerEvent(QTimerEvent *e);
      virtual void resizeEvent(QResizeEvent *e);

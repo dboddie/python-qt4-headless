@@ -1,5 +1,5 @@
---- sip/QtNetwork/qnetworkreply.sip.old	2012-10-04 17:51:54.724239145 +0200
-+++ sip/QtNetwork/qnetworkreply.sip	2012-10-04 17:51:54.728239145 +0200
+--- sip/QtNetwork/qnetworkreply.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtNetwork/qnetworkreply.sip	2012-10-13 21:16:20.000000000 +0200
 @@ -90,7 +90,9 @@
  %End
  

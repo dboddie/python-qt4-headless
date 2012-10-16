@@ -1,5 +1,5 @@
---- sip/QtGui/qdockwidget.sip.old	2012-10-04 17:51:54.020239146 +0200
-+++ sip/QtGui/qdockwidget.sip	2012-10-04 17:51:54.028239147 +0200
+--- sip/QtGui/qdockwidget.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qdockwidget.sip	2012-10-13 21:16:21.000000000 +0200
 @@ -72,7 +72,9 @@
      void setAllowedAreas(Qt::DockWidgetAreas areas);
      Qt::DockWidgetAreas allowedAreas() const;

@@ -1,14 +1,27 @@
---- sip/QtGui/qtextlayout.sip.old	2012-10-05 12:38:18.310883637 +0200
-+++ sip/QtGui/qtextlayout.sip	2012-10-05 12:37:01.270884009 +0200
-@@ -126,9 +126,11 @@
+--- sip/QtGui/qtextlayout.sip.old	2012-10-14 14:38:39.000000000 +0200
++++ sip/QtGui/qtextlayout.sip	2012-10-14 14:42:36.000000000 +0200
+@@ -126,12 +126,14 @@
  %If (Qt_4_8_0 -)
      int rightCursorPosition(int oldPos) const;
  %End
 +%If (PyQt_RawFont)
- %If (Qt_4_8_0 -)
+ %If (Qt_5_0_0 -)
+     QList<QGlyphRun> glyphRuns(int from = -1, int length = -1) const;
+ %End
+ %If (Qt_4_8_0 - Qt_5_0_0)
      QList<QGlyphRun> glyphRuns() const;
  %End
 +%End
  
  private:
      QTextLayout(const QTextLayout &);
+@@ -195,7 +197,9 @@
+ %If (Qt_4_7_0 -)
+     qreal horizontalAdvance() const;
+ %End
++%If (PyQt_RawFont)
+ %If (Qt_5_0_0 -)
+     QList<QGlyphRun> glyphRuns(int from = -1, int length = -1) const;
+ %End
++%End
+ };

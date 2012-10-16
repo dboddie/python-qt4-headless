@@ -1,6 +1,6 @@
---- sip/QtGui/qkeysequence.sip.old	2012-10-04 17:51:54.288239146 +0200
-+++ sip/QtGui/qkeysequence.sip	2012-10-04 17:51:54.296239145 +0200
-@@ -246,8 +246,10 @@
+--- sip/QtGui/qkeysequence.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtGui/qkeysequence.sip	2012-10-13 21:16:20.000000000 +0200
+@@ -251,8 +251,10 @@
  %End
  };
  

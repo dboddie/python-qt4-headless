@@ -1,5 +1,5 @@
---- sip/QtGui/qlistwidget.sip.old	2012-10-04 17:51:54.040239147 +0200
-+++ sip/QtGui/qlistwidget.sip	2012-10-04 17:51:54.048239147 +0200
+--- sip/QtGui/qlistwidget.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qlistwidget.sip	2012-10-13 21:16:21.000000000 +0200
 @@ -64,7 +64,9 @@
      Qt::ItemFlags flags() const;
      QString text() const;

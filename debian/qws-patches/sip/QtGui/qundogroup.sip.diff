@@ -1,5 +1,5 @@
---- sip/QtGui/qundogroup.sip.old	2012-10-04 17:51:54.444239145 +0200
-+++ sip/QtGui/qundogroup.sip	2012-10-04 17:51:54.448239145 +0200
+--- sip/QtGui/qundogroup.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qundogroup.sip	2012-10-13 21:16:21.000000000 +0200
 @@ -42,8 +42,10 @@
      void removeStack(QUndoStack *stack);
      QList<QUndoStack*> stacks() const;

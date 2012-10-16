@@ -1,5 +1,5 @@
---- sip/QtGui/qpicture.sip.old	2012-10-04 17:51:54.236239146 +0200
-+++ sip/QtGui/qpicture.sip	2012-10-04 17:51:54.240239146 +0200
+--- sip/QtGui/qpicture.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtGui/qpicture.sip	2012-10-13 21:16:20.000000000 +0200
 @@ -199,8 +199,10 @@
      QPictureIO(const QPictureIO &);
  };

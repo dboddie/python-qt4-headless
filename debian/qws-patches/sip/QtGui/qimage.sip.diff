@@ -1,5 +1,5 @@
---- sip/QtGui/qimage.sip.old	2012-10-04 17:51:54.496239145 +0200
-+++ sip/QtGui/qimage.sip	2012-10-04 17:51:54.504239143 +0200
+--- sip/QtGui/qimage.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qimage.sip	2012-10-13 21:16:21.000000000 +0200
 @@ -98,6 +98,7 @@
  %If (Qt_4_3_0 -)
      QImage(void *data, int width, int height, int bytesPerLine, QImage::Format format) [(uchar *data, int width, int height, int bytesPerLine, QImage::Format format)];

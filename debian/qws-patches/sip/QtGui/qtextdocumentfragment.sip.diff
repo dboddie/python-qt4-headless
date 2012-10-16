@@ -1,12 +1,15 @@
---- sip/QtGui/qtextdocumentfragment.sip.old	2012-10-04 17:51:53.904239149 +0200
-+++ sip/QtGui/qtextdocumentfragment.sip	2012-10-04 17:51:53.908239149 +0200
-@@ -39,13 +39,17 @@
+--- sip/QtGui/qtextdocumentfragment.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qtextdocumentfragment.sip	2012-10-13 21:16:21.000000000 +0200
+@@ -39,6 +39,7 @@
      ~QTextDocumentFragment();
      bool isEmpty() const;
      QString toPlainText() const;
 +%If (PyQt_TextHTMLParser)
-     QString toHtml() const;
- %If (Qt_4_2_0 -)
+ %If (Qt_5_0_0 -)
+     QString toHtml(const QByteArray &encoding = QByteArray()) const;
+ %End
+@@ -48,9 +49,12 @@
+ %If (Qt_4_2_0 - Qt_5_0_0)
      QString toHtml(const QByteArray &encoding) const;
  %End
 +%End

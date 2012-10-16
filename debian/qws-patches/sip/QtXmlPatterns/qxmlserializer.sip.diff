@@ -1,5 +1,5 @@
---- sip/QtXmlPatterns/qxmlserializer.sip.old	2012-10-04 17:51:54.684239144 +0200
-+++ sip/QtXmlPatterns/qxmlserializer.sip	2012-10-04 17:51:54.688239144 +0200
+--- sip/QtXmlPatterns/qxmlserializer.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtXmlPatterns/qxmlserializer.sip	2012-10-13 21:16:20.000000000 +0200
 @@ -48,8 +48,10 @@
      virtual void startOfSequence();
      virtual void endOfSequence();

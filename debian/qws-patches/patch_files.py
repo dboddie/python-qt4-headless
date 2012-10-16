@@ -111,14 +111,26 @@ def change_graph(path, features):
 
 if __name__ == "__main__":
 
-    if len(sys.argv) != 3:
+    if not 3 <= len(sys.argv) <= 4:
     
-        sys.stderr.write("Usage: %s <diff directory> <target directory>\n" % sys.argv[0])
+        sys.stderr.write("Usage: %s [--prepare-patches] <diff directory> <target directory>\n" % sys.argv[0])
         sys.exit(1)
     
-    patches_dir = os.path.abspath(sys.argv[1])
+    if len(sys.argv) == 4:
+    
+        if sys.argv[1] != "--prepare-patches":
+        
+            sys.stderr.write("Usage: %s [--prepare-patches] <diff directory> <target directory>\n" % sys.argv[0])
+            sys.exit(1)
+        
+        else:
+            prepare_patches = True
+    else:
+        prepare_patches = False
+    
+    patches_dir = os.path.abspath(sys.argv[-2])
     diffs = find_files("*"+os.extsep+"diff", patches_dir)
-    target_dir = os.path.abspath(sys.argv[2])
+    target_dir = os.path.abspath(sys.argv[-1])
     
     target_files = map(lambda path:
         os.path.join(target_dir, path[len(patches_dir+os.sep):path.rfind(os.extsep)]),
@@ -136,12 +148,16 @@ if __name__ == "__main__":
             sys.stderr.write("Failed to patch file: %s\n" % target)
             sys.exit(1)
     
-    # Change the graph data structures of existing files to handle features.
-    feature_map = create_feature_map(find_files("Qt*mod"+os.extsep+"sip", target_dir))
-
-    for path in target_files:
-        change_graph(path, feature_map)
-
+    # When preparing patches for storage, don't apply changes to the graphs in
+    # certain files as these will be handled after the patches are applied.
+    if not prepare_patches:
+    
+        # Change the graph data structures of existing files to handle features.
+        feature_map = create_feature_map(find_files("Qt*mod"+os.extsep+"sip", target_dir))
+        
+        for path in target_files:
+            change_graph(path, feature_map)
+    
     new_files = find_files("*"+os.extsep+"sip", patches_dir)
     
     target_files = map(lambda path:

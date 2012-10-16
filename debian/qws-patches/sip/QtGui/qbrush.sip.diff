@@ -1,5 +1,5 @@
---- sip/QtGui/qbrush.sip.old	2012-10-04 17:51:54.352239144 +0200
-+++ sip/QtGui/qbrush.sip	2012-10-04 17:51:54.356239144 +0200
+--- sip/QtGui/qbrush.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtGui/qbrush.sip	2012-10-13 21:16:20.000000000 +0200
 @@ -140,8 +140,10 @@
  %End
  };
@@ -8,6 +8,6 @@
  QDataStream &operator>>(QDataStream &, QBrush & /Constrained/);
  QDataStream &operator<<(QDataStream &, const QBrush & /Constrained/);
 +%End
- typedef QVector<QPair<qreal, QColor>> QGradientStops;
- 
- class QGradient
+ %If (Qt_5_0_0 -)
+ typedef QVector<QPair<double, QColor>> QGradientStops;
+ %End

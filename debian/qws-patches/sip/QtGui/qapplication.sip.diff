@@ -1,6 +1,6 @@
---- sip/QtGui/qapplication.sip.old	2012-10-04 17:51:53.956239146 +0200
-+++ sip/QtGui/qapplication.sip	2012-10-04 17:51:53.964239146 +0200
-@@ -666,10 +666,12 @@
+--- sip/QtGui/qapplication.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qapplication.sip	2012-10-13 21:16:21.000000000 +0200
+@@ -1077,10 +1077,12 @@
  
      static int colorSpec();
      static void setColorSpec(int);
@@ -13,7 +13,7 @@
      static QPalette palette();
      static QPalette palette(const QWidget *);
      static QPalette palette(const char *className);
-@@ -686,7 +688,9 @@
+@@ -1097,7 +1099,9 @@
      static QDesktopWidget *desktop();
      static QWidget *activePopupWidget();
      static QWidget *activeModalWidget();
@@ -23,7 +23,7 @@
      static QWidget *focusWidget();
      static QWidget *activeWindow();
      static void setActiveWindow(QWidget *act);
-@@ -695,7 +699,9 @@
+@@ -1106,7 +1110,9 @@
      static QWidget *topLevelAt(const QPoint &p);
      static QWidget *topLevelAt(int x, int y);
      static void syncX();
@@ -33,7 +33,7 @@
      static Qt::KeyboardModifiers keyboardModifiers();
      static Qt::MouseButtons mouseButtons();
      static void setDesktopSettingsAware(bool);
-@@ -706,8 +712,10 @@
+@@ -1117,8 +1123,10 @@
      static int doubleClickInterval();
      static void setKeyboardInputInterval(int);
      static int keyboardInputInterval();
@@ -44,7 +44,7 @@
      static void setGlobalStrut(const QSize &);
      static QSize globalStrut();
      static void setStartDragTime(int ms);
-@@ -726,6 +734,13 @@
+@@ -1137,6 +1145,13 @@
  %If (WS_X11)
      int x11ProcessEvent(XEvent *);
  %End
@@ -58,7 +58,7 @@
  %If (PyQt_SessionManager)
      bool isSessionRestored() const;
  %End
-@@ -741,8 +756,10 @@
+@@ -1152,8 +1167,10 @@
  %If (PyQt_SessionManager)
      virtual void saveState(QSessionManager &sm);
  %End
@@ -69,7 +69,7 @@
      static int exec() /PostHook=__pyQtPostEventLoopHook__,PreHook=__pyQtPreEventLoopHook__,PyName=exec_,ReleaseGIL/;
  %If (Py_v3)
      static int exec() /PostHook=__pyQtPostEventLoopHook__,PreHook=__pyQtPreEventLoopHook__,ReleaseGIL/;
-@@ -751,6 +768,12 @@
+@@ -1162,6 +1179,12 @@
      static void setQuitOnLastWindowClosed(bool quit);
      static bool quitOnLastWindowClosed();
  
@@ -82,7 +82,7 @@
  signals:
  %If (Qt_4_2_0 -)
  %If (PyQt_SessionManager)
-@@ -772,12 +795,18 @@
+@@ -1183,12 +1206,18 @@
      static void aboutQt();
      static void closeAllWindows();
  %If (Qt_4_2_0 -)
@@ -101,7 +101,7 @@
  public:
  %If (Qt_4_2_0 -)
      static QFont font();
-@@ -795,8 +824,10 @@
+@@ -1206,8 +1235,10 @@
      static Qt::LayoutDirection keyboardInputDirection();
  %End
  %If (Qt_4_2_0 -)

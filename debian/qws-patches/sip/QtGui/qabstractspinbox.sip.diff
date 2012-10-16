@@ -1,5 +1,5 @@
---- sip/QtGui/qabstractspinbox.sip.old	2012-10-04 17:51:54.140239145 +0200
-+++ sip/QtGui/qabstractspinbox.sip	2012-10-04 17:51:54.148239145 +0200
+--- sip/QtGui/qabstractspinbox.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qabstractspinbox.sip	2012-10-13 21:16:21.000000000 +0200
 @@ -93,10 +93,14 @@
      virtual void resizeEvent(QResizeEvent *e);
      virtual void keyPressEvent(QKeyEvent *e);

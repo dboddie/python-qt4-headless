@@ -1,5 +1,5 @@
---- sip/QtGui/QtGuimod.sip.old	2012-10-05 12:14:34.334890542 +0200
-+++ sip/QtGui/QtGuimod.sip	2012-10-05 12:34:29.778884744 +0200
+--- sip/QtGui/QtGuimod.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtGui/QtGuimod.sip	2012-10-13 21:16:20.000000000 +0200
 @@ -58,201 +58,431 @@
  %DefaultSupertype sip.simplewrapper
  
@@ -9,8 +9,8 @@
 -%Include qabstractprintdialog.sip
 -%Include qabstractproxymodel.sip
 -%Include qabstractscrollarea.sip
--%Include qabstractspinbox.sip
 -%Include qabstractslider.sip
+-%Include qabstractspinbox.sip
 +%If (PyQt_ItemViews)
 +  %Include qabstractitemdelegate.sip
 +  %Include qabstractitemview.sip
@@ -26,11 +26,11 @@
 +%If (PyQt_ScrollArea)
 +  %Include qabstractscrollarea.sip
 +%End
-+%If (PyQt_SpinBox)
-+  %Include qabstractspinbox.sip
-+%End
 +%If (PyQt_Slider)
 +  %Include qabstractslider.sip
++%End
++%If (PyQt_SpinBox)
++  %Include qabstractspinbox.sip
 +%End
  %Include qabstracttextdocumentlayout.sip
 -%Include qaction.sip
@@ -553,4 +553,4 @@
 +//%End
  %Include qx11embed_x11.sip
  %Include qx11info_x11.sip
- %Include qpytextobject.sip
+ %Include qguiapplication.sip

@@ -1,5 +1,5 @@
---- sip/QtGui/qabstractscrollarea.sip.old	2012-10-04 17:51:53.928239146 +0200
-+++ sip/QtGui/qabstractscrollarea.sip	2012-10-04 17:51:53.932239146 +0200
+--- sip/QtGui/qabstractscrollarea.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtGui/qabstractscrollarea.sip	2012-10-13 21:16:20.000000000 +0200
 @@ -55,12 +55,18 @@
      virtual void mouseReleaseEvent(QMouseEvent *);
      virtual void mouseDoubleClickEvent(QMouseEvent *);

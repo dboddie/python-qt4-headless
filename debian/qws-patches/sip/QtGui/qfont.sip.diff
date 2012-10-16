@@ -1,5 +1,5 @@
---- sip/QtGui/qfont.sip.old	2012-10-04 17:51:53.992239146 +0200
-+++ sip/QtGui/qfont.sip	2012-10-04 17:51:53.996239146 +0200
+--- sip/QtGui/qfont.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qfont.sip	2012-10-13 21:16:21.000000000 +0200
 @@ -172,7 +172,9 @@
      static void removeSubstitution(const QString &);
      static void initialize();

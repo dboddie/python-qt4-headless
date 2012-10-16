@@ -1,5 +1,5 @@
---- sip/QtGui/qwidget.sip.old	2012-10-04 17:51:54.076239147 +0200
-+++ sip/QtGui/qwidget.sip	2012-10-04 17:51:54.080239147 +0200
+--- sip/QtGui/qwidget.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qwidget.sip	2012-10-13 21:16:21.000000000 +0200
 @@ -122,9 +122,11 @@
      void setForegroundRole(QPalette::ColorRole);
      QPalette::ColorRole foregroundRole() const;
@@ -30,7 +30,7 @@
      static QWidget *mouseGrabber();
      static QWidget *keyboardGrabber();
      void setUpdatesEnabled(bool enable);
-@@ -279,14 +285,18 @@
+@@ -281,14 +287,18 @@
      void scroll(int dx, int dy, const QRect &);
      QWidget *focusWidget() const;
      QWidget *nextInFocusChain() const;
@@ -49,18 +49,22 @@
      void setWindowFlags(Qt::WindowFlags type);
      void overrideWindowFlags(Qt::WindowFlags type);
      static QWidget *find(WId);
-@@ -303,8 +313,10 @@
+@@ -311,12 +321,14 @@
      void setAttribute(Qt::WidgetAttribute attribute, bool on = true);
      virtual QPaintEngine *paintEngine() const;
      void ensurePolished() const;
 +%If (PyQt_IM)
+ %If (- Qt_5_0_0)
      QInputContext *inputContext();
+ %End
+ %If (- Qt_5_0_0)
      void setInputContext(QInputContext * /Transfer/);
+ %End
 +%End
      bool isAncestorOf(const QWidget *child) const;
  
  signals:
-@@ -316,7 +328,9 @@
+@@ -328,7 +340,9 @@
      virtual void mouseReleaseEvent(QMouseEvent *);
      virtual void mouseDoubleClickEvent(QMouseEvent *);
      virtual void mouseMoveEvent(QMouseEvent *);
@@ -70,7 +74,7 @@
      virtual void keyPressEvent(QKeyEvent *);
      virtual void keyReleaseEvent(QKeyEvent *);
      virtual void focusInEvent(QFocusEvent *);
-@@ -327,19 +341,30 @@
+@@ -339,19 +353,30 @@
      virtual void moveEvent(QMoveEvent *);
      virtual void resizeEvent(QResizeEvent *);
      virtual void closeEvent(QCloseEvent *);
@@ -101,17 +105,19 @@
      virtual int metric(QPaintDevice::PaintDeviceMetric) const;
      virtual void inputMethodEvent(QInputMethodEvent *);
  
-@@ -347,7 +372,9 @@
+@@ -359,9 +384,11 @@
      virtual QVariant inputMethodQuery(Qt::InputMethodQuery) const;
  
  protected:
 +%If (PyQt_IM)
+ %If (- Qt_5_0_0)
      void resetInputContext();
+ %End
 +%End
      void updateMicroFocus();
      void create(WId window = 0, bool initializeWindow = true, bool destroyOldWindow = true);
      void destroy(bool destroyWindow = true, bool destroySubWindows = true);
-@@ -403,15 +430,19 @@
+@@ -427,15 +454,19 @@
      void setWindowModality(Qt::WindowModality windowModality);
      bool autoFillBackground() const;
      void setAutoFillBackground(bool enabled);
@@ -131,7 +137,7 @@
  %If (Qt_4_2_0 -)
      QByteArray saveGeometry() const;
  %End
-@@ -459,20 +490,26 @@
+@@ -483,20 +514,26 @@
      QString windowFilePath() const;
  %End
  %If (Qt_4_5_0 -)

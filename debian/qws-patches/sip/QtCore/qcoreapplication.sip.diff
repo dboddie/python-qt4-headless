@@ -1,6 +1,6 @@
---- sip/QtCore/qcoreapplication.sip.old	2012-10-04 17:51:54.908239143 +0200
-+++ sip/QtCore/qcoreapplication.sip	2012-10-04 17:51:54.916239142 +0200
-@@ -165,12 +165,16 @@
+--- sip/QtCore/qcoreapplication.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtCore/qcoreapplication.sip	2012-10-13 21:16:20.000000000 +0200
+@@ -186,12 +186,16 @@
      static bool closingDown();
      static QString applicationDirPath();
      static QString applicationFilePath();
@@ -17,7 +17,7 @@
  
      enum Encoding
      {
-@@ -340,18 +344,23 @@
+@@ -403,18 +407,23 @@
      }
  }
  %End
@@ -41,7 +41,7 @@
  %ModuleCode
  #include <QCoreApplication>
  #include <QThread>
-@@ -397,8 +406,11 @@
+@@ -460,8 +469,11 @@
      return 0;
  }
  %End

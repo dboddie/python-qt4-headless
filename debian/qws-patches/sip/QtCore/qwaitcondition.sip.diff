@@ -1,5 +1,5 @@
---- sip/QtCore/qwaitcondition.sip.old	2012-10-04 17:51:54.960239141 +0200
-+++ sip/QtCore/qwaitcondition.sip	2012-10-04 17:51:54.968239141 +0200
+--- sip/QtCore/qwaitcondition.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtCore/qwaitcondition.sip	2012-10-13 21:16:20.000000000 +0200
 @@ -36,8 +36,10 @@
      ~QWaitCondition();
      bool wait(QMutex *mutex, unsigned long msecs = ULONG_MAX) /ReleaseGIL/;

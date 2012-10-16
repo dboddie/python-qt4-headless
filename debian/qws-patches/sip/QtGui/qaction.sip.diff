@@ -1,5 +1,5 @@
---- sip/QtGui/qaction.sip.old	2012-10-04 17:51:54.584239143 +0200
-+++ sip/QtGui/qaction.sip	2012-10-04 17:51:54.588239143 +0200
+--- sip/QtGui/qaction.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qaction.sip	2012-10-13 21:16:21.000000000 +0200
 @@ -44,20 +44,30 @@
      QString text() const;
      void setIconText(const QString &text);

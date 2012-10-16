@@ -1,5 +1,5 @@
---- sip/QtGui/qundostack.sip.old	2012-10-04 17:51:54.088239146 +0200
-+++ sip/QtGui/qundostack.sip	2012-10-04 17:51:54.092239145 +0200
+--- sip/QtGui/qundostack.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qundostack.sip	2012-10-13 21:16:21.000000000 +0200
 @@ -26,6 +26,7 @@
  
  

@@ -1,5 +1,5 @@
---- sip/QtNetwork/QtNetworkmod.sip.old	2012-10-05 12:14:34.838890540 +0200
-+++ sip/QtNetwork/QtNetworkmod.sip	2012-10-05 13:16:24.346872550 +0200
+--- sip/QtNetwork/QtNetworkmod.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtNetwork/QtNetworkmod.sip	2012-10-13 21:16:20.000000000 +0200
 @@ -58,24 +58,36 @@
  %Include qabstractnetworkcache.sip
  %Include qabstractsocket.sip

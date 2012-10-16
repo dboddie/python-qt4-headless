@@ -1,5 +1,5 @@
---- qpy/QtCore/qpycore_pyqtconfigure.cpp.old	2012-10-04 17:51:55.184239140 +0200
-+++ qpy/QtCore/qpycore_pyqtconfigure.cpp	2012-10-04 17:51:55.188239140 +0200
+--- qpy/QtCore/qpycore_pyqtconfigure.cpp.old	2012-10-13 21:16:19.000000000 +0200
++++ qpy/QtCore/qpycore_pyqtconfigure.cpp	2012-10-13 21:16:19.000000000 +0200
 @@ -23,6 +23,8 @@
  // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
  

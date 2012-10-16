@@ -1,5 +1,5 @@
---- sip/QtGui/qgraphicsitem.sip.old	2012-10-04 17:51:53.976239146 +0200
-+++ sip/QtGui/qgraphicsitem.sip	2012-10-04 17:51:53.984239146 +0200
+--- sip/QtGui/qgraphicsitem.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qgraphicsitem.sip	2012-10-13 21:16:21.000000000 +0200
 @@ -262,12 +262,16 @@
      QFlags<QGraphicsItem::GraphicsItemFlag> flags() const;
      void setFlag(QGraphicsItem::GraphicsItemFlag flag, bool enabled = true);
@@ -28,7 +28,7 @@
      Qt::MouseButtons acceptedMouseButtons() const;
      void setAcceptedMouseButtons(Qt::MouseButtons buttons);
      bool acceptsHoverEvents() const;
-@@ -356,11 +362,15 @@
+@@ -358,11 +364,15 @@
      void removeSceneEventFilter(QGraphicsItem *filterItem);
  
  protected:
@@ -44,7 +44,7 @@
      virtual void focusInEvent(QFocusEvent *event);
      virtual void focusOutEvent(QFocusEvent *event);
      virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *event);
-@@ -378,7 +388,9 @@
+@@ -380,7 +390,9 @@
      void prepareGeometryChange();
      virtual bool sceneEvent(QEvent *event);
      virtual bool sceneEventFilter(QGraphicsItem *watched, QEvent *event);
@@ -54,7 +54,7 @@
  
  public:
      void setPos(qreal ax, qreal ay);
-@@ -935,10 +947,12 @@
+@@ -937,10 +949,12 @@
      virtual void keyReleaseEvent(QKeyEvent *event);
      virtual void focusInEvent(QFocusEvent *event);
      virtual void focusOutEvent(QFocusEvent *event);
@@ -67,7 +67,7 @@
      virtual void inputMethodEvent(QInputMethodEvent *event);
      virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *event);
      virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *event);
-@@ -1032,8 +1046,10 @@
+@@ -1034,8 +1048,10 @@
  
  public:
      QGraphicsObject(QGraphicsItem *parent /TransferThis/ = 0);
@@ -78,7 +78,7 @@
  
  signals:
      void parentChanged();
-@@ -1109,10 +1125,12 @@
+@@ -1111,10 +1127,12 @@
      virtual void keyReleaseEvent(QKeyEvent *event);
      virtual void focusInEvent(QFocusEvent *event);
      virtual void focusOutEvent(QFocusEvent *event);

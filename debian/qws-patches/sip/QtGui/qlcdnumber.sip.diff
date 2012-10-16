@@ -1,6 +1,6 @@
---- sip/QtGui/qlcdnumber.sip.old	2012-10-04 17:51:54.388239144 +0200
-+++ sip/QtGui/qlcdnumber.sip	2012-10-04 17:51:54.392239144 +0200
-@@ -60,7 +60,7 @@
+--- sip/QtGui/qlcdnumber.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qlcdnumber.sip	2012-10-13 21:16:21.000000000 +0200
+@@ -64,7 +64,7 @@
      void setMode(QLCDNumber::Mode);
      QLCDNumber::SegmentStyle segmentStyle() const;
      void setSegmentStyle(QLCDNumber::SegmentStyle);

@@ -1,6 +1,6 @@
---- sip/QtCore/qabstractitemmodel.sip.old	2012-10-04 17:51:55.080239142 +0200
-+++ sip/QtCore/qabstractitemmodel.sip	2012-10-04 17:51:55.084239142 +0200
-@@ -183,8 +183,10 @@
+--- sip/QtCore/qabstractitemmodel.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtCore/qabstractitemmodel.sip	2012-10-13 21:16:20.000000000 +0200
+@@ -214,8 +214,10 @@
  %End
  
  protected:

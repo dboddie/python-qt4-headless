@@ -1,6 +1,6 @@
---- sip/QtCore/qnamespace.sip.old	2012-10-04 17:51:55.056239142 +0200
-+++ sip/QtCore/qnamespace.sip	2012-10-04 17:51:55.060239142 +0200
-@@ -1507,7 +1507,7 @@
+--- sip/QtCore/qnamespace.sip.old	2012-10-16 12:35:28.097286905 +0200
++++ sip/QtCore/qnamespace.sip	2012-10-16 12:35:50.533286797 +0200
+@@ -1639,7 +1639,7 @@
      };
  
      typedef QFlags<Qt::MatchFlag> MatchFlags;
@@ -9,7 +9,7 @@
      typedef void *HANDLE;
  %End
  %If (WS_X11)
-@@ -1729,6 +1729,7 @@
+@@ -1882,6 +1882,7 @@
  %If (Qt_4_6_0 -)
      typedef QFlags<Qt::TouchPointState> TouchPointStates;
  %End
@@ -17,7 +17,7 @@
  %If (Qt_4_6_0 -)
  
      enum GestureState
-@@ -1768,6 +1769,7 @@
+@@ -1921,6 +1922,7 @@
  %If (Qt_4_6_0 -)
      typedef QFlags<Qt::GestureFlag> GestureFlags;
  %End
@@ -25,11 +25,15 @@
  %If (Qt_4_6_0 -)
  
      enum NavigationMode
-@@ -1992,5 +1994,7 @@
+@@ -2171,9 +2173,11 @@
+ %If (Qt_4_6_0 -)
  QFlags<Qt::TouchPointState> operator|(Qt::TouchPointState f1, QFlags<Qt::TouchPointState> f2);
  %End
- %If (Qt_4_6_0 -)
 +%If (PyQt_Gestures)
+ %If (Qt_4_6_0 -)
  QFlags<Qt::GestureFlag> operator|(Qt::GestureFlag f1, QFlags<Qt::GestureFlag> f2);
  %End
 +%End
+ %If (Qt_5_0_0 -)
+ QFlags<Qt::ScreenOrientation> operator|(Qt::ScreenOrientation f1, QFlags<Qt::ScreenOrientation> f2);
+ %End

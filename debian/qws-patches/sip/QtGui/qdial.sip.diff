@@ -1,5 +1,5 @@
---- sip/QtGui/qdial.sip.old	2012-10-04 17:51:54.320239146 +0200
-+++ sip/QtGui/qdial.sip	2012-10-04 17:51:54.328239144 +0200
+--- sip/QtGui/qdial.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qdial.sip	2012-10-13 21:16:21.000000000 +0200
 @@ -36,7 +36,7 @@
      virtual ~QDial();
      bool wrapping() const;

@@ -1,5 +1,5 @@
---- sip/QtGui/qtreewidget.sip.old	2012-10-04 17:51:53.984239146 +0200
-+++ sip/QtGui/qtreewidget.sip	2012-10-04 17:51:53.992239146 +0200
+--- sip/QtGui/qtreewidget.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtGui/qtreewidget.sip	2012-10-13 21:16:20.000000000 +0200
 @@ -74,7 +74,9 @@
      Qt::ItemFlags flags() const;
      QString text(int column) const;

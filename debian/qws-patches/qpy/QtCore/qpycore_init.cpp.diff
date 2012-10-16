@@ -1,5 +1,5 @@
---- qpy/QtCore/qpycore_init.cpp.old	2012-10-04 17:51:55.192239140 +0200
-+++ qpy/QtCore/qpycore_init.cpp	2012-10-04 17:51:55.200239140 +0200
+--- qpy/QtCore/qpycore_init.cpp.old	2012-10-13 21:16:19.000000000 +0200
++++ qpy/QtCore/qpycore_init.cpp	2012-10-13 21:16:19.000000000 +0200
 @@ -25,6 +25,7 @@
  
  #include <Python.h>

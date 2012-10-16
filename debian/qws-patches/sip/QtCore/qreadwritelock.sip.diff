@@ -1,5 +1,5 @@
---- sip/QtCore/qreadwritelock.sip.old	2012-10-04 17:51:54.940239141 +0200
-+++ sip/QtCore/qreadwritelock.sip	2012-10-04 17:51:54.948239141 +0200
+--- sip/QtCore/qreadwritelock.sip.old	2012-10-13 21:16:19.000000000 +0200
++++ sip/QtCore/qreadwritelock.sip	2012-10-13 21:16:19.000000000 +0200
 @@ -33,6 +33,7 @@
  
  public:
@@ -8,13 +8,18 @@
  
      enum RecursionMode
      {
-@@ -41,10 +42,13 @@
+@@ -41,6 +42,7 @@
      };
  
  %End
 +%End
+ %If (Qt_5_0_0 -)
+     explicit QReadWriteLock(QReadWriteLock::RecursionMode recursionMode = QReadWriteLock::NonRecursive);
+ %End
+@@ -48,8 +50,10 @@
      QReadWriteLock();
- %If (Qt_4_4_0 -)
+ %End
+ %If (Qt_4_4_0 - Qt_5_0_0)
 +%If (PyQt_Thread)
      QReadWriteLock(QReadWriteLock::RecursionMode recursionMode);
  %End

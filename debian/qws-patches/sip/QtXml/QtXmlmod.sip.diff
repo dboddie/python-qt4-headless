@@ -1,5 +1,5 @@
---- sip/QtXml/QtXmlmod.sip.old	2012-10-04 17:51:54.644239144 +0200
-+++ sip/QtXml/QtXmlmod.sip	2012-10-04 17:51:54.648239144 +0200
+--- sip/QtXml/QtXmlmod.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtXml/QtXmlmod.sip	2012-10-13 21:16:21.000000000 +0200
 @@ -55,6 +55,8 @@
  
  %DefaultSupertype sip.simplewrapper

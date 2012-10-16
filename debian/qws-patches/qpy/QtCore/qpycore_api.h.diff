@@ -1,5 +1,5 @@
---- qpy/QtCore/qpycore_api.h.old	2012-10-04 17:51:55.172239140 +0200
-+++ qpy/QtCore/qpycore_api.h	2012-10-04 17:51:55.180239140 +0200
+--- qpy/QtCore/qpycore_api.h.old	2012-10-13 21:16:19.000000000 +0200
++++ qpy/QtCore/qpycore_api.h	2012-10-13 21:16:19.000000000 +0200
 @@ -28,6 +28,7 @@
  #define _QPYCORE_API_H
  

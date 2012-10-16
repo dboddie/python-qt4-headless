@@ -1,6 +1,6 @@
---- sip/QtGui/qtreeview.sip.old	2012-10-04 17:51:54.624239143 +0200
-+++ sip/QtGui/qtreeview.sip	2012-10-04 17:51:54.628239143 +0200
-@@ -174,8 +174,10 @@
+--- sip/QtGui/qtreeview.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qtreeview.sip	2012-10-13 21:16:21.000000000 +0200
+@@ -181,8 +181,10 @@
  
  protected:
  %If (Qt_4_3_0 -)

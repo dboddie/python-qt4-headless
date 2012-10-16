@@ -1,5 +1,5 @@
---- sip/QtSql/qsqldriver.sip.old	2012-10-04 17:51:54.664239144 +0200
-+++ sip/QtSql/qsqldriver.sip	2012-10-04 17:51:54.668239144 +0200
+--- sip/QtSql/qsqldriver.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtSql/qsqldriver.sip	2012-10-13 21:16:20.000000000 +0200
 @@ -37,11 +37,15 @@
              sipTypeDef **type;
              int yes, no;

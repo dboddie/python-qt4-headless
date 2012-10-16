@@ -1,5 +1,5 @@
---- sip/QtGui/qundoview.sip.old	2012-10-04 17:51:54.300239144 +0200
-+++ sip/QtGui/qundoview.sip	2012-10-04 17:51:54.304239144 +0200
+--- sip/QtGui/qundoview.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qundoview.sip	2012-10-13 21:16:21.000000000 +0200
 @@ -36,10 +36,14 @@
  public:
      explicit QUndoView(QWidget *parent /TransferThis/ = 0);

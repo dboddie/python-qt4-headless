@@ -1,5 +1,5 @@
---- sip/QtScript/qscriptcontextinfo.sip.old	2012-10-04 17:51:54.656239144 +0200
-+++ sip/QtScript/qscriptcontextinfo.sip	2012-10-04 17:51:54.660239144 +0200
+--- sip/QtScript/qscriptcontextinfo.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtScript/qscriptcontextinfo.sip	2012-10-13 21:16:21.000000000 +0200
 @@ -71,9 +71,11 @@
  %If (Qt_4_4_0 -)
  typedef QList<QScriptContextInfo> QScriptContextInfoList;

@@ -1,7 +1,7 @@
---- sip/QtCore/qabstracteventdispatcher.sip.old	2012-10-04 17:51:54.972239141 +0200
-+++ sip/QtCore/qabstracteventdispatcher.sip	2012-10-04 17:51:54.976239141 +0200
-@@ -36,7 +36,9 @@
- public:
+--- sip/QtCore/qabstracteventdispatcher.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtCore/qabstracteventdispatcher.sip	2012-10-13 21:16:20.000000000 +0200
+@@ -52,7 +52,9 @@
+ %End
      explicit QAbstractEventDispatcher(QObject *parent /TransferThis/ = 0);
      virtual ~QAbstractEventDispatcher();
 +%If (PyQt_Thread)

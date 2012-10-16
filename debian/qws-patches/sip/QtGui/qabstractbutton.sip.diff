@@ -1,5 +1,5 @@
---- sip/QtGui/qabstractbutton.sip.old	2012-10-04 17:51:54.340239144 +0200
-+++ sip/QtGui/qabstractbutton.sip	2012-10-04 17:51:54.348239144 +0200
+--- sip/QtGui/qabstractbutton.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtGui/qabstractbutton.sip	2012-10-13 21:16:20.000000000 +0200
 @@ -51,8 +51,10 @@
      void setIcon(const QIcon &icon);
      QIcon icon() const;

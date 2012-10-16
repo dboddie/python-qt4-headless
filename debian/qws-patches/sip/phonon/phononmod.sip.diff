@@ -1,5 +1,5 @@
---- sip/phonon/phononmod.sip.old	2012-10-04 17:51:55.164239140 +0200
-+++ sip/phonon/phononmod.sip	2012-10-04 17:51:55.168239140 +0200
+--- sip/phonon/phononmod.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/phonon/phononmod.sip	2012-10-13 21:16:20.000000000 +0200
 @@ -62,7 +62,9 @@
  %Include backendcapabilities.sip
  %Include effect.sip

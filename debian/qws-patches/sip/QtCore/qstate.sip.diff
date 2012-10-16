@@ -1,5 +1,5 @@
---- sip/QtCore/qstate.sip.old	2012-10-04 17:51:54.932239141 +0200
-+++ sip/QtCore/qstate.sip	2012-10-04 17:51:54.936239141 +0200
+--- sip/QtCore/qstate.sip.old	2012-10-13 21:16:19.000000000 +0200
++++ sip/QtCore/qstate.sip	2012-10-13 21:16:19.000000000 +0200
 @@ -73,7 +73,9 @@
      void setInitialState(QAbstractState *state /KeepReference/);
      QState::ChildMode childMode() const;

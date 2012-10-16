@@ -1,5 +1,5 @@
---- sip/QtGui/qgraphicsscene.sip.old	2012-10-04 17:51:54.108239148 +0200
-+++ sip/QtGui/qgraphicsscene.sip	2012-10-04 17:51:54.116239146 +0200
+--- sip/QtGui/qgraphicsscene.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qgraphicsscene.sip	2012-10-13 21:16:21.000000000 +0200
 @@ -128,11 +128,15 @@
  
  protected:

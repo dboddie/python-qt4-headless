@@ -1,5 +1,5 @@
---- sip/QtXml/qdom.sip.old	2012-10-04 17:51:54.636239143 +0200
-+++ sip/QtXml/qdom.sip	2012-10-04 17:51:54.640239143 +0200
+--- sip/QtXml/qdom.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtXml/qdom.sip	2012-10-13 21:16:21.000000000 +0200
 @@ -141,7 +141,9 @@
      QDomProcessingInstruction toProcessingInstruction() const;
      QDomCharacterData toCharacterData() const;

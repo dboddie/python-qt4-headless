@@ -1,6 +1,6 @@
---- sip/QtGui/qmdiarea.sip.old	2012-10-04 17:51:54.032239147 +0200
-+++ sip/QtGui/qmdiarea.sip	2012-10-04 17:51:54.036239147 +0200
-@@ -138,24 +138,30 @@
+--- sip/QtGui/qmdiarea.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qmdiarea.sip	2012-10-13 21:16:21.000000000 +0200
+@@ -143,24 +143,30 @@
  %If (Qt_4_4_0 -)
      QMdiArea::ViewMode viewMode() const;
  %End

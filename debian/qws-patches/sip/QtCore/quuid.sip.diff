@@ -1,6 +1,6 @@
---- sip/QtCore/quuid.sip.old	2012-10-04 17:51:55.112239142 +0200
-+++ sip/QtCore/quuid.sip	2012-10-04 17:51:55.116239142 +0200
-@@ -55,10 +55,13 @@
+--- sip/QtCore/quuid.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtCore/quuid.sip	2012-10-13 21:16:20.000000000 +0200
+@@ -132,10 +132,13 @@
  
      QUuid();
      QUuid(uint l, ushort w1, ushort w2, uchar b1, uchar b2, uchar b3, uchar b4, uchar b5, uchar b6, uchar b7, uchar b8);
@@ -14,7 +14,7 @@
      SIP_PYOBJECT __repr__() const /DocType="str"/;
  %MethodCode
          PyObject *uni = qpycore_PyObject_FromQString(sipCpp->toString());
-@@ -76,8 +79,11 @@
+@@ -153,8 +156,11 @@
              Py_DECREF(uni);
          }
  %End
@@ -26,7 +26,7 @@
      bool isNull() const;
      bool operator==(const QUuid &orig) const;
      bool operator!=(const QUuid &orig) const;
-@@ -86,7 +92,9 @@
+@@ -163,7 +169,9 @@
      static QUuid createUuid();
      QUuid::Variant variant() const;
      QUuid::Version version() const;
@@ -36,10 +36,10 @@
  %If (Qt_4_8_0 -)
      QByteArray toByteArray() const;
  %End
-@@ -98,5 +106,7 @@
- %End
+@@ -176,5 +184,7 @@
  };
  
+ %End
 +%If (PyQt_DataStream)
  QDataStream &operator<<(QDataStream &, const QUuid & /Constrained/);
  QDataStream &operator>>(QDataStream &, QUuid & /Constrained/);

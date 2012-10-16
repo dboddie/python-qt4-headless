@@ -1,5 +1,5 @@
---- sip/QtGui/qpixmap.sip.old	2012-10-04 17:51:54.508239143 +0200
-+++ sip/QtGui/qpixmap.sip	2012-10-04 17:51:54.512239145 +0200
+--- sip/QtGui/qpixmap.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qpixmap.sip	2012-10-13 21:16:21.000000000 +0200
 @@ -40,6 +40,7 @@
      QPixmap(int w, int h);
      QPixmap(const QSize &);
@@ -16,17 +16,17 @@
  
      QPixmap(const QPixmap &);
      QPixmap(const QVariant &variant) /NoDerived/;
-@@ -79,7 +81,9 @@
+@@ -89,7 +91,9 @@
      void setAlphaChannel(const QPixmap &);
      bool hasAlpha() const;
      bool hasAlphaChannel() const;
 +%If (PyQt_Image_Heuristic_Mask)
      QBitmap createHeuristicMask(bool clipTight = true) const;
 +%End
- %If (Qt_4_3_0 -)
-     QBitmap createMaskFromColor(const QColor &maskColor, Qt::MaskMode mode) const;
+ %If (Qt_5_0_0 -)
+     QBitmap createMaskFromColor(const QColor &maskColor, Qt::MaskMode mode = Qt::MaskInColor) const;
  %End
-@@ -191,8 +195,10 @@
+@@ -222,8 +226,10 @@
  %End
  };
  

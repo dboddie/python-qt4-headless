@@ -1,5 +1,5 @@
---- sip/QtGui/qabstractprintdialog.sip.old	2012-10-04 17:51:53.896239145 +0200
-+++ sip/QtGui/qabstractprintdialog.sip	2012-10-04 17:51:53.896239145 +0200
+--- sip/QtGui/qabstractprintdialog.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qabstractprintdialog.sip	2012-10-13 21:16:21.000000000 +0200
 @@ -68,7 +68,9 @@
  
      typedef QFlags<QAbstractPrintDialog::PrintDialogOption> PrintDialogOptions;

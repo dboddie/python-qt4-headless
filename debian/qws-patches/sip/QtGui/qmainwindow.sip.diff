@@ -1,5 +1,5 @@
---- sip/QtGui/qmainwindow.sip.old	2012-10-04 17:51:54.184239145 +0200
-+++ sip/QtGui/qmainwindow.sip	2012-10-04 17:51:54.188239145 +0200
+--- sip/QtGui/qmainwindow.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtGui/qmainwindow.sip	2012-10-13 21:16:20.000000000 +0200
 @@ -47,14 +47,21 @@
      void setIconSize(const QSize &iconSize);
      Qt::ToolButtonStyle toolButtonStyle() const;
@@ -22,7 +22,7 @@
      void addToolBarBreak(Qt::ToolBarArea area = Qt::TopToolBarArea);
      void insertToolBarBreak(QToolBar *before);
      void addToolBar(Qt::ToolBarArea area, QToolBar *toolbar /Transfer/);
-@@ -63,51 +70,66 @@
+@@ -63,47 +70,61 @@
      void insertToolBar(QToolBar *before, QToolBar *toolbar /Transfer/);
      void removeToolBar(QToolBar *toolbar);
      Qt::ToolBarArea toolBarArea(QToolBar *toolbar) const;
@@ -84,41 +84,25 @@
  %If (Qt_4_2_0 -)
      void tabifyDockWidget(QDockWidget *first, QDockWidget *second);
  %End
+@@ -128,12 +149,16 @@
  %If (Qt_4_3_0 -)
-+%If (PyQt_DockWidget)
- 
-     enum DockOption
-     {
-@@ -119,15 +141,24 @@
-     };
- 
- %End
-+%End
- %If (Qt_4_3_0 -)
-+%If (PyQt_DockWidget)
-     typedef QFlags<QMainWindow::DockOption> DockOptions;
- %End
-+%End
- %If (Qt_4_3_0 -)
-+%If (PyQt_DockWidget)
-     void setDockOptions(QFlags<QMainWindow::DockOption> options);
- %End
-+%End
- %If (Qt_4_3_0 -)
-+%If (PyQt_DockWidget)
      QFlags<QMainWindow::DockOption> dockOptions() const;
  %End
-+%End
 +%End
 +%If (PyQt_ToolBar)
  %If (Qt_4_3_0 -)
      void removeToolBarBreak(QToolBar *before);
  %End
-@@ -141,34 +172,47 @@
-     bool unifiedTitleAndToolBarOnMac() const;
+ %If (Qt_4_3_0 -)
+     bool toolBarBreak(QToolBar *toolbar) const;
  %End
- %If (Qt_4_4_0 -)
++%End
 +%If (PyQt_DockWidget)
+ %If (Qt_4_3_0 -)
+     void setUnifiedTitleAndToolBarOnMac(bool set);
+ %End
+@@ -143,18 +168,23 @@
+ %If (Qt_4_4_0 -)
      bool restoreDockWidget(QDockWidget *dockwidget);
  %End
 +%End
@@ -129,6 +113,7 @@
  %If (Qt_4_5_0 -)
      void setDocumentMode(bool enabled);
  %End
++%End
 +%If (PyQt_TabWidget)
  %If (Qt_4_5_0 -)
      QTabWidget::TabShape tabShape() const;
@@ -140,25 +125,19 @@
  %If (Qt_4_5_0 -)
      QTabWidget::TabPosition tabPosition(Qt::DockWidgetArea area) const;
  %End
- %If (Qt_4_5_0 -)
-     void setTabPosition(Qt::DockWidgetAreas areas, QTabWidget::TabPosition tabPosition);
- %End
-+%End
-+%End
-+%If (PyQt_DockWidget)
+@@ -164,11 +194,15 @@
  %If (Qt_4_5_0 -)
      QList<QDockWidget*> tabifiedDockWidgets(QDockWidget *dockwidget) const;
  %End
-+%End
-+%End
-+%End
++%End // PyQt_DockWidget
++%End // PyQt_TabWidget
  
  private:
      QMainWindow(const QMainWindow &);
  };
  
- %If (Qt_4_3_0 -)
 +%If (PyQt_DockWidget)
+ %If (Qt_4_3_0 -)
  QFlags<QMainWindow::DockOption> operator|(QMainWindow::DockOption f1, QFlags<QMainWindow::DockOption> f2);
  %End
 +%End

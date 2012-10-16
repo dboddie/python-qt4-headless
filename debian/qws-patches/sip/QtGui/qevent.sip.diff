@@ -1,5 +1,5 @@
---- sip/QtGui/qevent.sip.old	2012-10-04 17:51:54.008239146 +0200
-+++ sip/QtGui/qevent.sip	2012-10-04 17:51:54.016239146 +0200
+--- sip/QtGui/qevent.sip.old	2012-10-16 12:52:02.049282084 +0200
++++ sip/QtGui/qevent.sip	2012-10-16 12:58:05.433280323 +0200
 @@ -38,20 +38,25 @@
  %ConvertToSubClassCode
      switch (sipCpp->type())
@@ -129,19 +129,19 @@
      #endif
 +    #endif
      
-     default:
-         sipType = 0;
-@@ -264,6 +288,8 @@
-     const QPoint &oldPos() const;
- };
+     #if QT_VERSION >= 0x050000
+     case QEvent::InputMethodQuery:
+@@ -342,6 +366,8 @@
+ 
+ %End
  
 +%If (PyQt_WheelEvent)
 +
  class QWheelEvent : QInputEvent
  {
  %TypeHeaderCode
-@@ -285,6 +311,10 @@
-     Qt::Orientation orientation() const;
+@@ -398,6 +424,10 @@
+ %End
  };
  
 +%End
@@ -151,8 +151,8 @@
  class QTabletEvent : QInputEvent
  {
  %TypeHeaderCode
-@@ -333,6 +363,8 @@
-     int yTilt() const;
+@@ -467,6 +497,8 @@
+ %End
  };
  
 +%End
@@ -160,7 +160,7 @@
  class QKeyEvent : QInputEvent
  {
  %TypeHeaderCode
-@@ -348,8 +380,10 @@
+@@ -482,8 +514,10 @@
      bool isAutoRepeat() const;
      int count() const /__len__/;
  %If (Qt_4_2_0 -)
@@ -171,7 +171,7 @@
  %If (Qt_4_2_0 -)
      quint32 nativeModifiers() const;
  %End
-@@ -464,6 +498,8 @@
+@@ -608,6 +642,8 @@
      virtual ~QHideEvent();
  };
  
@@ -180,7 +180,7 @@
  class QContextMenuEvent : QInputEvent
  {
  %TypeHeaderCode
-@@ -493,6 +529,10 @@
+@@ -637,6 +673,10 @@
      QContextMenuEvent::Reason reason() const;
  };
  
@@ -191,18 +191,17 @@
  class QInputMethodEvent : QEvent
  {
  %TypeHeaderCode
-@@ -536,6 +576,10 @@
-     int replacementLength() const;
+@@ -697,6 +737,9 @@
  };
  
+ %End
 +%End
 +
 +%If (PyQt_DragAndDrop)
-+
- class QDropEvent : QEvent, QMimeSource
- {
- %TypeHeaderCode
-@@ -598,6 +642,8 @@
+ %If (Qt_5_0_0 -)
+ 
+ class QDropEvent : QEvent
+@@ -788,6 +831,8 @@
      virtual ~QDragLeaveEvent();
  };
  
@@ -211,7 +210,7 @@
  class QHelpEvent : QEvent
  {
  %TypeHeaderCode
-@@ -615,6 +661,8 @@
+@@ -805,6 +850,8 @@
      const QPoint &globalPos() const;
  };
  
@@ -220,7 +219,7 @@
  class QStatusTipEvent : QEvent
  {
  %TypeHeaderCode
-@@ -627,6 +675,10 @@
+@@ -822,6 +869,10 @@
      QString tip() const;
  };
  
@@ -231,7 +230,7 @@
  class QWhatsThisClickedEvent : QEvent
  {
  %TypeHeaderCode
-@@ -639,6 +691,10 @@
+@@ -839,6 +890,10 @@
      QString href() const;
  };
  
@@ -242,7 +241,7 @@
  class QActionEvent : QEvent
  {
  %TypeHeaderCode
-@@ -652,6 +708,8 @@
+@@ -852,6 +907,8 @@
      QAction *before() const;
  };
  
@@ -251,7 +250,7 @@
  class QFileOpenEvent : QEvent /NoDefaultCtors/
  {
  %TypeHeaderCode
-@@ -669,6 +727,8 @@
+@@ -869,6 +926,8 @@
  %End
  };
  
@@ -260,7 +259,7 @@
  class QShortcutEvent : QEvent
  {
  %TypeHeaderCode
-@@ -698,6 +758,8 @@
+@@ -898,6 +957,8 @@
  %End
  };
  
@@ -269,30 +268,16 @@
  class QWindowStateChangeEvent : QEvent /NoDefaultCtors/
  {
  %TypeHeaderCode
-@@ -709,12 +771,14 @@
-     Qt::WindowStates oldState() const;
+@@ -999,6 +1060,8 @@
  };
  
-+%If (PyQt_Shortcut)
- %If (Qt_4_2_0 -)
- bool operator==(QKeyEvent *e, QKeySequence::StandardKey key);
  %End
- %If (Qt_4_2_0 -)
- bool operator==(QKeySequence::StandardKey key, QKeyEvent *e);
- %End
-+%End
- %If (Qt_4_6_0 -)
- 
- class QTouchEvent : QInputEvent
-@@ -768,6 +832,7 @@
- 
- %End
- %If (Qt_4_6_0 -)
++
 +%If (PyQt_Gestures)
- 
- class QGestureEvent : QEvent
- {
-@@ -795,7 +860,10 @@
+ %If (Qt_5_0_0 -)
+ QFlags<QTouchEvent::TouchPoint::InfoFlag> operator|(QTouchEvent::TouchPoint::InfoFlag f1, QFlags<QTouchEvent::TouchPoint::InfoFlag> f2);
+ %End
+@@ -1033,10 +1096,14 @@
      void ignore(Qt::GestureType);
      bool isAccepted(Qt::GestureType) const;
      QWidget *widget() const;
@@ -301,5 +286,21 @@
 +%End
  };
  
+ %End
++%End
++
+ %If (Qt_5_0_0 -)
+ 
+ class QExposeEvent : QEvent
+@@ -1097,9 +1164,11 @@
+ };
+ 
+ %End
++%If (PyQt_Shortcut)
+ %If (Qt_4_2_0 -)
+ bool operator==(QKeyEvent *e, QKeySequence::StandardKey key);
+ %End
+ %If (Qt_4_2_0 -)
+ bool operator==(QKeySequence::StandardKey key, QKeyEvent *e);
  %End
 +%End

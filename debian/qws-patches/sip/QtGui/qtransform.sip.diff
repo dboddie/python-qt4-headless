@@ -1,5 +1,5 @@
---- sip/QtGui/qtransform.sip.old	2012-10-04 17:51:54.372239144 +0200
-+++ sip/QtGui/qtransform.sip	2012-10-04 17:51:54.384239144 +0200
+--- sip/QtGui/qtransform.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qtransform.sip	2012-10-13 21:16:21.000000000 +0200
 @@ -122,12 +122,14 @@
  };
  

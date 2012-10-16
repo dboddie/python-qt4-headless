@@ -1,5 +1,5 @@
---- sip/QtWebKit/qwebpage.sip.old	2012-10-04 17:51:54.804239142 +0200
-+++ sip/QtWebKit/qwebpage.sip	2012-10-04 17:51:54.812239142 +0200
+--- sip/QtWebKit/qwebpage.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtWebKit/qwebpage.sip	2012-10-13 21:16:20.000000000 +0200
 @@ -196,7 +196,9 @@
      void setView(QWidget *view /KeepReference/);
      QWidget *view() const;

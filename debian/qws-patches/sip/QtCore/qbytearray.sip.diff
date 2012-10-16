@@ -1,6 +1,6 @@
---- sip/QtCore/qbytearray.sip.old	2012-10-04 17:51:54.844239142 +0200
-+++ sip/QtCore/qbytearray.sip	2012-10-04 17:51:54.852239143 +0200
-@@ -411,8 +411,10 @@
+--- sip/QtCore/qbytearray.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtCore/qbytearray.sip	2012-10-13 21:16:20.000000000 +0200
+@@ -416,8 +416,10 @@
  bool operator>(const QByteArray &a1, const QByteArray &a2);
  bool operator>=(const QByteArray &a1, const QByteArray &a2);
  const QByteArray operator+(const QByteArray &a1, const QByteArray &a2);

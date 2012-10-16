@@ -1,7 +1,7 @@
---- sip/QtCore/qsize.sip.old	2012-10-04 17:51:54.888239143 +0200
-+++ sip/QtCore/qsize.sip	2012-10-04 17:51:54.892239143 +0200
-@@ -87,8 +87,10 @@
-     QSize boundedTo(const QSize &otherSize) const;
+--- sip/QtCore/qsize.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtCore/qsize.sip	2012-10-13 21:16:20.000000000 +0200
+@@ -96,8 +96,10 @@
+ %End
  };
  
 +%If (PyQt_DataStream)

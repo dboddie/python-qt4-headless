@@ -1,5 +1,5 @@
---- sip/QtNetwork/qabstractsocket.sip.old	2012-10-04 17:51:54.784239142 +0200
-+++ sip/QtNetwork/qabstractsocket.sip	2012-10-04 17:51:54.788239142 +0200
+--- sip/QtNetwork/qabstractsocket.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtNetwork/qabstractsocket.sip	2012-10-13 21:16:20.000000000 +0200
 @@ -215,8 +215,10 @@
      virtual bool waitForReadyRead(int msecs = 30000) /ReleaseGIL/;
      virtual bool waitForBytesWritten(int msecs = 30000) /ReleaseGIL/;

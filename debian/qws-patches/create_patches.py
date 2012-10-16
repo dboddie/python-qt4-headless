@@ -16,7 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import os, glob, shutil, sys
+import commands, os, glob, shutil, sys
 
 
 def find_files(pattern, path):
@@ -89,6 +89,6 @@ if __name__ == "__main__":
             diff_path = os.path.join(dir_path, file_name[:-len(suffix)]+new_suffix)
             
             os.chdir(current_dir)
-            os.system("diff -u "+path+" "+new_path+" > "+diff_path)
+            os.system("diff -u "+commands.mkarg(path)+" "+commands.mkarg(new_path)+" > "+commands.mkarg(diff_path))
     
     sys.exit()

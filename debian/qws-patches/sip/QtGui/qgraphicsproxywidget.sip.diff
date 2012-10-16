@@ -1,5 +1,5 @@
---- sip/QtGui/qgraphicsproxywidget.sip.old	2012-10-04 17:51:54.332239144 +0200
-+++ sip/QtGui/qgraphicsproxywidget.sip	2012-10-04 17:51:54.336239144 +0200
+--- sip/QtGui/qgraphicsproxywidget.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qgraphicsproxywidget.sip	2012-10-13 21:16:21.000000000 +0200
 @@ -69,7 +69,9 @@
      virtual bool eventFilter(QObject *object, QEvent *event);
      virtual void showEvent(QShowEvent *event);

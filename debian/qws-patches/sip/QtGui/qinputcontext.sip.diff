@@ -1,6 +1,6 @@
---- sip/QtGui/qinputcontext.sip.old	2012-10-04 17:51:54.096239145 +0200
-+++ sip/QtGui/qinputcontext.sip	2012-10-04 17:51:54.104239148 +0200
-@@ -44,7 +44,9 @@
+--- sip/QtGui/qinputcontext.sip.old	2012-10-13 21:16:21.000000000 +0200
++++ sip/QtGui/qinputcontext.sip	2012-10-13 21:16:21.000000000 +0200
+@@ -46,7 +46,9 @@
      QWidget *focusWidget() const;
      virtual void setFocusWidget(QWidget *w);
      virtual void widgetDestroyed(QWidget *w);

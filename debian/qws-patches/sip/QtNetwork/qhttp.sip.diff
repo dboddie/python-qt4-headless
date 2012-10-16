@@ -1,5 +1,5 @@
---- sip/QtNetwork/qhttp.sip.old	2012-10-04 17:51:54.764239142 +0200
-+++ sip/QtNetwork/qhttp.sip	2012-10-04 17:51:54.772239142 +0200
+--- sip/QtNetwork/qhttp.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtNetwork/qhttp.sip	2012-10-13 21:16:20.000000000 +0200
 @@ -165,10 +165,12 @@
  %End
      int setSocket(QTcpSocket *socket /KeepReference/);

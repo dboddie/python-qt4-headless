@@ -1,5 +1,5 @@
---- sip/QtGui/qwindowdefs.sip.old	2012-10-04 17:51:54.516239146 +0200
-+++ sip/QtGui/qwindowdefs.sip	2012-10-04 17:51:54.524239145 +0200
+--- sip/QtGui/qwindowdefs.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtGui/qwindowdefs.sip	2012-10-13 21:16:20.000000000 +0200
 @@ -41,3 +41,6 @@
  // MacOS/X specific definitions.
  typedef long WId;

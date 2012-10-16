@@ -1,8 +1,8 @@
---- sip/QtCore/QtCoremod.sip.old	2012-10-05 12:14:35.090890538 +0200
-+++ sip/QtCore/QtCoremod.sip	2012-10-05 13:15:40.858872761 +0200
+--- sip/QtCore/QtCoremod.sip.old	2012-10-13 21:16:19.000000000 +0200
++++ sip/QtCore/QtCoremod.sip	2012-10-13 21:16:19.000000000 +0200
 @@ -29,17 +29,155 @@
  
- %Timeline {Qt_4_1_1 Qt_4_1_2 Qt_4_1_3 Qt_4_2_0 Qt_4_2_2 Qt_4_2_3 Qt_4_3_0 Qt_4_3_1 Qt_4_3_2 Qt_4_3_3 Qt_4_3_4 Qt_4_4_0 Qt_4_4_1 Qt_4_4_2 Qt_4_5_0 Qt_4_5_1 Qt_4_5_2 Qt_4_5_3 Qt_4_6_0 Qt_4_6_1 Qt_4_6_2 Qt_4_6_3 Qt_4_7_0 Qt_4_7_1 Qt_4_7_2 Qt_4_7_3 Qt_4_7_4 Qt_4_8_0}
+ %Timeline {Qt_4_1_1 Qt_4_1_2 Qt_4_1_3 Qt_4_2_0 Qt_4_2_2 Qt_4_2_3 Qt_4_3_0 Qt_4_3_1 Qt_4_3_2 Qt_4_3_3 Qt_4_3_4 Qt_4_4_0 Qt_4_4_1 Qt_4_4_2 Qt_4_5_0 Qt_4_5_1 Qt_4_5_2 Qt_4_5_3 Qt_4_6_0 Qt_4_6_1 Qt_4_6_2 Qt_4_6_3 Qt_4_7_0 Qt_4_7_1 Qt_4_7_2 Qt_4_7_3 Qt_4_7_4 Qt_4_8_0 Qt_4_8_1 Qt_4_8_2 Qt_5_0_0}
  
 -%Platforms {WS_X11 WS_WIN WS_MACX}
 +%Platforms {WS_X11 WS_WIN WS_MACX WS_QWS}
@@ -183,7 +183,7 @@
  %Include qbasictimer.sip
  %Include qbitarray.sip
  %Include qbuffer.sip
-@@ -146,78 +290,132 @@
+@@ -146,24 +290,38 @@
  %Include qcoreapplication.sip
  %Include qcoreevent.sip
  %Include qcryptographichash.sip
@@ -218,19 +218,18 @@
 +  %Include qhistorystate.sip
 +%End
  %Include qiodevice.sip
+-%Include qlibrary.sip
 -%Include qlibraryinfo.sip
++%If (PyQt_Library)
++  %Include qlibrary.sip
++%End
 +%If (PyQt_Settings)
 +  %Include qlibraryinfo.sip
 +%End
  %Include qline.sip
  %Include qlist.sip
--%Include qlibrary.sip
-+%If (PyQt_Library)
-+  %Include qlibrary.sip
-+%End
  %Include qlocale.sip
- %Include qmap.sip
- %Include qmargins.sip
+@@ -172,52 +330,92 @@
  %Include qmetaobject.sip
  %Include qmetatype.sip
  %Include qmimedata.sip

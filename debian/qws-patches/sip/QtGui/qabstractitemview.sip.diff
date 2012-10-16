@@ -1,5 +1,5 @@
---- sip/QtGui/qabstractitemview.sip.old	2012-10-04 17:51:53.996239146 +0200
-+++ sip/QtGui/qabstractitemview.sip	2012-10-04 17:51:54.004239146 +0200
+--- sip/QtGui/qabstractitemview.sip.old	2012-10-13 22:05:21.000000000 +0200
++++ sip/QtGui/qabstractitemview.sip	2012-10-13 22:09:27.000000000 +0200
 @@ -37,6 +37,7 @@
  
  public:
@@ -29,7 +29,7 @@
      void setAlternatingRowColors(bool enable);
      bool alternatingRowColors() const;
      void setIconSize(const QSize &size);
-@@ -227,7 +231,9 @@
+@@ -232,7 +236,9 @@
      virtual QModelIndexList selectedIndexes() const;
      virtual bool edit(const QModelIndex &index, QAbstractItemView::EditTrigger trigger, QEvent *event);
      virtual QFlags<QItemSelectionModel::SelectionFlag> selectionCommand(const QModelIndex &index, const QEvent *event = 0) const;
@@ -39,7 +39,7 @@
      virtual QStyleOptionViewItem viewOptions() const;
  
      enum State
-@@ -256,10 +262,12 @@
+@@ -261,16 +267,19 @@
      virtual void mouseMoveEvent(QMouseEvent *e);
      virtual void mouseReleaseEvent(QMouseEvent *e);
      virtual void mouseDoubleClickEvent(QMouseEvent *e);
@@ -52,7 +52,14 @@
      virtual void focusInEvent(QFocusEvent *e);
      virtual void focusOutEvent(QFocusEvent *e);
      virtual void keyPressEvent(QKeyEvent *e);
-@@ -275,6 +283,7 @@
+     virtual void resizeEvent(QResizeEvent *e);
+     virtual void timerEvent(QTimerEvent *e);
+ 
++%If (PyQt_DragAndDrop)
+     enum DropIndicatorPosition
+     {
+         OnItem,
+@@ -280,6 +289,7 @@
      };
  
      QAbstractItemView::DropIndicatorPosition dropIndicatorPosition() const;
@@ -60,7 +67,7 @@
  
  public:
  %If (Qt_4_2_0 -)
-@@ -289,6 +298,7 @@
+@@ -294,6 +304,7 @@
  %If (Qt_4_2_0 -)
      QAbstractItemView::ScrollMode horizontalScrollMode() const;
  %End
@@ -68,7 +75,7 @@
  %If (Qt_4_2_0 -)
      void setDragDropOverwriteMode(bool overwrite);
  %End
-@@ -301,6 +311,7 @@
+@@ -306,6 +317,7 @@
  %If (Qt_4_2_0 -)
      QAbstractItemView::DragDropMode dragDropMode() const;
  %End
@@ -76,7 +83,7 @@
  %If (Qt_4_2_0 -)
      void setItemDelegateForRow(int row, QAbstractItemDelegate *delegate /KeepReference/);
  %End
-@@ -335,12 +346,14 @@
+@@ -340,12 +352,14 @@
  %End
  
  public:

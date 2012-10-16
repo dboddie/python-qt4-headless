@@ -1,5 +1,5 @@
---- sip/QtCore/qcoreevent.sip.old	2012-10-04 17:51:55.120239141 +0200
-+++ sip/QtCore/qcoreevent.sip	2012-10-04 17:51:55.124239140 +0200
+--- sip/QtCore/qcoreevent.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtCore/qcoreevent.sip	2012-10-13 21:16:20.000000000 +0200
 @@ -50,7 +50,7 @@
              break;
      #endif
@@ -9,7 +9,7 @@
      case QEvent::StateMachineSignal:
              sipType = sipType_QStateMachine_SignalEvent;
              break;
-@@ -269,12 +269,14 @@
+@@ -275,12 +275,14 @@
  %If (Qt_4_6_0 -)
          WinIdChange,
  %End
@@ -23,4 +23,4 @@
 +%End
          User,
          MaxUser,
-     };
+ %If (Qt_5_0_0 -)

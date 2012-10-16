@@ -1,5 +1,5 @@
---- sip/QtCore/qthread.sip.old	2012-10-04 17:51:54.836239142 +0200
-+++ sip/QtCore/qthread.sip	2012-10-04 17:51:54.840239142 +0200
+--- sip/QtCore/qthread.sip.old	2012-10-13 21:16:19.000000000 +0200
++++ sip/QtCore/qthread.sip	2012-10-13 21:16:19.000000000 +0200
 @@ -33,7 +33,9 @@
  
  public:

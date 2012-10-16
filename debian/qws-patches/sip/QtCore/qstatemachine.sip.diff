@@ -1,5 +1,5 @@
---- sip/QtCore/qstatemachine.sip.old	2012-10-04 17:51:55.088239142 +0200
-+++ sip/QtCore/qstatemachine.sip	2012-10-04 17:51:55.096239142 +0200
+--- sip/QtCore/qstatemachine.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtCore/qstatemachine.sip	2012-10-13 21:16:20.000000000 +0200
 @@ -87,11 +87,13 @@
      QString errorString() const;
      void clearError();

@@ -1,5 +1,5 @@
---- sip/QtCore/qstring.sip.old	2012-10-04 17:51:55.132239142 +0200
-+++ sip/QtCore/qstring.sip	2012-10-04 17:51:55.136239143 +0200
+--- sip/QtCore/qstring.sip.old	2012-10-13 21:16:20.000000000 +0200
++++ sip/QtCore/qstring.sip	2012-10-13 21:16:20.000000000 +0200
 @@ -83,7 +83,9 @@
  
  
@@ -28,7 +28,7 @@
              enc = sipCpp->toAscii();
      
          // A Python string is the most convenient method to save the encoded
-@@ -620,8 +626,10 @@
+@@ -698,8 +704,10 @@
  const QString operator+(QChar s1, const QString &s2) /Numeric/;
  const QString operator+(const QByteArray &ba, const QString &s) /Numeric/;
  const QString operator+(const QString &s, const QByteArray &ba) /Numeric/;
