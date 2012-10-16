@@ -377,7 +377,7 @@ class ConfigurePyQt4:
                 "new QScriptEngineDebugger()")
         if qt_version < 0x050000: check_module("QtSql", "qsqldatabase.h", "new QSqlDatabase()",
                 extra_libs=sql_libs)
-        if qt_version < 0x050000: check_module("QtSvg", "qsvgwidget.h", "new QSvgWidget()")
+        if qt_version < 0x050000: check_module("QtSvg", "qsvggenerator.h", "new QSvgGenerator()")
         if qt_version < 0x050000: check_module("QtTest", "QtTest", "QTest::qSleep(0)")
         if qt_version < 0x050000: check_module("QtWebKit", "qwebpage.h", "new QWebPage()")
         if qt_version < 0x050000: check_module("QtXml", "qdom.h", "new QDomDocument()")

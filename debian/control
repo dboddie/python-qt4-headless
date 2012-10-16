@@ -5,11 +5,11 @@ Maintainer: David Boddie <david.boddie@met.no>
 Build-Depends: debhelper (>= 8.9.9),
                dpkg-dev (>= 1.16.1),
                libqt4-qws-dev,
-               python-sip-dev
+               python-sip-dev (>= 4.13.3)
 Standards-Version: 3.9.2
 Homepage: http://www.riverbankcomputing.co.uk/software/pyqt/
 
 Package: python-qt4-qws
 Architecture: any
-Depends: python-sip, libqtcore4-qws, libqtgui4-qws, libqt4-xml-qws, libqt4-network-qws
+Depends: python-sip (>= 4.13.3), libqtcore4-qws, libqtgui4-qws, libqt4-xml-qws, libqt4-network-qws
 Description: Python bindings for Qt4
