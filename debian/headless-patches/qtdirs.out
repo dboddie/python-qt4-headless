@@ -1,9 +1,9 @@
-/opt/qt4-qws
-/opt/qt4-qws/include
-/opt/qt4-qws/lib
-/opt/qt4-qws/bin
-/opt/qt4-qws
-/opt/qt4-qws/plugins
+/opt/qt4-headless
+/opt/qt4-headless/include
+/opt/qt4-headless/lib
+/opt/qt4-headless/bin
+/opt/qt4-headless
+/opt/qt4-headless/plugins
 264195
 8
 Open Source
