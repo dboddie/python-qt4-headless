@@ -1,4 +1,4 @@
-libQtCore 4 libqtcore4-qws
-libQtGui 4 libqtgui4-qws
-libQtNetwork 4 libqt4-network-qws
-libQtSvg 4 libqt4-svg-qws
+libQtCore 4 libqtcore4-headless
+libQtGui 4 libqtgui4-headless
+libQtNetwork 4 libqt4-network-headless
+libQtSvg 4 libqt4-svg-headless

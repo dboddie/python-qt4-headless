@@ -1,18 +1,5 @@
-python-qt4-qws (4.9.4-metno0) precise; urgency=low
+python-qt4-headless (4.9.4-metno0) precise; urgency=low
 
-  * Upgraded to the upstream PyQt 4.9.4 release.
+  * Built against qt4-headless (using QPA instead of QWS).
 
- -- David Boddie <david.boddie@met.no>  Tue, 16 Oct 2012 11:35:47 +0200
-
-python-qt4-qws (4.9.1-metno1) precise; urgency=low
-
-  * Fixed invocation of Python in the rules file.
-
- -- David Boddie <david.boddie@met.no>  Mon, 15 Oct 2012 17:54:11 +0200
-
-python-qt4-qws (4.9.1-metno0) precise; urgency=low
-
-  * Created a package for embedded use.
-    - Configured the build to create a QWS version of PyQt.
-
- -- David Boddie <david.boddie@met.no>  Fri, 05 Oct 2012 15:30:01 +0200
+ -- David Boddie <david.boddie@met.no>  Thu, 18 Oct 2012 16:12:53 +0200

@@ -2,16 +2,16 @@
 
 build:
 	dh_quilt_patch
-	cp $(CURDIR)/debian/qws-patches/configure-qws.py configure.py
-	cp $(CURDIR)/debian/qws-patches/qtdirs.out qtdirs.out
-	python $(CURDIR)/debian/qws-patches/patch_files.py $(CURDIR)/debian/qws-patches/ $(CURDIR)
+	cp $(CURDIR)/debian/headless-patches/configure-headless.py configure.py
+	cp $(CURDIR)/debian/headless-patches/qtdirs.out qtdirs.out
+	python $(CURDIR)/debian/headless-patches/patch_files.py $(CURDIR)/debian/headless-patches/ $(CURDIR)
 	CROSS_SIPCONFIG=/usr/lib/python2.7/dist-packages python configure.py \
-	    -b /opt/qt4-qws/bin \
-	    -d /opt/qt4-qws/lib/python2.7/site-packages \
+	    -b /opt/qt4-headless/bin \
+	    -d /opt/qt4-headless/lib/python2.7/site-packages \
 	    -l /usr/include/python2.7 \
 	    -m /usr/lib/python2.7/config \
-	    -q /opt/qt4-qws/bin/qmake \
-	    -v /opt/qt4-qws/share/sip/PyQt4 \
+	    -q /opt/qt4-headless/bin/qmake \
+	    -v /opt/qt4-headless/share/sip/PyQt4 \
 	    -w --confirm-license
 	$(MAKE)
 
@@ -20,7 +20,7 @@ clean:
 	dh_testroot
 	[ ! -f Makefile ] || $(MAKE) clean
 	dh_quilt_unpatch
-	python $(CURDIR)/debian/qws-patches/undo_patches.py $(CURDIR)
+	python $(CURDIR)/debian/headless-patches/undo_patches.py $(CURDIR)
 	dh_clean
 
 install:
