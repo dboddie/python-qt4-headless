@@ -35,7 +35,7 @@ cross_sipconfig = sipconfig
 
 # Initialise the globals.
 pyqt_version = 0x040904
-pyqt_version_str = "4.9.4 (QWS)"
+pyqt_version_str = "4.9.4 (headless)"
 
 sip_min_version = 0x040d03
 
@@ -1523,7 +1523,7 @@ def set_sip_flags(pyqt):
         else:
             plattag = "WS_MACX"
     elif cross_sipcfg:
-        plattag = "WS_QWS"
+        plattag = "WS_QPA"
     else:
         plattag = "WS_X11"
 
@@ -2044,7 +2044,7 @@ SOURCES = %s
     # Generate the source code.
     f = open(cpp_file, "w")
 
-    ### This code is never run when we make libraries for QWS, so we don't
+    ### This code is never run when we make libraries for QWS or QPA, so we don't
     ### have to keep the list of checks for Qt features up to date.
 
     f.write(

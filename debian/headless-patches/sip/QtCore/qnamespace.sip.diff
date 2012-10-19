@@ -5,7 +5,7 @@
  
      typedef QFlags<Qt::MatchFlag> MatchFlags;
 -%If (WS_WIN || WS_MACX)
-+%If (WS_WIN || WS_MACX || WS_QWS)
++%If (WS_WIN || WS_MACX || WS_QWS || WS_QPA)
      typedef void *HANDLE;
  %End
  %If (WS_X11)

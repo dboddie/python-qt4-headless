@@ -1,6 +1,6 @@
 --- sip/QtGui/QtGuimod.sip.old	2012-10-13 21:16:20.000000000 +0200
 +++ sip/QtGui/QtGuimod.sip	2012-10-13 21:16:20.000000000 +0200
-@@ -58,201 +58,431 @@
+@@ -58,201 +58,433 @@
  %DefaultSupertype sip.simplewrapper
  
  %Include qabstractbutton.sip
@@ -90,7 +90,9 @@
 +%If (PyQt_DateTimeEdit)
 +  %Include qdatetimeedit.sip
 +%End
-+%Include qdecoration.sip
++%If (WS_QWS)
++  %Include qdecoration.sip
++%End
 +%If (PyQt_DesktopServices)
 +  %Include qdesktopservices.sip
 +%End
