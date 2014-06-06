@@ -13,3 +13,11 @@ Package: python-qt4-headless
 Architecture: any
 Depends: python-sip (>= 4.13.3), libqtcore4-headless, libqtgui4-headless, libqt4-xml-headless, libqt4-network-headless
 Description: Python bindings for Qt4
+
+Package: python-qt4-headless-dev
+Architecture: all
+Depends: python-sip-dev, ${misc:Depends}, ${python:Depends}
+Description: Development files for PyQt4
+ This package contains the source SIP files from which the Python
+ bindings for Qt4 are created. They are needed for building PyQt4
+ as well as creating bindings for own Qt4 widgets written in C++.
