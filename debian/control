@@ -2,16 +2,14 @@ Source: python-qt4-headless
 Section: libs
 Priority: optional
 Maintainer: David Boddie <david.boddie@met.no>
-Build-Depends: debhelper (>= 8.9.9),
-               dpkg-dev (>= 1.16.1),
-               libqt4-headless-dev,
-               python-sip-dev (>= 4.13.3)
+Build-Depends: debhelper, dpkg-dev, quilt,
+               libqt4-headless-dev, python-sip-dev
 Standards-Version: 3.9.2
 Homepage: http://www.riverbankcomputing.co.uk/software/pyqt/
 
 Package: python-qt4-headless
 Architecture: any
-Depends: python-sip (>= 4.13.3), libqtcore4-headless, libqtgui4-headless, libqt4-xml-headless, libqt4-network-headless
+Depends: python-sip, libqtcore4-headless, libqtgui4-headless, libqt4-xml-headless, libqt4-network-headless
 Description: Python bindings for Qt4
 
 Package: python-qt4-headless-dev
