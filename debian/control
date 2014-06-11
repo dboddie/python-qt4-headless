@@ -3,7 +3,7 @@ Section: libs
 Priority: optional
 Maintainer: David Boddie <david.boddie@met.no>
 Build-Depends: debhelper, dpkg-dev, quilt,
-               libqt4-headless-dev, python-sip-dev
+               libqt4-headless-dev, python-sip-dev (>= 4.13.3-2metno1)
 Standards-Version: 3.9.2
 Homepage: http://www.riverbankcomputing.co.uk/software/pyqt/
 
@@ -14,7 +14,7 @@ Description: Python bindings for Qt4
 
 Package: python-qt4-headless-dev
 Architecture: all
-Depends: python-sip-dev, ${misc:Depends}, ${python:Depends}
+Depends: python-sip-dev (>= 4.13.3-2metno1), ${misc:Depends}, ${python:Depends}
 Description: Development files for PyQt4
  This package contains the source SIP files from which the Python
  bindings for Qt4 are created. They are needed for building PyQt4
